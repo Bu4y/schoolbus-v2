@@ -1,0 +1,97 @@
+page-login {
+  ion-content {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: transparent;
+  }
+  .scroll-content {
+    background-image: radial-gradient(center center, ellipse cover, #ffeda3, #ffc800);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .logo {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+  .no-border {
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+  }
+  ion-row {
+    align-items: center;
+    text-align: center;
+  } //   span {
+  //     color: white;
+  //   }
+  ion-item {
+    border-radius: 50px !important;
+    padding-left: 15px !important;
+    margin-bottom: 10px;
+    background-color: #f6f6f6;
+    opacity: 0.5;
+    font-size: 0.9em;
+  }
+  ion-list {
+    margin: 0;
+  }
+  .login-button {
+    width: 100%; // border-radius: 30px;
+    font-size: 0.9em; // border: 1px solid #fff;
+    // background-color: #fee02b;
+    color: #000;
+  }
+  .strike {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .strike>span {
+    position: relative;
+    display: inline-block; // font-weight: bold;
+  }
+  .strike>span:before,
+  .strike>span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 1px;
+    background: #000;
+  }
+  .strike>span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  .strike>span:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+  .button-mds {
+    width: 100%;
+    font-size: 0.8em;
+  } // .input-cover {
+  //   background-color: rgb(252, 229, 99);
+  //   z-index: -1;
+  // }
+  // .item-ios {
+  //   background-color: rgb(252, 229, 99);
+  // }
+  // .item-md {
+  //   background-color: rgb(252, 229, 99);
+  // }
+  .list-ios[inset] .item {
+    border-bottom: 2px solid #ffc800 !important;
+    border-top: 2px solid #ffc800 !important;
+  }
+  .list-md[inset] .item {
+    border-bottom: 2px solid #ffc800 !important;
+    border-top: 2px solid #ffc800 !important;
+    border-left: 2px solid #ffc800 !important;
+    border-right: 2px solid #ffc800 !important;
+  }
+}

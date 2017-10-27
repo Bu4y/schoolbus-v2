@@ -1,0 +1,121 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Register</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding class="masters">
+
+  <ion-slides #slider>
+
+    <ion-slide>
+      <div padding>
+        <div (click)="uploadImage()">
+          <img src="./assets/camera.png" style="width:150px">
+        </div>
+
+        <!-- <ion-icon name="camera"></ion-icon> -->
+        <ion-item>
+          <ion-label>
+            <img src="./assets/icon/Icon-user.png">
+          </ion-label>
+          <ion-input type="text" placeholder="Name" [(ngModel)]="signup.firstName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <img src="./assets/icon/Icon-user.png">
+          </ion-label>
+          <ion-input type="text" placeholder="Last Name" [(ngModel)]="signup.lastName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <img src="./assets/icon/Phone.png">
+          </ion-label>
+          <ion-input type="text" placeholder="Phone" [(ngModel)]="signup.phone"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <img src="./assets/icon/mail.png">
+          </ion-label>
+          <ion-input type="text" placeholder="Email" [(ngModel)]="signup.email"></ion-input>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-label stacked> Image</ion-label>
+          <ion-input type="text" [(ngModel)]="signup.profileImageURL"></ion-input>
+        </ion-item> -->
+        <!-- <ion-item>
+          <ion-label floating>
+            <ion-icon name="md-person"></ion-icon> Name</ion-label>
+          <ion-input type="text" [(ngModel)]="signup.firstName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="md-person"></ion-icon> Last Name</ion-label>
+          <ion-input type="text" [(ngModel)]="signup.lastName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="md-call"></ion-icon> Phone</ion-label>
+          <ion-input type="text" [(ngModel)]="signup.phone"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="md-mail"></ion-icon> Email</ion-label>
+          <ion-input type="text" [(ngModel)]="signup.email"></ion-input>
+        </ion-item> -->
+        <!-- <button ion-button round block color="yellows" (click)="register(signup)">CONFIRM</button> -->
+        <div>
+          <button ion-button round block color="yellows" (click)="nextRegister(user)">CONFIRM</button>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div padding>
+        <ion-item>
+          <ion-label>
+            <img src="./assets/icon/Icon-user.png">
+          </ion-label>
+          <ion-input type="text" placeholder="Username" [(ngModel)]="signup.username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <img src="./assets/icon/password.png">
+          </ion-label>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="signup.password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <img src="./assets/icon/cf-pass.png">
+          </ion-label>
+          <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="signup.confirmpassword"></ion-input>
+        </ion-item>
+        <!-- <ion-item>
+          <ion-label floating>
+            <ion-icon name="md-person"></ion-icon> Username</ion-label>
+          <ion-input type="text" [(ngModel)]="signup.username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="md-lock"></ion-icon> Password</ion-label>
+          <ion-input type="password" [(ngModel)]="signup.password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="md-checkmark"></ion-icon> Confirm Password</ion-label>
+          <ion-input type="password" [(ngModel)]="signup.confirmpassword"></ion-input>
+        </ion-item> -->
+        <div class="marginT200">
+          <button ion-button round block color="yellows" (click)="register(signup)">CONFIRM</button>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

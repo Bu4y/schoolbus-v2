@@ -1,0 +1,10 @@
+<ion-tabs #myTabs>
+  <ion-tab [root]="feedRoot" tabTitle="กระดานข่าว" tabIcon="ios-list"></ion-tab>
+  <ion-tab [root]="addAddressRoot" tabTitle="" tabIcon=""></ion-tab>
+  <ion-fab bottom center no-margin style="bottom:-0.3%;">
+    <button ion-fab no-padding no-margin style="width:75px; height:75px;  background-color:#fee02b" (click)="tabAddAddress()">
+      <img no-padding src="./assets/fab.png">
+    </button>
+  </ion-fab>
+  <ion-tab [root]="notificationRoot" tabTitle="แจ้งแตือน" tabIcon="ios-megaphone-outline"></ion-tab>
+</ion-tabs>
