@@ -20,6 +20,7 @@ import { HomePage } from '../pages/home/home';
 import { HttpModule } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook } from '@ionic-native/facebook';
+import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { Facebook } from '@ionic-native/facebook';
     RegisterServiceProvider,
     Geolocation,
     Facebook,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthProvider
   ]
 })
 export class AppModule { }

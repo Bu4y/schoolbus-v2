@@ -1,3 +1,4 @@
+import { AuthProvider } from './../../providers/auth/auth';
 import { TabNavPage } from './../tab-nav/tab-nav';
 import { FeedPage } from './../feed/feed';
 import { RegisterPage } from './../register/register';
@@ -6,6 +7,7 @@ import { LoginServiceProvider } from './login.service';
 import { Component } from '@angular/core';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { AlertController, LoadingController, IonicPage, NavController, NavParams, App } from 'ionic-angular';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -39,7 +41,8 @@ export class LoginPage {
     public alertCtrl: AlertController,
     public app: App,
     public loginService: LoginServiceProvider,
-    private fb: Facebook
+    private fb: Facebook,
+    private auth: AuthProvider
   ) {
   }
 
@@ -74,17 +77,29 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage, this.dataUser);
   }
 
-  doLogin() {
+  // doLogin() {
+  //   this.loading.present();
+  //   this.loginService.onAuthorization(this.credential).then((data) => {
+  //     console.log('success');
+  //     this.loading.dismiss();
+  //     this.navCtrl.setRoot(TabNavPage);
+  //   }, (error) => {
+  //     this.loading.dismiss();
+  //     console.error(error);
+  //     alert(JSON.parse(error._body).message);
+  //   });
+  // }
+  doLogin(credential) {
     this.loading.present();
-    this.loginService.onAuthorization(this.credential).then((data) => {
-      console.log('success');
+    this.auth.login(this.credential).subscribe(data => {
       this.loading.dismiss();
       this.navCtrl.setRoot(TabNavPage);
+      console.log('success');
     }, (error) => {
       this.loading.dismiss();
       console.error(error);
-      alert(JSON.parse(error._body).message);
     });
+
   }
 
   register() {

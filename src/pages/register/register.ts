@@ -4,6 +4,7 @@ import { RegisterServiceProvider } from './register.service';
 import { Component, ViewChild } from '@angular/core';
 import { Slides, IonicPage, NavController, NavParams, LoadingController, AlertController, App } from 'ionic-angular';
 import { AuthorizeModel } from './register.model';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the RegisterPage page.
@@ -30,9 +31,7 @@ export class RegisterPage {
     lastName: '',
     profileImageURL: '',
     email: '',
-    gender: '',
-    phone: '',
-    birthday: ''
+    phone: ''
   }
   user: AuthorizeModel = new AuthorizeModel;
   loading = this.loadingCtrl.create();
@@ -43,6 +42,7 @@ export class RegisterPage {
     public alertCtrl: AlertController,
     public app: App,
     public regisService: RegisterServiceProvider,
+    private auth: AuthProvider
   ) {
     this.signup = this.navParams.data;
     // alert(JSON.stringify(this.signup));
@@ -68,7 +68,7 @@ export class RegisterPage {
     this.user.profileImageURL = 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png';
     console.log(this.user);
     if (this.signup.password === this.signup.confirmpassword) {
-      this.regisService.newAuthorization(this.user).then((data) => {
+      this.auth.signUp(this.user).subscribe((data) => {
         this.loading.dismiss();
         this.navCtrl.setRoot(TabNavPage);
       }, (error) => {
@@ -81,8 +81,23 @@ export class RegisterPage {
       this.doAlert();
       this.signup.password = '';
       this.signup.confirmpassword = '';
-
     }
+    // if (this.signup.password === this.signup.confirmpassword) {
+    //   this.regisService.newAuthorization(this.user).then((data) => {
+    //     this.loading.dismiss();
+    //     this.navCtrl.setRoot(TabNavPage);
+    //   }, (error) => {
+    //     console.error(error);
+    //     alert(JSON.stringify(error));
+    //     this.loading.dismiss();
+    //   });
+    // } else {
+    //   this.loading.dismiss();
+    //   this.doAlert();
+    //   this.signup.password = '';
+    //   this.signup.confirmpassword = '';
+
+    // }
   }
 
   doAlert() {
