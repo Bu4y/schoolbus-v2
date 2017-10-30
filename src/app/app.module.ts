@@ -1,3 +1,4 @@
+import { WalkthroughPage } from './../pages/walkthrough/walkthrough';
 import { SelectlocationPage } from './../pages/selectlocation/selectlocation';
 import { RegisterServiceProvider } from './../pages/register/register.service';
 import { LoginServiceProvider } from './../pages/login/login.service';
@@ -33,7 +34,8 @@ import { AuthProvider } from '../providers/auth/auth';
     LoginPage,
     RegisterPage,
     MapPage,
-    SelectlocationPage
+    SelectlocationPage,
+    WalkthroughPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { AuthProvider } from '../providers/auth/auth';
     LoginPage,
     RegisterPage,
     MapPage,
-    SelectlocationPage
+    SelectlocationPage,
+    WalkthroughPage
   ],
   providers: [
     StatusBar,

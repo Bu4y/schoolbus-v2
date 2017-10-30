@@ -1,3 +1,4 @@
+import { WalkthroughPage } from './../pages/walkthrough/walkthrough';
 import { AuthProvider } from "./../providers/auth/auth";
 import { MapPage } from "./../pages/map/map";
 import { SelectlocationPage } from "./../pages/selectlocation/selectlocation";
@@ -15,8 +16,8 @@ import { HomePage } from "../pages/home/home";
 })
 export class MyApp {
   // rootPage:any = TabNavPage;
-  // rootPage: any = SelectlocationPage;
-  rootPage: any = LoginPage;
+  rootPage: any = WalkthroughPage;
+  // rootPage: any = LoginPage;
 
   constructor(
     platform: Platform,
@@ -27,7 +28,7 @@ export class MyApp {
     if (this.auth.isLogged() === true) {
       this.rootPage = TabNavPage;
     } else {
-      this.rootPage = LoginPage;
+      this.rootPage = WalkthroughPage;
     }
 
     platform.ready().then(() => {

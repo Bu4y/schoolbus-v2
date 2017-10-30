@@ -20,18 +20,18 @@ export class AuthProvider {
   }
 
   authHeader(headers: Headers) {
-    headers.append("Authorization", window.localStorage.getItem('user_token'));
+    headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('user_token'));
   }
 
-  // private() {
-  //   let headers = new Headers();
-  //   this.authHeader(headers);
-  //   return this.http
-  //     .get(Constants.URL + 'api/users/me', {
-  //       headers: headers
-  //     })
-  //     .map(res => res.json());
-  // }
+  private() {
+    let headers = new Headers();
+    this.authHeader(headers);
+    return this.http
+      .post(Constants.URL + 'api/users/me', {}, {
+        headers: headers
+      })
+      .map(res => res.json());
+  }
 
   login(user) {
     return this.http.post(Constants.URL + 'api/auth/signin', user).map(this.extractData);
@@ -60,7 +60,7 @@ export class AuthProvider {
     return user || {};
   }
 
-  
+
   // signUp(user): Promise<AuthorizeModel> {
   //   return this.http.post(Constants.URL + 'auth/signup', user)
   //     .toPromise()

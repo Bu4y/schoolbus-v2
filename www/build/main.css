@@ -30415,7 +30415,7 @@ page-login ion-row {
 }
 
 page-login ion-item {
-  border-radius: 50px !important;
+  border-radius: 10px !important;
   padding-left: 15px !important;
   margin-bottom: 10px;
   background-color: #f6f6f6;
@@ -30624,4 +30624,101 @@ page-tab-nav img {
   border: 0;
   height: 80px;
   max-width: 150px;
+}
+
+walkthrough-page .swiper-pagination-bullet {
+  background-color: #fff;
+}
+
+walkthrough-page .no-padding-top .scroll-content {
+  padding-top: 0 !important;
+}
+
+walkthrough-page .skip-button {
+  text-transform: none;
+  padding: 15px 15px;
+  font-weight: bold;
+}
+
+walkthrough-page .floating-buttons {
+  z-index: 1;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 50px;
+  -webkit-transition: all .4s linear;
+  transition: all .4s linear;
+}
+
+walkthrough-page .floating-buttons button {
+  color: white;
+  min-height: 7vh;
+  text-transform: none;
+  font-size: 1.4em;
+  font-weight: bold;
+  background: rgba(49, 161, 216, 0.67);
+}
+
+walkthrough-page .slide-background {
+  background-size: cover !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: transparent;
+}
+
+walkthrough-page .toolbar-background {
+  border-color: transparent;
+}
+
+walkthrough-page .text-wrapper {
+  width: 100vw;
+  height: 100vh;
+}
+
+walkthrough-page .slide-text {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+walkthrough-page .slide-title {
+  color: white;
+  font-weight: bold;
+}
+
+walkthrough-page .slide-image {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 18px 0;
+}
+
+walkthrough-page b {
+  font-weight: 500;
+}
+
+walkthrough-page p {
+  padding: 0 40px;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #FFF;
+}
+
+walkthrough-page p b {
+  color: #000000;
+}
+
+ion-app.md walkthrough-page .walkthrough-header::after {
+  background: none;
+}
+
+ion-app.md walkthrough-page .walkthrough-content .button-bar {
+  background: #ffff;
+  border-radius: 6px;
+}
+
+ion-app.md walkthrough-page .walkthrough-content .button-bar > .button {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

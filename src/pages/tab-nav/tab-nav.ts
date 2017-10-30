@@ -3,6 +3,7 @@ import { AddAddressPage } from './../add-address/add-address';
 import { FeedPage } from './../feed/feed';
 import { Component, ViewChild } from '@angular/core';
 import { Tabs, IonicPage, NavController, App } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the TabNavPage tabs.
@@ -17,13 +18,19 @@ import { Tabs, IonicPage, NavController, App } from 'ionic-angular';
   templateUrl: 'tab-nav.html'
 })
 export class TabNavPage {
+  // data: string;
   @ViewChild('myTabs') tabRef: Tabs;
   feedRoot = FeedPage;
   addAddressRoot = AddAddressPage;
   notificationRoot = NotificationPage;
 
 
-  constructor(public navCtrl: NavController, public app: App) { }
+  constructor(public navCtrl: NavController, public app: App, private auth: AuthProvider) {
+    // this.auth.private().subscribe(data => {
+    //   this.data = data.message
+    //   console.log('token' + this.data);
+    // });
+  }
 
   tabAddAddress() {
     // this.navCtrl.push(AddAddressPage);
