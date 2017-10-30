@@ -17,8 +17,13 @@
 
     <ion-slide>
       <div padding>
-        <div (click)="uploadImage()">
+        <div (click)="uploadImage()" *ngIf="signup.profileImageURL">
+          <!-- <img src="./assets/camera.png" style="width:150px"> -->
+          <img src="{{signup.profileImageURL}}" style="width:150px; border-radius: 50%;">
+        </div>
+        <div (click)="uploadImage()" *ngIf="!signup.profileImageURL">
           <img src="./assets/camera.png" style="width:150px">
+          <!-- <img src="{{signup.profileImageURL}}"> -->
         </div>
 
         <!-- <ion-icon name="camera"></ion-icon> -->

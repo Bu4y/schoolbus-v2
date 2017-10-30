@@ -65,10 +65,12 @@ export class RegisterPage {
   register() {
     this.loading.present();
     this.user = this.signup;
-    this.user.profileImageURL = 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png';
+    // this.user.profileImageURL = 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png';
     console.log(this.user);
     if (this.signup.password === this.signup.confirmpassword) {
+      window.localStorage.setItem('sch-pass-v2',JSON.stringify(this.signup.password));
       this.auth.signUp(this.user).subscribe((data) => {
+        // alert(JSON.stringify(data));
         this.loading.dismiss();
         this.navCtrl.setRoot(TabNavPage);
       }, (error) => {

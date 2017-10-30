@@ -23,7 +23,7 @@ import { AlertController, LoadingController, IonicPage, NavController, NavParams
 })
 export class LoginPage {
   public loginForm: any;
-  // public backgroundImage = 'assets/img/background/background-5.jpg';
+  public backgroundImage = './assets/logo-School-bus.png';
   loading = this.loadingCtrl.create();
   credential: credentialModel = new credentialModel();
 
@@ -32,7 +32,9 @@ export class LoginPage {
     lastName: '',
     email: '',
     username: '',
-    password: ''
+    password: '',
+    confirmpassword: '',
+    profileImageURL: ''
   };
   constructor(
     public navCtrl: NavController,
@@ -50,18 +52,33 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  loginFacebook() {
-    this.fb.login(['public_profile', 'email'])
-      .then((res: FacebookLoginResponse) =>
-        this.fb.api('me?fields=email,id,first_name,name,last_name', null).then((res: FacebookLoginResponse) =>
-          this.registerFb(res))
-          .catch(e => {
-            alert(JSON.stringify(e));
-          })
-      )
-      .catch(e => {
-        alert(JSON.stringify(e));
-      });
+  loginFacebook(): Promise<any> {
+    return new Promise((loginSuccess, loginError) => {
+      this.fb.login(['public_profile', 'email'])
+        .then((res: FacebookLoginResponse) => {
+
+          // alert('Logged into Facebook! : ' + JSON.stringify(res));
+          this.fb.api('me?fields=email,id,first_name,name,last_name,picture.width(600).height(600)', null).then(
+            (resData) => {
+              this.registerFb(resData)
+              loginSuccess(resData as Promise<any>);
+              // alert(" DATA : " + JSON.stringify(resData));
+            }).catch((err) => {
+              loginError(err as Promise<any>);
+              alert("ไม่สามารถล็อคอินเข้าสู่ระบบด้วย Facebook ได้");
+
+            });
+          // this.fb.api('me?fields=email,id,first_name,name,last_name,picture.width(600).height(600)', null).then((res: FacebookLoginResponse) =>
+          //   this.registerFb(res))
+          //   .catch(e => {
+          //     alert(JSON.stringify(e));
+          //   });
+        })
+        .catch(e => {
+          loginError(e as Promise<any>);
+          alert('Error logging into Facebook : ' + JSON.stringify(e))
+        });
+    })
   }
 
   registerFb(data) {
@@ -69,14 +86,34 @@ export class LoginPage {
     this.dataUser.firstName = data.first_name;
     this.dataUser.lastName = data.last_name;
     this.dataUser.email = data.email;
+    this.dataUser.profileImageURL = data.picture.data.url;
+    this.dataUser.username = data.email;
 
     if (!this.dataUser.username) {
       this.dataUser.username = data.email;
     }
     // this.slides.slideTo(1, 500, this.dataUser);
-    this.navCtrl.push(RegisterPage, this.dataUser);
+    this.signfb();
+    // this.navCtrl.push(RegisterPage, this.dataUser);
   }
 
+  signfb() {
+
+    // this.dataUser.username = data.email
+    this.dataUser.password = window.localStorage.getItem('sch-pass-v2') ? JSON.parse(window.localStorage.getItem('sch-pass-v2')) : 'P@ssw0rd1234' ;
+    this.loginService.onAuthorization(this.dataUser).then((data) => {
+      // alert(JSON.stringify(data));
+      this.navCtrl.setRoot(TabNavPage);
+    }).catch((err) => {
+      // alert('err' + JSON.stringify(err));
+      let er = JSON.parse(err._body);
+      if (er.message == 'Unknown user') {
+        this.dataUser.password = '';
+        // this.dataUser.confirmpassword = 'P@ssw0rd1234';
+        this.navCtrl.push(RegisterPage, this.dataUser);
+      }
+    })
+  }
   // doLogin() {
   //   this.loading.present();
   //   this.loginService.onAuthorization(this.credential).then((data) => {
