@@ -98,10 +98,12 @@ export class LoginPage {
   }
 
   signfb() {
+    this.loading.present();
 
     // this.dataUser.username = data.email
-    this.dataUser.password = window.localStorage.getItem('sch-pass-v2') ? JSON.parse(window.localStorage.getItem('sch-pass-v2')) : 'P@ssw0rd1234' ;
+    this.dataUser.password = window.localStorage.getItem('sch-pass-v2') ? JSON.parse(window.localStorage.getItem('sch-pass-v2')) : 'P@ssw0rd1234';
     this.loginService.onAuthorization(this.dataUser).then((data) => {
+      this.loading.dismiss();
       // alert(JSON.stringify(data));
       this.navCtrl.setRoot(TabNavPage);
     }).catch((err) => {
@@ -110,6 +112,8 @@ export class LoginPage {
       if (er.message == 'Unknown user') {
         this.dataUser.password = '';
         // this.dataUser.confirmpassword = 'P@ssw0rd1234';
+        this.loading.dismiss();
+
         this.navCtrl.push(RegisterPage, this.dataUser);
       }
     })

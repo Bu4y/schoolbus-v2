@@ -22,6 +22,7 @@ import { HttpModule } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook } from '@ionic-native/facebook';
 import { AuthProvider } from '../providers/auth/auth';
+import { LocationPage } from '../pages/location/location';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AuthProvider } from '../providers/auth/auth';
     RegisterPage,
     MapPage,
     SelectlocationPage,
-    WalkthroughPage
+    WalkthroughPage,
+    LocationPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { AuthProvider } from '../providers/auth/auth';
     RegisterPage,
     MapPage,
     SelectlocationPage,
-    WalkthroughPage
+    WalkthroughPage,
+    LocationPage
   ],
   providers: [
     StatusBar,

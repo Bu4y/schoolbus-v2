@@ -1,0 +1,71 @@
+<!--
+  Generated template for the LocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>location</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list radio-group [(ngModel)]="location">
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <ion-radio checked="false" value="oneway" checked></ion-radio>
+          <ion-label>เที่ยวเดียว</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-radio checked="false" value="roundtrip"></ion-radio>
+          <ion-label>ไป-กลับ</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <!-- One Way -->
+  <div *ngIf="location=='oneway'">
+    <ion-item>
+      <ion-label stacked color="primary">จุดรับ</ion-label>
+      <ion-input type="text"></ion-input>
+      <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked color="primary">จุดส่ง</ion-label>
+      <ion-input type="text"></ion-input>
+      <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
+    </ion-item>
+  </div>
+
+  <!-- Roundtrip -->
+  <div *ngIf="location=='roundtrip'">
+    <ion-item>
+      <ion-label stacked color="primary">จุดรับ</ion-label>
+      <ion-input type="text"></ion-input>
+      <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked color="primary">โรงเรียน</ion-label>
+      <ion-input type="text"></ion-input>
+      <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked color="primary">จุดส่ง</ion-label>
+      <ion-input type="text"></ion-input>
+      <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
+    </ion-item>
+  </div>
+  <div padding class="marginBT">
+    <button ion-button round block color="yellows" (click)="confirm()">Confirm</button>
+  </div>
+  <p>Latitude : {{map.latitude}}</p>
+  <p>Longtitude : {{map.longitude}}</p>
+
+</ion-content>

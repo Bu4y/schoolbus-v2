@@ -1,3 +1,4 @@
+import { LocationPage } from './../pages/location/location';
 import { WalkthroughPage } from './../pages/walkthrough/walkthrough';
 import { AuthProvider } from "./../providers/auth/auth";
 import { MapPage } from "./../pages/map/map";
@@ -16,7 +17,7 @@ import { HomePage } from "../pages/home/home";
 })
 export class MyApp {
   // rootPage:any = TabNavPage;
-  rootPage: any = WalkthroughPage;
+  rootPage: any = LocationPage;
   // rootPage: any = LoginPage;
 
   constructor(
@@ -25,11 +26,11 @@ export class MyApp {
     splashScreen: SplashScreen,
     private auth: AuthProvider
   ) {
-    if (this.auth.isLogged() === true) {
-      this.rootPage = TabNavPage;
-    } else {
-      this.rootPage = WalkthroughPage;
-    }
+    // if (this.auth.isLogged() === true) {
+    //   this.rootPage = TabNavPage;
+    // } else {
+    //   this.rootPage = WalkthroughPage;
+    // }
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

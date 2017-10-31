@@ -1,3 +1,4 @@
+import { LocationPage } from './../location/location';
 import { SelectlocationPage } from './../selectlocation/selectlocation';
 import { FeedPage } from './../feed/feed';
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
@@ -23,7 +24,9 @@ export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-
+  myLat;
+  myLong;
+  xxx;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -34,6 +37,30 @@ export class MapPage {
     this.getUserPosition();
   }
 
+  getMap() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      let xxx = {
+        latitude: resp.coords.latitude,
+        longitude: resp.coords.longitude,
+        // altitude: resp.coords.altitude,
+        // accuracy: resp.coords.accuracy,
+        // altitudeAccuracy: resp.coords.altitudeAccuracy,
+        // heading: resp.coords.heading,
+        // speed: resp.coords.speed,
+        timestamp: resp.timestamp
+      }
+      
+      this.myLat = resp.coords.latitude;
+      this.myLong = resp.coords.longitude;
+      // console.log(JSON.stringify(this.myLat));
+      // console.log(JSON.stringify(this.myLong));
+      this.navCtrl.setRoot(LocationPage, xxx);
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+  }
+
   getUserPosition() {
     this.options = {
       enableHighAccuracy: false
@@ -41,10 +68,10 @@ export class MapPage {
     this.geolocation.getCurrentPosition(this.options).then((pos: Geoposition) => {
 
       this.currentPos = pos;
+      console.log('lat' + pos.coords.latitude);
+      console.log('long' + pos.coords.longitude);
 
-      console.log(pos);
       this.addMap(pos.coords.latitude, pos.coords.longitude);
-
     }, (err: PositionError) => {
       console.log("error : " + err.message);
       ;
@@ -62,6 +89,7 @@ export class MapPage {
     }
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    // console.log(this.map);
     this.addMarker();
 
   }
@@ -78,12 +106,12 @@ export class MapPage {
       content: content
     });
     google.maps.event.addListener(marker, 'click', () => {
-      this.navCtrl.push(SelectlocationPage);
+      // this.navCtrl.push(SelectlocationPage);
       infoWindow.open(this.map, marker);
-      console.log(marker);
+      this.getMap();
+      this.navCtrl.pop();
+
     });
-
-
   }
 
 }
