@@ -99,9 +99,10 @@ export class MapPage {
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: this.map.getCenter()
+      // icon: "http://www.iconsdb.com/icons/preview/orange/pin-8-xxl.png"
     });
 
-    let content = "<p>This is your current position !</p>";
+    let content = "<p>ME!</p>";
     let infoWindow = new google.maps.InfoWindow({
       content: content
     });

@@ -1,3 +1,4 @@
+import { LocationPage } from './../location/location';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -21,5 +22,7 @@ export class AddAddressPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddAddressPage');
   }
-
+  selectLocation(){
+  this.navCtrl.setRoot(LocationPage);
+  }
 }

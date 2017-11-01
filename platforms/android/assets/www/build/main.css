@@ -30372,6 +30372,10 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-top));
 }
 
+page-location .marginBT {
+  margin-top: 50%;
+}
+
 page-login ion-content {
   background-size: cover;
   background-position: center;

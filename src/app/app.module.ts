@@ -1,3 +1,4 @@
+import { Geolocation } from '@ionic-native/geolocation';
 import { WalkthroughPage } from './../pages/walkthrough/walkthrough';
 import { SelectlocationPage } from './../pages/selectlocation/selectlocation';
 import { RegisterServiceProvider } from './../pages/register/register.service';
@@ -19,7 +20,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { HttpModule } from '@angular/http';
-import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook } from '@ionic-native/facebook';
 import { AuthProvider } from '../providers/auth/auth';
 import { LocationPage } from '../pages/location/location';
