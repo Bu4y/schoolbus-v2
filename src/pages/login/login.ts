@@ -60,6 +60,7 @@ export class LoginPage {
           // alert('Logged into Facebook! : ' + JSON.stringify(res));
           this.fb.api('me?fields=email,id,first_name,name,last_name,picture.width(600).height(600)', null).then(
             (resData) => {
+              // alert(JSON.stringify(resData));
               this.registerFb(resData)
               loginSuccess(resData as Promise<any>);
               // alert(" DATA : " + JSON.stringify(resData));

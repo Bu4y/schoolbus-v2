@@ -16,9 +16,9 @@ import { HomePage } from "../pages/home/home";
   templateUrl: "app.html"
 })
 export class MyApp {
-  // rootPage:any = TabNavPage;
-  rootPage: any = MapPage;
-  // rootPage: any = LoginPage;
+  rootPage:any = TabNavPage;
+  //rootPage: any = MapPage;
+   //rootPage: any = LoginPage;
 
   constructor(
     platform: Platform,
