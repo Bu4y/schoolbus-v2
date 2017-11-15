@@ -30372,6 +30372,19 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-top));
 }
 
+page-feed [imgstyle] {
+  width: 200px;
+  height: 250px;
+}
+
+page-feed .slide-zoom {
+  text-align: -webkit-center;
+}
+
+page-feed [imgSize] {
+  width: 50vw;
+}
+
 page-location .marginBT {
   margin-top: 50%;
 }
@@ -30592,8 +30605,12 @@ page-selectlocation .margintest {
   margin-right: 25px;
 }
 
+page-tab-nav .tabs-ios .tab-button[aria-selected=true] {
+  color: #000;
+}
+
 page-tab-nav .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
-  color: #fcf6f6;
+  color: #000;
 }
 
 page-tab-nav .tabs-ios .tabbar {
@@ -30601,15 +30618,11 @@ page-tab-nav .tabs-ios .tabbar {
 }
 
 page-tab-nav .tabs-ios .tab-button-icon {
-  color: #f4f4f4;
+  color: #000000;
 }
 
 page-tab-nav .tabs-ios .tab-button {
-  color: #f4f4f4;
-}
-
-page-tab-nav .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
-  color: #fcf6f6;
+  color: #000000;
 }
 
 page-tab-nav .tabs-md .tabbar {

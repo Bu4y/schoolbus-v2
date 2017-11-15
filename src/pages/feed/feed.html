@@ -21,41 +21,52 @@
 </ion-header>
 
 
-<ion-content class="masters">
+<ion-content>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-card>
-    <p>#หมดห่วงเรื่องการเดินทาง เมื่อใช้บริการ School Bus</p>
-    <ion-card-content>
-      <img src="./assets/feed1.png" />
-    </ion-card-content>
-    <ion-item>
-      <button ion-button icon-only clear item-start color="danger">
-        <ion-icon name="heart"></ion-icon>
-      </button>
-      <button ion-button icon-only clear>
-        <ion-icon name="ios-chatbubbles-outline"></ion-icon>
-      </button>
-      <button ion-button icon-only clear item-end>
-        <ion-icon name="md-share"></ion-icon>
-      </button>
-    </ion-item>
-  </ion-card>
 
-  <ion-card>
-    <p>#ปลอดภัยเหมือนไปส่งเอง #School Bus</p>
+  <!-- <ion-card >
+        
+        <ion-card-content>
+          <ion-card-title>
+              
+            </ion-card-title>
+          <p>
+            The most popular industrial group ever, and largely
+            responsible for bringing the music to a mass audience.
+          </p>
+        </ion-card-content>
+      </ion-card> -->
+
+
+
+  <ion-card *ngFor="let data of datafeed">
+    <ion-slides>
+      <ion-slide imgstyle *ngFor="let item of data.image">
+        <img src="{{item}}" imgSize>
+      </ion-slide>
+    </ion-slides>
     <ion-card-content>
-      <img src="./assets/feed2.png" />
+      <h2>{{data.name}}</h2>
     </ion-card-content>
-    <ion-item>
-      <button ion-button icon-only clear item-start color="danger">
-        <ion-icon name="heart"></ion-icon>
-      </button>
-      <button ion-button icon-only clear>
-        <ion-icon name="ios-chatbubbles-outline"></ion-icon>
-      </button>
-      <button ion-button icon-only clear item-end>
-        <ion-icon name="md-share"></ion-icon>
-      </button>
-    </ion-item>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>4 Comments</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
   </ion-card>
 </ion-content>
