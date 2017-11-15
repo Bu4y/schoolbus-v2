@@ -4,7 +4,17 @@ import { FeedPage } from './../feed/feed';
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  GoogleMapOptions,
+  CameraPosition,
+  MarkerOptions,
+  Marker
+} from '@ionic-native/google-maps';
 
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderForwardResult } from '@ionic-native/native-geocoder';
 /**
  * Generated class for the MapPage page.
  *
@@ -19,99 +29,86 @@ declare var google;
   templateUrl: 'map.html',
 })
 export class MapPage {
-  options: GeolocationOptions
-  currentPos: Geoposition;
+  myLong: number;
+  myLat: number;
+  map: GoogleMap;
+  mapElement: HTMLElement;
+  // options: GeolocationOptions
+  // currentPos: Geoposition;
 
-  @ViewChild('map') mapElement: ElementRef;
-  map: any;
-  myLat;
-  myLong;
-  xxx;
+  // @ViewChild('map') mapElement: ElementRef;
+  // map: any;
+  // myLat;
+  // myLong;
+  // xxx;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private googleMaps: GoogleMaps,
+    private nativeGeocoder: NativeGeocoder
   ) {
   }
-  ionViewDidEnter() {
-    this.getUserPosition();
+  ionViewDidLoad() {
+    this.loadMap();
   }
 
-  getMap() {
+  loadMap() {
     this.geolocation.getCurrentPosition().then((resp) => {
-      let xxx = {
-        latitude: resp.coords.latitude,
-        longitude: resp.coords.longitude,
-        // altitude: resp.coords.altitude,
-        // accuracy: resp.coords.accuracy,
-        // altitudeAccuracy: resp.coords.altitudeAccuracy,
-        // heading: resp.coords.heading,
-        // speed: resp.coords.speed,
-        timestamp: resp.timestamp
-      }
-      
-      this.myLat = resp.coords.latitude;
-      this.myLong = resp.coords.longitude;
-      // console.log(JSON.stringify(this.myLat));
-      // console.log(JSON.stringify(this.myLong));
-      this.navCtrl.setRoot(LocationPage, xxx);
+      this.mapElement = document.getElementById('map');
+
+      let mapOptions: GoogleMapOptions = {
+        camera: {
+          target: {
+            lat: resp.coords.latitude,
+            lng: resp.coords.longitude
+          },
+          zoom: 18,
+          tilt: 30
+        }
+      };
+
+      // this.map = this.googleMaps.create(this.mapElement, mapOptions);
+      this.map = new GoogleMap(this.mapElement, mapOptions);
+
+      // Wait the MAP_READY before using any methods.
+      this.map.one(GoogleMapsEvent.MAP_READY)
+        .then(() => {
+          console.log('Map is ready!');
+
+          // Now you can use all methods safely.
+          this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude)
+            .then((result: NativeGeocoderReverseResult) => {
+              let placename = result.subThoroughfare
+                + ' ' + result.locality
+                + ' ' + result.subAdministrativeArea
+                + ' ' + result.administrativeArea
+                + ' ' + result.postalCode;
+                
+              this.map.addMarker({
+                title: placename,
+                icon: 'red',
+                animation: 'DROP',
+                position: {
+                  lat: resp.coords.latitude,
+                  lng: resp.coords.longitude
+                }
+              })
+                .then(marker => {
+                  marker.on(GoogleMapsEvent.MARKER_CLICK)
+                    .subscribe(() => {
+                      alert('clicked');
+                    });
+                });
+            })
+            .catch((error: any) => console.log(error));
+
+
+
+        });
 
     }).catch((error) => {
       console.log('Error getting location', error);
-    });
-  }
-
-  getUserPosition() {
-    this.options = {
-      enableHighAccuracy: false
-    }
-    this.geolocation.getCurrentPosition(this.options).then((pos: Geoposition) => {
-
-      this.currentPos = pos;
-      console.log('lat' + pos.coords.latitude);
-      console.log('long' + pos.coords.longitude);
-
-      this.addMap(pos.coords.latitude, pos.coords.longitude);
-    }, (err: PositionError) => {
-      console.log("error : " + err.message);
-      ;
-    })
-  }
-
-  addMap(lat, long) {
-
-    let latLng = new google.maps.LatLng(lat, long);
-
-    let mapOptions = {
-      center: latLng,
-      zoom: 16,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    // console.log(this.map);
-    this.addMarker();
-
-  }
-  addMarker() {
-
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
-      // icon: "http://www.iconsdb.com/icons/preview/orange/pin-8-xxl.png"
-    });
-
-    let content = "<p>ME!</p>";
-    let infoWindow = new google.maps.InfoWindow({
-      content: content
-    });
-    google.maps.event.addListener(marker, 'click', () => {
-      // this.navCtrl.push(SelectlocationPage);
-      infoWindow.open(this.map, marker);
-      this.getMap();
-      this.navCtrl.pop();
-
     });
   }
 

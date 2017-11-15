@@ -7,6 +7,9 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.cnet.schoolbus"
+        },
         "cordova-plugin-facebook4": {
             "APP_ID": "1676493345694846",
             "APP_NAME": "schoolbus",
@@ -15,10 +18,8 @@
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.cnet.schoolbus"
         },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.cnet.schoolbus"
-        },
-        "cordova-plugin-device": {
+        "cordova-plugin-googlemaps": {
+            "API_KEY_FOR_ANDROID": "AIzaSyAibnEtDyUUbAfzXuAaK_MQMr5-_G9m1BU",
             "PACKAGE_NAME": "com.cnet.schoolbus"
         },
         "cordova-plugin-ionic-webview": {
@@ -29,10 +30,19 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.cnet.schoolbus"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.cnet.schoolbus"
+        },
+        "cordova-plugin-nativegeocoder": {
+            "PACKAGE_NAME": "com.cnet.schoolbus"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.cnet.schoolbus"
+        },
+        "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.cnet.schoolbus"
         }
     }
