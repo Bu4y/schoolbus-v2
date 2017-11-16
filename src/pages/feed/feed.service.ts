@@ -15,12 +15,25 @@ export class FeedServiceProvider {
     constructor(public http: Http) {
         console.log('Hello FeedServiceProvider Provider');
     }
-    getfeed():Promise<any>{
-        return this.http.get('http://localhost:3000/api/feeds/')
-        .toPromise()
-        .then(response => response.json() as Promise<any>)
-        .catch(this.handleError);
-    } 
+    // authorizationHeader() {
+    //     let headers = new Headers();
+    //     let token = window.localStorage.getItem('token');
+    //     headers.append('Authorization', 'Bearer ' + token);
+    //     return headers;
+    // }
+
+    authHeader(headers: Headers) {
+        headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('user_token'));
+      }
+    getfeed(): Promise<any> {
+        let headers = new Headers();
+        this.authHeader(headers);
+        return this.http.get('http://school-bus-server.herokuapp.com/api/feeds')
+            .toPromise()
+            .then(response => response.json() as Promise<any>)
+            .catch(this.handleError);
+    }
+    
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
