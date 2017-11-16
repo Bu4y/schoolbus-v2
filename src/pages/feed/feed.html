@@ -49,22 +49,18 @@
       <h2>{{data.name}}</h2>
     </ion-card-content>
     <ion-row>
-      <ion-col>
+      <ion-col text-left>
         <button ion-button icon-left clear small (click)="updatelike(data)">
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
+          <ion-icon name="ios-heart-outline"></ion-icon>
         </button>
-      </ion-col>
-      <ion-col>
         <button ion-button icon-left clear small (click)="comment()">
-          <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
-        </button>
+            <ion-icon name="ios-chatbubbles-outline"></ion-icon>
+          </button>
       </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          11h ago
-        </ion-note>
+      <ion-col text-right>
+          <button ion-button icon-right clear small (click)="comment()">
+              <ion-icon name="md-share"></ion-icon>
+            </button>
       </ion-col>
     </ion-row>
 
