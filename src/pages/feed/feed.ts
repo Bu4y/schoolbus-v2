@@ -1,9 +1,10 @@
 import { LoginPage } from './../login/login';
 import { AuthProvider } from './../../providers/auth/auth';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ModalController } from 'ionic-angular';
 import { FeedServiceProvider } from './feed.service';
 import { FeedModel } from './feed.model';
+import { CommentPage } from '../comment/comment';
 
 /**
  * Generated class for the FeedPage page.
@@ -25,7 +26,8 @@ export class FeedPage {
     public navParams: NavParams,
     private auth: AuthProvider,
     public app: App,
-    public feedServiceProvider: FeedServiceProvider
+    public feedServiceProvider: FeedServiceProvider,
+    public modalCtrl: ModalController
   ) {
     // this.auth.private().subscribe((data) => {
     //   this.data = data.message
@@ -49,6 +51,20 @@ export class FeedPage {
     this.auth.logout();
     this.app.getRootNav().setRoot(LoginPage);
 
+  }
+
+  updatelike(data) {
+    data.islike.push({
+      user: JSON.parse(window.localStorage.getItem('schollbus_user')),
+      created : new Date().toISOString()
+    });
+    this.feedServiceProvider.updateLike(data).then((resp)=>{
+      console.log(resp);
+    },(err)=>{
+      console.error(err);
+    });
+    
+    console.log(data);
   }
 
 }

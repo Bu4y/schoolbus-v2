@@ -20,7 +20,7 @@ export class AuthProvider {
   }
 
   authHeader(headers: Headers) {
-    headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('user_token'));
+    headers.append('Authorization', 'Bearer ' + window.localStorage.getItem('schollbus_user'));
   }
 
   private() {
@@ -42,7 +42,7 @@ export class AuthProvider {
   }
 
   isLogged() {
-    if (window.localStorage.getItem('user_token')) {
+    if (window.localStorage.getItem('schollbus_user')) {
       return true;
     } else {
       return false;
@@ -56,7 +56,7 @@ export class AuthProvider {
 
   private extractData(res: Response) {
     let user = res.json() as AuthorizeModel;
-    window.localStorage.setItem('user_token', user.loginToken);
+    window.localStorage.setItem('schollbus_user', JSON.stringify(user));
     return user || {};
   }
 

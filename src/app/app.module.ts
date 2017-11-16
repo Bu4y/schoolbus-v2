@@ -26,6 +26,7 @@ import { LocationPage } from '../pages/location/location';
 import { GoogleMaps } from '@ionic-native/google-maps'
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { FeedServiceProvider } from "../pages/feed/feed.service";
+import { CoreserviceProvider } from '../providers/coreservice/coreservice';
 @NgModule({
   declarations: [
     MyApp,
@@ -72,7 +73,9 @@ import { FeedServiceProvider } from "../pages/feed/feed.service";
     NativeGeocoder,
     FeedServiceProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthProvider
+    AuthProvider,
+    CoreserviceProvider,
+    CoreserviceProvider
     
   ]
 })

@@ -134,9 +134,9 @@ export class LoginPage {
   doLogin(credential) {
     this.loading.present();
     this.auth.login(this.credential).subscribe(data => {
-      this.auth.private().subscribe(user => {
-        console.log(user);
-      })
+      // this.auth.private().subscribe(user => {
+      //   console.log(user);
+      // })
       this.loading.dismiss();
       this.navCtrl.setRoot(TabNavPage);
       console.log('success');
