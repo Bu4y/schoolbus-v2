@@ -66,5 +66,8 @@ export class FeedPage {
     
     console.log(data);
   }
+  comment(){
+    this.navCtrl.push(CommentPage);
+  }
 
 }

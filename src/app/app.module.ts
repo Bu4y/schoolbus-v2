@@ -27,6 +27,7 @@ import { GoogleMaps } from '@ionic-native/google-maps'
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { FeedServiceProvider } from "../pages/feed/feed.service";
 import { CoreserviceProvider } from '../providers/coreservice/coreservice';
+import { CommentPage } from '../pages/comment/comment';
 @NgModule({
   declarations: [
     MyApp,
@@ -40,7 +41,8 @@ import { CoreserviceProvider } from '../providers/coreservice/coreservice';
     MapPage,
     SelectlocationPage,
     WalkthroughPage,
-    LocationPage
+    LocationPage,
+    CommentPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import { CoreserviceProvider } from '../providers/coreservice/coreservice';
     MapPage,
     SelectlocationPage,
     WalkthroughPage,
-    LocationPage
+    LocationPage,
+    CommentPage
   ],
   providers: [
     StatusBar,
@@ -76,7 +79,7 @@ import { CoreserviceProvider } from '../providers/coreservice/coreservice';
     AuthProvider,
     CoreserviceProvider,
     CoreserviceProvider
-    
+
   ]
 })
 export class AppModule { }

@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { CoreserviceProvider } from "../../providers/coreservice/coreservice";
+import { FeedModel } from './feed.model';
 // import { Constants } from "../../app/app.contants";
 /*
   Generated class for the FeedServiceProvider provider.
@@ -36,6 +37,14 @@ export class FeedServiceProvider {
             .then(response => response.json() as Promise<any>)
             .catch(this.handleError);
 
+    }
+
+    commentFeed(feedId, data): Promise<FeedModel> {
+        let headers = this.coreService.authorizationHeader();
+        return this.http.put('https://school-bus-server.herokuapp.com/api/feeds/comment/' + feedId, data, { headers: headers })
+            .toPromise()
+            .then(response => response.json() as FeedModel)
+            .catch(this.handleError);
     }
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);

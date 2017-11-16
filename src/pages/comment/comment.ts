@@ -22,4 +22,8 @@ export class CommentPage {
     console.log('ionViewDidLoad CommentPage');
   }
 
+  createComment(e){
+    console.log(e);
+  }
+
 }
