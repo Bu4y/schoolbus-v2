@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>comment</ion-title>
+    <ion-title>Comment</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,12 @@
 <ion-content padding>
 <ion-item>
   <ion-label >comment</ion-label>
-  <ion-textarea type="text" [(ngModel)]="commentData.comment" ></ion-textarea>
+  <ion-textarea type="text" [(ngModel)]="commentData.comment"></ion-textarea>
 </ion-item>
-<button ion-button (click)="createComment(commentData)"></button>
+<button ion-button (click)="createComment(commentData)">Comment</button>
+
+<div *ngFor="let comment of dataComment.comments">
+<p>{{comment.comment}}</p>
+</div>
 </ion-content>
+

@@ -117,6 +117,8 @@ LocationPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommentPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_feed_feed_model__ = __webpack_require__(299);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -128,6 +130,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 /**
  * Generated class for the CommentPage page.
  *
@@ -135,25 +139,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var CommentPage = (function () {
-    function CommentPage(navCtrl, navParams) {
+    function CommentPage(navCtrl, navParams, feedServiceProvider) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.feedServiceProvider = feedServiceProvider;
+        this.commentData = {
+            comment: ''
+        };
+        this.dataComment = new __WEBPACK_IMPORTED_MODULE_3__pages_feed_feed_model__["a" /* FeedModel */];
+        this.feedId = this.navParams.data;
     }
-    CommentPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CommentPage');
+    // ionViewDidLoad() {
+    //   console.log('ionViewDidLoad CommentPage');
+    // }
+    CommentPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        this.feedServiceProvider.getfeedId(this.feedId)
+            .then(function (data) {
+            console.log(data);
+            _this.dataComment = data;
+        }).catch(function (err) {
+            console.error(err);
+        });
     };
-    CommentPage.prototype.createComment = function (e) {
-        console.log(e);
+    CommentPage.prototype.createComment = function (data) {
+        var _this = this;
+        if (data.comment != '') {
+            console.log(data.comment);
+            this.feedServiceProvider.commentFeed(this.feedId, data).then(function (res) {
+                // this.dataComment = res;
+                // console.log(this.dataComment);
+                data.comment = '';
+                _this.ionViewWillEnter();
+            }, function (err) {
+                console.error(err);
+            });
+        }
     };
     return CommentPage;
 }());
 CommentPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-comment',template:/*ion-inline-start:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\comment\comment.html"*/'<!--\n\n  Generated template for the CommentPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>comment</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n<ion-item>\n\n  <ion-label >comment</ion-label>\n\n  <ion-textarea type="text" [(ngModel)]="commentData.comment" ></ion-textarea>\n\n</ion-item>\n\n<button ion-button (click)="createComment(commentData)"></button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\comment\comment.html"*/,
+        selector: 'page-comment',template:/*ion-inline-start:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\comment\comment.html"*/'<!--\n\n  Generated template for the CommentPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Comment</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n<ion-item>\n\n  <ion-label >comment</ion-label>\n\n  <ion-textarea type="text" [(ngModel)]="commentData.comment"></ion-textarea>\n\n</ion-item>\n\n<button ion-button (click)="createComment(commentData)">Comment</button>\n\n\n\n<div *ngFor="let comment of dataComment.comments">\n\n<p>{{comment.comment}}</p>\n\n</div>\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\comment\comment.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__["a" /* FeedServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__["a" /* FeedServiceProvider */]) === "function" && _c || Object])
 ], CommentPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=comment.js.map
 
 /***/ }),
@@ -221,31 +253,11 @@ var FeedPage = (function () {
                     }
                 });
             });
-            console.log(data);
+            console.log(_this.datafeed);
         }).catch(function (err) {
             console.error(err);
         });
     };
-    // ionViewDidLoad() {
-    //   console.log('ionViewDidLoad FeedPage');
-    //   let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
-    //   this.feedServiceProvider.getfeed()
-    //     .then((data) => {
-    //       this.datafeed = data;
-    //       data.forEach(itmIslike => {
-    //         itmIslike.islike.forEach(itm => {
-    //           if (itm.user === user._id) {
-    //             this.likeChk = true;
-    //           } else {
-    //             this.likeChk = false;
-    //           }
-    //         });
-    //       });
-    //       console.log(data);
-    //     }).catch((err) => {
-    //       console.error(err);
-    //     });
-    // }
     FeedPage.prototype.logout = function () {
         this.auth.logout();
         this.app.getRootNav().setRoot(__WEBPACK_IMPORTED_MODULE_0__login_login__["a" /* LoginPage */]);
@@ -255,10 +267,12 @@ var FeedPage = (function () {
         var user = JSON.parse(window.localStorage.getItem('schollbus_user'));
         var isLike = true;
         this.likeChk = isLike;
+        // console.log(this.likeChk);
         for (var i = 0; i < data.islike.length; i++) {
             if (data.islike[i].user === user._id) {
                 isLike = false;
                 this.likeChk = isLike;
+                // console.log(this.likeChk);
                 data.islike.splice(i, 1);
             }
         }
@@ -276,14 +290,14 @@ var FeedPage = (function () {
         });
         console.log(data);
     };
-    FeedPage.prototype.comment = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__comment_comment__["a" /* CommentPage */]);
+    FeedPage.prototype.comment = function (feedId) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__comment_comment__["a" /* CommentPage */], feedId);
     };
     return FeedPage;
 }());
 FeedPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["n" /* Component */])({
-        selector: 'page-feed',template:/*ion-inline-start:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\feed\feed.html"*/'<!--\n\n  Generated template for the FeedPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only color="light">\n\n        <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>Feed</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="logout()">\n\n        <ion-icon name="md-log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>\n\n\n\n  <!-- <ion-card >\n\n        \n\n        <ion-card-content>\n\n          <ion-card-title>\n\n              \n\n            </ion-card-title>\n\n          <p>\n\n            The most popular industrial group ever, and largely\n\n            responsible for bringing the music to a mass audience.\n\n          </p>\n\n        </ion-card-content>\n\n      </ion-card> -->\n\n\n\n\n\n\n\n  <ion-card *ngFor="let data of datafeed">\n\n    <ion-slides>\n\n      <ion-slide imgstyle *ngFor="let item of data.image">\n\n        <img src="{{item}}" imgSize>\n\n      </ion-slide>\n\n    </ion-slides>\n\n    <ion-card-content>\n\n      <h2>{{data.name}}</h2>\n\n    </ion-card-content>\n\n    <ion-row>\n\n      <ion-col text-left>\n\n        <button ion-button icon-left clear small (click)="updatelike(data)">\n\n          <ion-icon name="ios-heart" *ngIf="likeChk"></ion-icon>\n\n          <ion-icon name="ios-heart-outline" *ngIf="!likeChk"></ion-icon>\n\n        </button>\n\n        <button ion-button icon-left clear small (click)="comment()">\n\n            <ion-icon name="ios-chatbubbles-outline"></ion-icon>\n\n          </button>\n\n      </ion-col>\n\n      <ion-col text-right>\n\n          <button ion-button icon-right clear small (click)="comment()">\n\n              <ion-icon name="md-share"></ion-icon>\n\n            </button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\feed\feed.html"*/,
+        selector: 'page-feed',template:/*ion-inline-start:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\feed\feed.html"*/'<!--\n\n  Generated template for the FeedPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only color="light">\n\n        <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>Feed</ion-title>\n\n    <ion-buttons end>\n\n      <button ion-button icon-only (click)="logout()">\n\n        <ion-icon name="md-log-out"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>\n\n\n\n  <!-- <ion-card >\n\n        \n\n        <ion-card-content>\n\n          <ion-card-title>\n\n              \n\n            </ion-card-title>\n\n          <p>\n\n            The most popular industrial group ever, and largely\n\n            responsible for bringing the music to a mass audience.\n\n          </p>\n\n        </ion-card-content>\n\n      </ion-card> -->\n\n\n\n\n\n\n\n  <ion-card *ngFor="let data of datafeed">\n\n    <ion-slides>\n\n      <ion-slide imgstyle *ngFor="let item of data.image">\n\n        <img src="{{item}}" imgSize>\n\n      </ion-slide>\n\n    </ion-slides>\n\n    <ion-card-content>\n\n      <h2>{{data.name}}</h2>\n\n    </ion-card-content>\n\n    <ion-row>\n\n      <ion-col text-left>\n\n        <button ion-button icon-left clear small (click)="updatelike(data)">\n\n          <ion-icon name="ios-heart" *ngIf="likeChk"></ion-icon>\n\n          <ion-icon name="ios-heart-outline" *ngIf="!likeChk"></ion-icon>\n\n        </button>\n\n        <button ion-button icon-left clear small (click)="comment(data._id)">\n\n            <ion-icon name="ios-chatbubbles-outline"></ion-icon>\n\n          </button>\n\n      </ion-col>\n\n      <ion-col text-right>\n\n          <button ion-button icon-right clear small (click)="comment()">\n\n              <ion-icon name="md-share"></ion-icon>\n\n            </button>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n  </ion-card>\n\n</ion-content>'/*ion-inline-end:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\feed\feed.html"*/,
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* App */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__feed_service__["a" /* FeedServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__feed_service__["a" /* FeedServiceProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* ModalController */]) === "function" && _f || Object])
 ], FeedPage);
@@ -564,6 +578,12 @@ var FeedServiceProvider = (function () {
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    FeedServiceProvider.prototype.getfeedId = function (id) {
+        return this.http.get('http://school-bus-server.herokuapp.com/api/feeds/' + id)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     FeedServiceProvider.prototype.updateLike = function (feed) {
         var headers = this.coreService.authorizationHeader();
         return this.http.put('https://school-bus-server.herokuapp.com/api/feeds/' + feed._id, feed, { headers: headers })
@@ -586,9 +606,10 @@ var FeedServiceProvider = (function () {
 }());
 FeedServiceProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__providers_coreservice_coreservice__["a" /* CoreserviceProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__providers_coreservice_coreservice__["a" /* CoreserviceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_coreservice_coreservice__["a" /* CoreserviceProvider */]) === "function" && _b || Object])
 ], FeedServiceProvider);
 
+var _a, _b;
 //# sourceMappingURL=feed.service.js.map
 
 /***/ }),
@@ -1210,6 +1231,35 @@ HomePage = __decorate([
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 299:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeedModel; });
+/* unused harmony export CommentModel */
+/* unused harmony export IsLikeModel */
+var FeedModel = (function () {
+    function FeedModel() {
+    }
+    return FeedModel;
+}());
+
+var CommentModel = (function () {
+    function CommentModel() {
+    }
+    return CommentModel;
+}());
+
+var IsLikeModel = (function () {
+    function IsLikeModel() {
+    }
+    return IsLikeModel;
+}());
+
+//# sourceMappingURL=feed.model.js.map
 
 /***/ }),
 

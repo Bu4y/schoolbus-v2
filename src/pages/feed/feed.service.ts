@@ -30,6 +30,12 @@ export class FeedServiceProvider {
             .then(response => response.json() as Promise<any>)
             .catch(this.handleError);
     }
+    getfeedId(id): Promise<any> {
+        return this.http.get('http://school-bus-server.herokuapp.com/api/feeds/' + id)
+            .toPromise()
+            .then(response => response.json() as Promise<any>)
+            .catch(this.handleError);
+    }
     updateLike(feed): Promise<any> {
         let headers = this.coreService.authorizationHeader();
         return this.http.put('https://school-bus-server.herokuapp.com/api/feeds/' + feed._id, feed, { headers: headers })

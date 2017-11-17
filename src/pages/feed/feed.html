@@ -54,7 +54,7 @@
           <ion-icon name="ios-heart" *ngIf="likeChk"></ion-icon>
           <ion-icon name="ios-heart-outline" *ngIf="!likeChk"></ion-icon>
         </button>
-        <button ion-button icon-left clear small (click)="comment()">
+        <button ion-button icon-left clear small (click)="comment(data._id)">
             <ion-icon name="ios-chatbubbles-outline"></ion-icon>
           </button>
       </ion-col>
