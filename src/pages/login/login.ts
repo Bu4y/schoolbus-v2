@@ -1,3 +1,4 @@
+import { LocationPage } from './../location/location';
 import { AuthProvider } from './../../providers/auth/auth';
 import { TabNavPage } from './../tab-nav/tab-nav';
 import { FeedPage } from './../feed/feed';
@@ -138,7 +139,7 @@ export class LoginPage {
       //   console.log(user);
       // })
       this.loading.dismiss();
-      this.navCtrl.setRoot(TabNavPage);
+      this.navCtrl.setRoot(LocationPage);
       console.log('success');
     }, (error) => {
       this.loading.dismiss();

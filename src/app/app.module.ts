@@ -1,3 +1,4 @@
+import { AddchildPage } from './../pages/addchild/addchild';
 import { Geolocation } from '@ionic-native/geolocation';
 import { WalkthroughPage } from './../pages/walkthrough/walkthrough';
 import { SelectlocationPage } from './../pages/selectlocation/selectlocation';
@@ -28,6 +29,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { FeedServiceProvider } from "../pages/feed/feed.service";
 import { CoreserviceProvider } from '../providers/coreservice/coreservice';
 import { CommentPage } from '../pages/comment/comment';
+import { OrderserviceProvider } from '../providers/orderservice/orderservice';
 @NgModule({
   declarations: [
     MyApp,
@@ -42,7 +44,8 @@ import { CommentPage } from '../pages/comment/comment';
     SelectlocationPage,
     WalkthroughPage,
     LocationPage,
-    CommentPage
+    CommentPage,
+    AddchildPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { CommentPage } from '../pages/comment/comment';
     SelectlocationPage,
     WalkthroughPage,
     LocationPage,
-    CommentPage
+    CommentPage,
+    AddchildPage
   ],
   providers: [
     StatusBar,
@@ -78,7 +82,8 @@ import { CommentPage } from '../pages/comment/comment';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     CoreserviceProvider,
-    CoreserviceProvider
+    CoreserviceProvider,
+    OrderserviceProvider
 
   ]
 })
