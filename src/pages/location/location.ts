@@ -26,8 +26,8 @@ export class LocationPage {
     console.log('ionViewDidLoad LocationPage');
   }
   goToMap() {
-    // alert('sss');
-    this.navCtrl.push(MapPage);
+    alert('select location');
+    // this.navCtrl.push(MapPage);
   }
   confirm() {
     let alert = this.alertCtrl.create({
