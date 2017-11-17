@@ -30,6 +30,8 @@ import { FeedServiceProvider } from "../pages/feed/feed.service";
 import { CoreserviceProvider } from '../providers/coreservice/coreservice';
 import { CommentPage } from '../pages/comment/comment';
 import { OrderserviceProvider } from '../providers/orderservice/orderservice';
+import { MomentPipe } from '../pipes/moment/moment';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -45,7 +47,9 @@ import { OrderserviceProvider } from '../providers/orderservice/orderservice';
     WalkthroughPage,
     LocationPage,
     CommentPage,
-    AddchildPage
+    AddchildPage,
+    MomentPipe
+    
   ],
   imports: [
     BrowserModule,

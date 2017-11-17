@@ -49,31 +49,11 @@ export class FeedPage {
             }
           });
         });
-        console.log(data);
+        console.log(this.datafeed);
       }).catch((err) => {
         console.error(err);
       });
   }
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad FeedPage');
-  //   let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
-  //   this.feedServiceProvider.getfeed()
-  //     .then((data) => {
-  //       this.datafeed = data;
-  //       data.forEach(itmIslike => {
-  //         itmIslike.islike.forEach(itm => {
-  //           if (itm.user === user._id) {
-  //             this.likeChk = true;
-  //           } else {
-  //             this.likeChk = false;
-  //           }
-  //         });
-  //       });
-  //       console.log(data);
-  //     }).catch((err) => {
-  //       console.error(err);
-  //     });
-  // }
 
   logout() {
     this.auth.logout();
@@ -85,10 +65,12 @@ export class FeedPage {
     let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     let isLike = true;
     this.likeChk = isLike;
+    // console.log(this.likeChk);
     for (let i = 0; i < data.islike.length; i++) {
       if (data.islike[i].user === user._id) {
         isLike = false;
         this.likeChk = isLike;
+        // console.log(this.likeChk);
         data.islike.splice(i, 1);
       }
     }
@@ -108,8 +90,8 @@ export class FeedPage {
 
     console.log(data);
   }
-  comment() {
-    this.navCtrl.push(CommentPage);
+  comment(feedId) {
+    this.navCtrl.push(CommentPage, feedId);
   }
 
 }
