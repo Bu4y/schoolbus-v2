@@ -54,19 +54,30 @@ export class FeedPage {
   }
 
   updatelike(data) {
-    data.islike.push({
-      user: JSON.parse(window.localStorage.getItem('schollbus_user')),
-      created : new Date().toISOString()
-    });
-    this.feedServiceProvider.updateLike(data).then((resp)=>{
+    let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+    let isLike = true;
+    for (let i = 0; i < data.islike.length; i++) {
+      if (data.islike[i].user === user._id) {
+        isLike = false;
+        data.islike.splice(i, 1);
+      }
+    }
+    if (isLike) {
+      data.islike.push({
+        user: JSON.parse(window.localStorage.getItem('schollbus_user')),
+        created: new Date().toISOString()
+      });
+    }
+    this.feedServiceProvider.updateLike(data).then((resp) => {
       console.log(resp);
-    },(err)=>{
+      this.ionViewDidLoad();
+    }, (err) => {
       console.error(err);
     });
-    
+
     console.log(data);
   }
-  comment(){
+  comment() {
     this.navCtrl.push(CommentPage);
   }
 
