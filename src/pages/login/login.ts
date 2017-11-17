@@ -132,7 +132,7 @@ export class LoginPage {
   //     alert(JSON.parse(error._body).message);
   //   });
   // }
-  doLogin(credential) {
+  doLogin() {
     this.loading.present();
     this.auth.login(this.credential).subscribe(data => {
       // this.auth.private().subscribe(user => {
