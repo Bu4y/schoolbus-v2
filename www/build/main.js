@@ -144,6 +144,7 @@ var CommentPage = (function () {
         this.navParams = navParams;
         this.feedServiceProvider = feedServiceProvider;
         this.commentData = {
+            user: {},
             comment: ''
         };
         this.dataComment = new __WEBPACK_IMPORTED_MODULE_3__pages_feed_feed_model__["a" /* FeedModel */];
@@ -154,6 +155,8 @@ var CommentPage = (function () {
     // }
     CommentPage.prototype.ionViewWillEnter = function () {
         var _this = this;
+        // let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+        // console.log(user);
         this.feedServiceProvider.getfeedId(this.feedId)
             .then(function (data) {
             console.log(data);
@@ -164,8 +167,10 @@ var CommentPage = (function () {
     };
     CommentPage.prototype.createComment = function (data) {
         var _this = this;
+        var user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+        data.user = user;
+        console.log(data);
         if (data.comment != '') {
-            // console.log(data.comment);
             this.feedServiceProvider.commentFeed(this.feedId, data).then(function (res) {
                 // this.dataComment = res;
                 // console.log(this.dataComment);
@@ -180,7 +185,7 @@ var CommentPage = (function () {
 }());
 CommentPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-comment',template:/*ion-inline-start:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\comment\comment.html"*/'<!--\n\n  Generated template for the CommentPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Comment</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n<ion-item>\n\n  <ion-label >comment</ion-label>\n\n  <ion-textarea type="text" [(ngModel)]="commentData.comment"></ion-textarea>\n\n</ion-item>\n\n<button ion-button (click)="createComment(commentData)">Comment</button>\n\n\n\n<div *ngFor="let comment of dataComment.comments">\n\n<p>{{comment.comment}}</p>\n\n</div>\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\comment\comment.html"*/,
+        selector: 'page-comment',template:/*ion-inline-start:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\comment\comment.html"*/'<!--\n\n  Generated template for the CommentPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Comment</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <!-- <ion-list>\n\n    <ion-item *ngFor="let comment of dataComment.comments">\n\n      <ion-row>\n\n        <ion-col col-8 text-left>\n\n          <p>{{comment.user}}</p>\n\n        </ion-col>\n\n        <ion-col col-4 text-right>\n\n          <p>{{comment.created | moment}}\n\n        </ion-col>\n\n        <ion-col col-12>\n\n          <p>{{comment.comment}}</p>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-item>\n\n  </ion-list> -->\n\n  <div class="borderLine" *ngFor="let comment of dataComment.comments">\n\n    <ion-row>\n\n      <ion-col col-8 text-left>\n\n        <p>{{comment.user.displayName}}</p>\n\n      </ion-col>\n\n      <ion-col col-4 text-right>\n\n        <p>{{comment.created | moment}}</p>\n\n      </ion-col>\n\n      <ion-col col-12>\n\n        <span class="fontWeight">{{comment.comment}}</span>\n\n      </ion-col>\n\n    </ion-row>\n\n  </div>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-input item-start type="text" placeholder="Comment here" [(ngModel)]="commentData.comment"></ion-input>\n\n\n\n      <button item-end ion-button small round outline (click)="createComment(commentData)">Comment</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\comment\comment.html"*/,
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__["a" /* FeedServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__["a" /* FeedServiceProvider */]) === "function" && _c || Object])
 ], CommentPage);
@@ -809,12 +814,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_feed_feed_service__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_coreservice_coreservice__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_comment_comment__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipes_moment_moment__ = __webpack_require__(419);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -863,7 +870,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__pages_selectlocation_selectlocation__["a" /* SelectlocationPage */],
             __WEBPACK_IMPORTED_MODULE_1__pages_walkthrough_walkthrough__["a" /* WalkthroughPage */],
             __WEBPACK_IMPORTED_MODULE_22__pages_location_location__["a" /* LocationPage */],
-            __WEBPACK_IMPORTED_MODULE_27__pages_comment_comment__["a" /* CommentPage */]
+            __WEBPACK_IMPORTED_MODULE_27__pages_comment_comment__["a" /* CommentPage */],
+            __WEBPACK_IMPORTED_MODULE_28__pipes_moment_moment__["a" /* MomentPipe */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_12__angular_platform_browser__["a" /* BrowserModule */],
@@ -1261,6 +1269,313 @@ AuthProvider = __decorate([
 ], AuthProvider);
 
 //# sourceMappingURL=auth.js.map
+
+/***/ }),
+
+/***/ 419:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MomentPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_moment__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+__WEBPACK_IMPORTED_MODULE_1_moment__["locale"]('th-th');
+/**
+ * Generated class for the MomentPipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var MomentPipe = (function () {
+    function MomentPipe() {
+    }
+    /**
+     * Takes a value and makes it lowercase.
+     */
+    MomentPipe.prototype.transform = function (value) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        return __WEBPACK_IMPORTED_MODULE_1_moment__(value).fromNow();
+    };
+    return MomentPipe;
+}());
+MomentPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["W" /* Pipe */])({
+        name: 'moment',
+    })
+], MomentPipe);
+
+// return moment(value).locale(Constants.locale).fromNow();
+//# sourceMappingURL=moment.js.map
+
+/***/ }),
+
+/***/ 421:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": 301,
+	"./af.js": 301,
+	"./ar": 302,
+	"./ar-dz": 303,
+	"./ar-dz.js": 303,
+	"./ar-kw": 304,
+	"./ar-kw.js": 304,
+	"./ar-ly": 305,
+	"./ar-ly.js": 305,
+	"./ar-ma": 306,
+	"./ar-ma.js": 306,
+	"./ar-sa": 307,
+	"./ar-sa.js": 307,
+	"./ar-tn": 308,
+	"./ar-tn.js": 308,
+	"./ar.js": 302,
+	"./az": 309,
+	"./az.js": 309,
+	"./be": 310,
+	"./be.js": 310,
+	"./bg": 311,
+	"./bg.js": 311,
+	"./bm": 312,
+	"./bm.js": 312,
+	"./bn": 313,
+	"./bn.js": 313,
+	"./bo": 314,
+	"./bo.js": 314,
+	"./br": 315,
+	"./br.js": 315,
+	"./bs": 316,
+	"./bs.js": 316,
+	"./ca": 317,
+	"./ca.js": 317,
+	"./cs": 318,
+	"./cs.js": 318,
+	"./cv": 319,
+	"./cv.js": 319,
+	"./cy": 320,
+	"./cy.js": 320,
+	"./da": 321,
+	"./da.js": 321,
+	"./de": 322,
+	"./de-at": 323,
+	"./de-at.js": 323,
+	"./de-ch": 324,
+	"./de-ch.js": 324,
+	"./de.js": 322,
+	"./dv": 325,
+	"./dv.js": 325,
+	"./el": 326,
+	"./el.js": 326,
+	"./en-au": 327,
+	"./en-au.js": 327,
+	"./en-ca": 328,
+	"./en-ca.js": 328,
+	"./en-gb": 329,
+	"./en-gb.js": 329,
+	"./en-ie": 330,
+	"./en-ie.js": 330,
+	"./en-nz": 331,
+	"./en-nz.js": 331,
+	"./eo": 332,
+	"./eo.js": 332,
+	"./es": 333,
+	"./es-do": 334,
+	"./es-do.js": 334,
+	"./es-us": 335,
+	"./es-us.js": 335,
+	"./es.js": 333,
+	"./et": 336,
+	"./et.js": 336,
+	"./eu": 337,
+	"./eu.js": 337,
+	"./fa": 338,
+	"./fa.js": 338,
+	"./fi": 339,
+	"./fi.js": 339,
+	"./fo": 340,
+	"./fo.js": 340,
+	"./fr": 341,
+	"./fr-ca": 342,
+	"./fr-ca.js": 342,
+	"./fr-ch": 343,
+	"./fr-ch.js": 343,
+	"./fr.js": 341,
+	"./fy": 344,
+	"./fy.js": 344,
+	"./gd": 345,
+	"./gd.js": 345,
+	"./gl": 346,
+	"./gl.js": 346,
+	"./gom-latn": 347,
+	"./gom-latn.js": 347,
+	"./gu": 348,
+	"./gu.js": 348,
+	"./he": 349,
+	"./he.js": 349,
+	"./hi": 350,
+	"./hi.js": 350,
+	"./hr": 351,
+	"./hr.js": 351,
+	"./hu": 352,
+	"./hu.js": 352,
+	"./hy-am": 353,
+	"./hy-am.js": 353,
+	"./id": 354,
+	"./id.js": 354,
+	"./is": 355,
+	"./is.js": 355,
+	"./it": 356,
+	"./it.js": 356,
+	"./ja": 357,
+	"./ja.js": 357,
+	"./jv": 358,
+	"./jv.js": 358,
+	"./ka": 359,
+	"./ka.js": 359,
+	"./kk": 360,
+	"./kk.js": 360,
+	"./km": 361,
+	"./km.js": 361,
+	"./kn": 362,
+	"./kn.js": 362,
+	"./ko": 363,
+	"./ko.js": 363,
+	"./ky": 364,
+	"./ky.js": 364,
+	"./lb": 365,
+	"./lb.js": 365,
+	"./lo": 366,
+	"./lo.js": 366,
+	"./lt": 367,
+	"./lt.js": 367,
+	"./lv": 368,
+	"./lv.js": 368,
+	"./me": 369,
+	"./me.js": 369,
+	"./mi": 370,
+	"./mi.js": 370,
+	"./mk": 371,
+	"./mk.js": 371,
+	"./ml": 372,
+	"./ml.js": 372,
+	"./mr": 373,
+	"./mr.js": 373,
+	"./ms": 374,
+	"./ms-my": 375,
+	"./ms-my.js": 375,
+	"./ms.js": 374,
+	"./my": 376,
+	"./my.js": 376,
+	"./nb": 377,
+	"./nb.js": 377,
+	"./ne": 378,
+	"./ne.js": 378,
+	"./nl": 379,
+	"./nl-be": 380,
+	"./nl-be.js": 380,
+	"./nl.js": 379,
+	"./nn": 381,
+	"./nn.js": 381,
+	"./pa-in": 382,
+	"./pa-in.js": 382,
+	"./pl": 383,
+	"./pl.js": 383,
+	"./pt": 384,
+	"./pt-br": 385,
+	"./pt-br.js": 385,
+	"./pt.js": 384,
+	"./ro": 386,
+	"./ro.js": 386,
+	"./ru": 387,
+	"./ru.js": 387,
+	"./sd": 388,
+	"./sd.js": 388,
+	"./se": 389,
+	"./se.js": 389,
+	"./si": 390,
+	"./si.js": 390,
+	"./sk": 391,
+	"./sk.js": 391,
+	"./sl": 392,
+	"./sl.js": 392,
+	"./sq": 393,
+	"./sq.js": 393,
+	"./sr": 394,
+	"./sr-cyrl": 395,
+	"./sr-cyrl.js": 395,
+	"./sr.js": 394,
+	"./ss": 396,
+	"./ss.js": 396,
+	"./sv": 397,
+	"./sv.js": 397,
+	"./sw": 398,
+	"./sw.js": 398,
+	"./ta": 399,
+	"./ta.js": 399,
+	"./te": 400,
+	"./te.js": 400,
+	"./tet": 401,
+	"./tet.js": 401,
+	"./th": 402,
+	"./th.js": 402,
+	"./tl-ph": 403,
+	"./tl-ph.js": 403,
+	"./tlh": 404,
+	"./tlh.js": 404,
+	"./tr": 405,
+	"./tr.js": 405,
+	"./tzl": 406,
+	"./tzl.js": 406,
+	"./tzm": 407,
+	"./tzm-latn": 408,
+	"./tzm-latn.js": 408,
+	"./tzm.js": 407,
+	"./uk": 409,
+	"./uk.js": 409,
+	"./ur": 410,
+	"./ur.js": 410,
+	"./uz": 411,
+	"./uz-latn": 412,
+	"./uz-latn.js": 412,
+	"./uz.js": 411,
+	"./vi": 413,
+	"./vi.js": 413,
+	"./x-pseudo": 414,
+	"./x-pseudo.js": 414,
+	"./yo": 415,
+	"./yo.js": 415,
+	"./zh-cn": 416,
+	"./zh-cn.js": 416,
+	"./zh-hk": 417,
+	"./zh-hk.js": 417,
+	"./zh-tw": 418,
+	"./zh-tw.js": 418
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 421;
 
 /***/ }),
 

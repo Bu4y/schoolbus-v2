@@ -30372,6 +30372,15 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-top));
 }
 
+page-comment .fontWeight {
+  font-weight: 100;
+}
+
+page-comment .borderLine {
+  border-style: groove;
+  border-width: 0px 0px 1px 0px;
+}
+
 page-feed [imgstyle] {
   width: 200px;
   height: 250px;

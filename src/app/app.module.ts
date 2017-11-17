@@ -28,6 +28,8 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { FeedServiceProvider } from "../pages/feed/feed.service";
 import { CoreserviceProvider } from '../providers/coreservice/coreservice';
 import { CommentPage } from '../pages/comment/comment';
+import { MomentPipe } from '../pipes/moment/moment';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -42,7 +44,9 @@ import { CommentPage } from '../pages/comment/comment';
     SelectlocationPage,
     WalkthroughPage,
     LocationPage,
-    CommentPage
+    CommentPage,
+    MomentPipe
+    
   ],
   imports: [
     BrowserModule,
