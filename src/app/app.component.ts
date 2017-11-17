@@ -12,13 +12,16 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { Constants } from "./app.contants";
 
 import { HomePage } from "../pages/home/home";
+
+import { AuthorizeModel } from '../pages/login/login.model';
 @Component({
   templateUrl: "app.html"
 })
 export class MyApp {
-// rootPage:any = TabNavPage;
+  // rootPage:any = TabNavPage;
   //rootPage: any = MapPage;
-   rootPage: any = LoginPage;
+  rootPage: any = LoginPage;
+  user: AuthorizeModel = new AuthorizeModel;
 
   constructor(
     platform: Platform,
@@ -38,5 +41,13 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    // this.getUser();
+    this.user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+    if (this.user) {
+      this.rootPage = TabNavPage;
+    }
   }
+  // getUser() {
+  //   let user = window.localStorage.getItem('schollbus_user');
+  // }
 }
