@@ -1,3 +1,4 @@
+import { AddchildPage } from './../addchild/addchild';
 import { MapPage } from './../map/map';
 import { TabNavPage } from './../tab-nav/tab-nav';
 import { RegisterServiceProvider } from './register.service';
@@ -72,7 +73,8 @@ export class RegisterPage {
       this.auth.signUp(this.user).subscribe((data) => {
         // alert(JSON.stringify(data));
         this.loading.dismiss();
-        this.navCtrl.setRoot(TabNavPage);
+        this.navCtrl.setRoot(AddchildPage);
+
       }, (error) => {
         console.error(error);
         alert(JSON.stringify(error));

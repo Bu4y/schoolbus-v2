@@ -1,3 +1,4 @@
+import { AddchildPage } from './../pages/addchild/addchild';
 import { Geolocation } from '@ionic-native/geolocation';
 import { WalkthroughPage } from './../pages/walkthrough/walkthrough';
 import { SelectlocationPage } from './../pages/selectlocation/selectlocation';
@@ -28,6 +29,7 @@ import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { FeedServiceProvider } from "../pages/feed/feed.service";
 import { CoreserviceProvider } from '../providers/coreservice/coreservice';
 import { CommentPage } from '../pages/comment/comment';
+import { OrderserviceProvider } from '../providers/orderservice/orderservice';
 import { MomentPipe } from '../pipes/moment/moment';
 
 @NgModule({
@@ -45,6 +47,7 @@ import { MomentPipe } from '../pipes/moment/moment';
     WalkthroughPage,
     LocationPage,
     CommentPage,
+    AddchildPage,
     MomentPipe
     
   ],
@@ -67,7 +70,8 @@ import { MomentPipe } from '../pipes/moment/moment';
     SelectlocationPage,
     WalkthroughPage,
     LocationPage,
-    CommentPage
+    CommentPage,
+    AddchildPage
   ],
   providers: [
     StatusBar,
@@ -82,7 +86,8 @@ import { MomentPipe } from '../pipes/moment/moment';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     CoreserviceProvider,
-    CoreserviceProvider
+    CoreserviceProvider,
+    OrderserviceProvider
 
   ]
 })

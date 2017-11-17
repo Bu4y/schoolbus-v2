@@ -55,6 +55,7 @@ res/
 www/
 pwa/
 $RECYCLE.BIN/
+.sourcemaps/
 
 # Typescript v1 declaration files
 typings/

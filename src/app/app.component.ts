@@ -23,6 +23,7 @@ export class MyApp {
   rootPage: any = LoginPage;
   user: AuthorizeModel = new AuthorizeModel;
 
+
   constructor(
     platform: Platform,
     statusBar: StatusBar,
