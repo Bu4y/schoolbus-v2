@@ -23,7 +23,6 @@ export class MyApp {
   rootPage: any = LoginPage;
   user: AuthorizeModel = new AuthorizeModel;
 
-
   constructor(
     platform: Platform,
     statusBar: StatusBar,
@@ -42,13 +41,9 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-    // this.getUser();
     this.user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     if (this.user) {
       this.rootPage = TabNavPage;
     }
   }
-  // getUser() {
-  //   let user = window.localStorage.getItem('schollbus_user');
-  // }
 }
