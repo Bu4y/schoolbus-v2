@@ -62,6 +62,7 @@ export class FeedPage {
         data.islike.splice(i, 1);
       }
     }
+    
     if (isLike) {
       data.islike.push({
         user: JSON.parse(window.localStorage.getItem('schollbus_user')),
