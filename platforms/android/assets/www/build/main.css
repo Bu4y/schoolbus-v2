@@ -30372,6 +30372,28 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-top));
 }
 
+page-comment .fontWeight {
+  font-weight: 100;
+}
+
+page-comment .borderLine {
+  border-style: groove;
+  border-width: 0px 0px 1px 0px;
+}
+
+page-feed [imgstyle] {
+  width: 200px;
+  height: 250px;
+}
+
+page-feed .slide-zoom {
+  text-align: -webkit-center;
+}
+
+page-feed [imgSize] {
+  width: 50vw;
+}
+
 page-location .marginBT {
   margin-top: 50%;
 }
@@ -30486,7 +30508,7 @@ page-login .list-md[inset] .item {
   border-right: 2px solid #ffc800 !important;
 }
 
-page-map #map {
+page-map #map_canvas {
   height: 100%;
 }
 
@@ -30592,8 +30614,12 @@ page-selectlocation .margintest {
   margin-right: 25px;
 }
 
+page-tab-nav .tabs-ios .tab-button[aria-selected=true] {
+  color: #000;
+}
+
 page-tab-nav .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
-  color: #fcf6f6;
+  color: #000;
 }
 
 page-tab-nav .tabs-ios .tabbar {
@@ -30601,15 +30627,11 @@ page-tab-nav .tabs-ios .tabbar {
 }
 
 page-tab-nav .tabs-ios .tab-button-icon {
-  color: #f4f4f4;
+  color: #000000;
 }
 
 page-tab-nav .tabs-ios .tab-button {
-  color: #f4f4f4;
-}
-
-page-tab-nav .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
-  color: #fcf6f6;
+  color: #000000;
 }
 
 page-tab-nav .tabs-md .tabbar {

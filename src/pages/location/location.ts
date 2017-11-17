@@ -28,8 +28,10 @@ export class LocationPage {
     public orderService: OrderserviceProvider
   ) {
 
-
-    this.order = this.navParams.get('daya');
+    if (this.navParams.get('daya')) {
+      this.order = this.navParams.get('daya');
+    }
+    // this.order.route = this.order.route ? this.order.route : {};
     this.order.route.reception.item = this.order.route.reception.item ? this.order.route.reception.item : '';
     this.order.route.school.item = this.order.route.school.item ? this.order.route.school.item : '';
     this.order.route.send.item = this.order.route.send.item ? this.order.route.send.item : '';
@@ -38,12 +40,18 @@ export class LocationPage {
     // console.log(this.map);
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
+    this.order.route = window.localStorage.getItem('school_address_map') ? JSON.parse(window.localStorage.getItem('school_address_map')) : {
+      reception: { item: '' },
+      school: { item: '' },
+      send: { item: '' }
+    };
+    alert(JSON.stringify(this.order.route));
     console.log('ionViewDidLoad LocationPage');
   }
 
-  goToMap() {
-    alert('select location');
+  goToMap(type) {
+    this.navCtrl.push(MapPage, type);
   }
   confirm() {
     let alert = this.alertCtrl.create({
