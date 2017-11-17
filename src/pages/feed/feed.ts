@@ -21,7 +21,7 @@ import { CommentPage } from '../comment/comment';
 export class FeedPage {
   // data: string;
   datafeed: Array<FeedModel> = new Array<FeedModel>();
-
+  likeChk: boolean = false;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private auth: AuthProvider,
@@ -35,17 +35,45 @@ export class FeedPage {
 
 
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FeedPage');
+  ionViewWillEnter() {
+    let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     this.feedServiceProvider.getfeed()
       .then((data) => {
         this.datafeed = data;
+        data.forEach(itmIslike => {
+          itmIslike.islike.forEach(itm => {
+            if (itm.user === user._id) {
+              this.likeChk = true;
+            } else {
+              this.likeChk = false;
+            }
+          });
+        });
         console.log(data);
       }).catch((err) => {
         console.error(err);
       });
   }
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad FeedPage');
+  //   let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+  //   this.feedServiceProvider.getfeed()
+  //     .then((data) => {
+  //       this.datafeed = data;
+  //       data.forEach(itmIslike => {
+  //         itmIslike.islike.forEach(itm => {
+  //           if (itm.user === user._id) {
+  //             this.likeChk = true;
+  //           } else {
+  //             this.likeChk = false;
+  //           }
+  //         });
+  //       });
+  //       console.log(data);
+  //     }).catch((err) => {
+  //       console.error(err);
+  //     });
+  // }
 
   logout() {
     this.auth.logout();
@@ -56,13 +84,15 @@ export class FeedPage {
   updatelike(data) {
     let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     let isLike = true;
+    this.likeChk = isLike;
     for (let i = 0; i < data.islike.length; i++) {
       if (data.islike[i].user === user._id) {
         isLike = false;
+        this.likeChk = isLike;
         data.islike.splice(i, 1);
       }
     }
-    
+
     if (isLike) {
       data.islike.push({
         user: JSON.parse(window.localStorage.getItem('schollbus_user')),
@@ -71,7 +101,7 @@ export class FeedPage {
     }
     this.feedServiceProvider.updateLike(data).then((resp) => {
       console.log(resp);
-      this.ionViewDidLoad();
+      this.ionViewWillEnter();
     }, (err) => {
       console.error(err);
     });
