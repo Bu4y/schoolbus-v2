@@ -43,7 +43,7 @@ export class CommentPage {
 
   createComment(data) {
     if (data.comment != '') {
-      console.log(data.comment);
+      // console.log(data.comment);
       this.feedServiceProvider.commentFeed(this.feedId, data).then((res) => {
         // this.dataComment = res;
         // console.log(this.dataComment);
