@@ -26,10 +26,13 @@ export class LocationPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public orderService: OrderserviceProvider
-  ) { 
-    
-    // alert(this.navParams.get('daya'));
+  ) {
+
+
     this.order = this.navParams.get('daya');
+    this.order.route.reception.item = this.order.route.reception.item ? this.order.route.reception.item : '';
+    this.order.route.school.item = this.order.route.school.item ? this.order.route.school.item : '';
+    this.order.route.send.item = this.order.route.send.item ? this.order.route.send.item : '';
 
     // this.map = this.navParams.data;
     // console.log(this.map);
@@ -53,8 +56,7 @@ export class LocationPage {
   }
 
   createOrder() {
-    this.order.image = 'image';
-    this.order.name = 'contact name';
+
     console.log(this.order);
 
     this.orderService.createOrder(this.order).then((resp) => {

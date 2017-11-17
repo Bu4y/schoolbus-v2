@@ -13,7 +13,7 @@
 
 
 <ion-content padding>
-  <ion-list radio-group [(ngModel)]="order.route">
+  <ion-list radio-group [(ngModel)]="order.route.routetype">
     <ion-row>
       <ion-col col-6>
         <ion-item>
@@ -30,34 +30,34 @@
     </ion-row>
   </ion-list>
   <!-- One Way -->
-  <div *ngIf="order.route =='oneway'">
+  <div *ngIf="order.route.routetype == 'oneway'">
     <ion-item>
       <ion-label stacked color="primary">จุดรับ : </ion-label>
-      <ion-input type="text" [(ngModel)]="order.reception"></ion-input>
+      <ion-input type="text" [(ngModel)]="order.route.reception.item"></ion-input>
       <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
     </ion-item>
     <ion-item>
       <ion-label stacked color="primary">จุดส่ง : </ion-label>
-      <ion-input type="text" [(ngModel)]="order.send"></ion-input>
+      <ion-input type="text" [(ngModel)]="order.route.send.item"></ion-input>
       <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
     </ion-item>
   </div>
 
   <!-- Roundtrip -->
-  <div *ngIf="order.route =='roundtrip'">
+  <div *ngIf="order.route.routetype == 'roundtrip'">
     <ion-item>
       <ion-label stacked color="primary">จุดรับ : </ion-label>
-      <ion-input type="text" [(ngModel)]="order.reception"></ion-input>
+      <ion-input type="text" [(ngModel)]="order.route.reception.item"></ion-input>
       <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
     </ion-item>
     <ion-item>
       <ion-label stacked color="primary">โรงเรียน : </ion-label>
-      <ion-input type="text" [(ngModel)]="order.school"></ion-input>
+      <ion-input type="text" [(ngModel)]="order.route.school.item"></ion-input>
       <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
     </ion-item>
     <ion-item>
       <ion-label stacked color="primary">จุดส่ง : </ion-label>
-      <ion-input type="text" [(ngModel)]="order.send"></ion-input>
+      <ion-input type="text" [(ngModel)]="order.route.send.item"></ion-input>
       <ion-icon color="danger" item-right ios="ios-pin" md="md-pin" (click)="goToMap()"></ion-icon>
     </ion-item>
   </div>

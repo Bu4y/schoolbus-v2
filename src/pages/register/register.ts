@@ -73,7 +73,6 @@ export class RegisterPage {
       this.auth.signUp(this.user).subscribe((data) => {
         // alert(JSON.stringify(data));
         this.loading.dismiss();
-        alert('regis');
         this.navCtrl.setRoot(AddchildPage);
 
       }, (error) => {
