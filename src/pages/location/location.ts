@@ -30,27 +30,44 @@ export class LocationPage {
 
     if (this.navParams.get('daya')) {
       this.order = this.navParams.get('daya');
+      window.localStorage.setItem('order', JSON.stringify(this.order));
     }
     // this.order.route = this.order.route ? this.order.route : {};
-    this.order.route.reception.item = this.order.route.reception.item ? this.order.route.reception.item : '';
-    this.order.route.school.item = this.order.route.school.item ? this.order.route.school.item : '';
-    this.order.route.send.item = this.order.route.send.item ? this.order.route.send.item : '';
+
+    // this.order.route.routetype = this.order.route.routetype ? this.order.route.routetype : '';    
 
     // this.map = this.navParams.data;
     // console.log(this.map);
   }
 
   ionViewWillEnter() {
-    this.order.route = window.localStorage.getItem('school_address_map') ? JSON.parse(window.localStorage.getItem('school_address_map')) : {
-      reception: { item: '' },
-      school: { item: '' },
-      send: { item: '' }
+    this.order = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {
+      route: {
+        routetype: '',
+        reception: {
+          item: ''
+        },
+        school: {
+          item: ''
+        },
+        send: {
+          item: ''
+        }
+      }
     };
-    alert(JSON.stringify(this.order.route));
+    this.order.route.routetype = this.order.route.routetype ? this.order.route.routetype : '';
+    this.order.route.reception.item = this.order.route.reception.item ? this.order.route.reception.item : '';
+    this.order.route.school.item = this.order.route.school.item ? this.order.route.school.item : '';
+    this.order.route.send.item = this.order.route.send.item ? this.order.route.send.item : '';
+    this.order.name = window.localStorage.getItem('childname');
+    this.order.image = window.localStorage.getItem('childimage');
+    // alert(JSON.stringify(this.order.route));
     console.log('ionViewDidLoad LocationPage');
   }
 
   goToMap(type) {
+
+    window.localStorage.setItem('order', JSON.stringify(this.order));
     this.navCtrl.push(MapPage, type);
   }
   confirm() {
@@ -68,6 +85,7 @@ export class LocationPage {
     console.log(this.order);
 
     this.orderService.createOrder(this.order).then((resp) => {
+      window.localStorage.removeItem('order');
       this.navCtrl.setRoot(TabNavPage);
     }, (err) => {
       console.log(err);

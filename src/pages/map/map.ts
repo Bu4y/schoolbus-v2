@@ -195,18 +195,18 @@ export class MapPage {
           handler: res => {
             console.log('Saved clicked');
             let data = { item: res.place, lat: this.latitude, long: this.longitude, tel: res.tel, contact: res.name };
-            let resultsData = window.localStorage.getItem('school_address_map') ? JSON.parse(window.localStorage.getItem('school_address_map')) : {};
+            let resultsData = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {};
             if (this.type === 'sender') {
-              resultsData.send = data;
-              window.localStorage.setItem('school_address_map', JSON.stringify(resultsData));
+              resultsData.route.send = data;
+              window.localStorage.setItem('order', JSON.stringify(resultsData));
             }
             if (this.type === 'receiver') {
-              resultsData.reception = data;
-              window.localStorage.setItem('school_address_map', JSON.stringify(resultsData));
+              resultsData.route.reception = data;
+              window.localStorage.setItem('order', JSON.stringify(resultsData));
             }
             if (this.type === 'school') {
-              resultsData.school = data;
-              window.localStorage.setItem('school_address_map', JSON.stringify(resultsData));
+              resultsData.route.school = data;
+              window.localStorage.setItem('order', JSON.stringify(resultsData));
             }
             this.navCtrl.pop();
           }

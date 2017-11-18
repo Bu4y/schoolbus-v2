@@ -25,6 +25,8 @@ export class AddchildPage {
     console.log('ionViewDidLoad AddchildPage');
   }
   gotoLocation(){
+    window.localStorage.setItem('childname', this.order.name);
+    window.localStorage.setItem('childimage', this.order.image);
     this.navCtrl.push(LocationPage,{
       daya : this.order
     });
