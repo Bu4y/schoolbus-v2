@@ -74,9 +74,9 @@ export class MapPage {
         .then((result: NativeGeocoderReverseResult) => {
           // alert(JSON.stringify(result))
           this.item = result.subThoroughfare + ' ' + result.thoroughfare + ' ' + result.locality + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
+          this.getmap();
         })
         .catch((error: any) => console.log(error));
-      this.getmap();
     }).catch((error) => {
       console.log('Error getting location', error);
     });
@@ -199,11 +199,11 @@ export class MapPage {
             if (this.type === 'sender') {
               resultsData.send = data;
               window.localStorage.setItem('school_address_map', JSON.stringify(resultsData));
-            } 
+            }
             if (this.type === 'receiver') {
               resultsData.reception = data;
               window.localStorage.setItem('school_address_map', JSON.stringify(resultsData));
-            } 
+            }
             if (this.type === 'school') {
               resultsData.school = data;
               window.localStorage.setItem('school_address_map', JSON.stringify(resultsData));

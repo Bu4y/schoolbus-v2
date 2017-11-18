@@ -2,25 +2,26 @@
   "_args": [
     [
       {
-        "raw": "cordova-plugin-ionic-webview@1.1.11",
+        "raw": "cordova-plugin-ionic-webview@^1.1.11",
         "scope": null,
         "escapedName": "cordova-plugin-ionic-webview",
         "name": "cordova-plugin-ionic-webview",
-        "rawSpec": "1.1.11",
-        "spec": "1.1.11",
-        "type": "version"
+        "rawSpec": "^1.1.11",
+        "spec": ">=1.1.11 <2.0.0",
+        "type": "range"
       },
-      "D:\\schoolbus-v1\\schoolbus-v2\\node_modules"
+      "D:\\C@net\\Thamapp\\schoolbus-v2"
     ]
   ],
-  "_from": "cordova-plugin-ionic-webview@1.1.11",
-  "_id": "cordova-plugin-ionic-webview@1.1.11",
+  "_from": "cordova-plugin-ionic-webview@>=1.1.11 <2.0.0",
+  "_id": "cordova-plugin-ionic-webview@1.1.16",
   "_inCache": true,
+  "_installable": true,
   "_location": "/cordova-plugin-ionic-webview",
-  "_nodeVersion": "8.5.0",
+  "_nodeVersion": "8.7.0",
   "_npmOperationalInternal": {
     "host": "s3://npm-registry-packages",
-    "tmp": "tmp/cordova-plugin-ionic-webview-1.1.11.tgz_1507126683090_0.16735983942635357"
+    "tmp": "tmp/cordova-plugin-ionic-webview-1.1.16.tgz_1508486264927_0.47728348174132407"
   },
   "_npmUser": {
     "name": "manucorporat",
@@ -29,39 +30,42 @@
   "_npmVersion": "5.4.2",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "cordova-plugin-ionic-webview@1.1.11",
+    "raw": "cordova-plugin-ionic-webview@^1.1.11",
     "scope": null,
     "escapedName": "cordova-plugin-ionic-webview",
     "name": "cordova-plugin-ionic-webview",
-    "rawSpec": "1.1.11",
-    "spec": "1.1.11",
-    "type": "version"
+    "rawSpec": "^1.1.11",
+    "spec": ">=1.1.11 <2.0.0",
+    "type": "range"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.11.tgz",
-  "_shasum": "6510b6f6edcd0bbcdd05db6a8fabdc096a466f9c",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.16.tgz",
+  "_shasum": "92d5f2e4a5a829f91b487b1761848765a31c9f1e",
   "_shrinkwrap": null,
-  "_spec": "cordova-plugin-ionic-webview@1.1.11",
-  "_where": "D:\\schoolbus-v1\\schoolbus-v2\\node_modules",
+  "_spec": "cordova-plugin-ionic-webview@^1.1.11",
+  "_where": "D:\\C@net\\Thamapp\\schoolbus-v2",
   "author": {
-    "name": "Apache Cordova"
+    "name": "Ionic Team"
   },
   "bugs": {
     "url": "https://github.com/ionic-team/cordova-plugin-ionic-webview/issues"
   },
   "dependencies": {},
   "description": "The official Ionic's WKWebView Engine Plugin",
-  "devDependencies": {},
+  "devDependencies": {
+    "np": "^2.16.0",
+    "sync-cordova-xml": "^0.4.0"
+  },
   "directories": {},
   "dist": {
-    "integrity": "sha512-YozlMJkeQOYQEPn46C+DFr/izl5zQQQK1RSAyv9n673l228kI75st7fPUk9OepkwKvc6kdFlMZA1KESX6Dh+3g==",
-    "shasum": "6510b6f6edcd0bbcdd05db6a8fabdc096a466f9c",
-    "tarball": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.11.tgz"
+    "integrity": "sha512-57EW4qNkKyCfcVt0pH11s88Dvwdtgf2UkbAyPNk2+T1cmLVQ503S/+3Wa3l173J0NGt/QGGyUM8Z66LkqTnoWg==",
+    "shasum": "92d5f2e4a5a829f91b487b1761848765a31c9f1e",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.1.16.tgz"
   },
-  "gitHead": "427497aef22e74fabf4fcf062204aa88a879b502",
+  "gitHead": "41626521c1aab40f608acc09972ebbe1fca72d21",
   "homepage": "https://github.com/ionic-team/cordova-plugin-ionic-webview#readme",
   "keywords": [
     "cordova",
@@ -82,5 +86,10 @@
     "type": "git",
     "url": "git+https://github.com/ionic-team/cordova-plugin-ionic-webview.git"
   },
-  "version": "1.1.11"
+  "scripts": {
+    "deploy": "np --yolo",
+    "sync_plugin_xml": "sync-cordova-xml package.json plugin.xml --output=plugin.xml",
+    "version": "npm run sync_plugin_xml && git add plugin.xml"
+  },
+  "version": "1.1.16"
 }
