@@ -44,4 +44,11 @@ export class AddAddressPage {
   selectLocation() {
     this.navCtrl.setRoot(AddchildPage);
   }
+  delete(id){
+    this.orderService.deleteOrder(id).then((data)=>{
+      this.loadOrder();
+    },(err)=>{
+      console.log(err);
+    });
+  }
 }
