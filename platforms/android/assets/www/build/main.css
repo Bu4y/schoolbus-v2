@@ -30446,6 +30446,10 @@ page-location .marginBT {
   margin-top: 50%;
 }
 
+page-location .heightFix {
+  height: 80% !important;
+}
+
 page-login ion-content {
   background-size: cover;
   background-position: center;

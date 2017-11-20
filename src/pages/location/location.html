@@ -111,7 +111,8 @@
     </ion-list>
   </div>
   <div padding>
-    <button [disabled]="order.route.routetype === 'oneway' ? order.route.send.item === '' || order.route.reception.item === '' : order.route.routetype === 'roundtrip' ? order.route.send.item === '' || order.route.reception.item === '' || order.route.school.item === '': true" ion-button round block color="yellows" (click)="confirm()">Confirm</button>
+    <button [disabled]="order.route.routetype === 'oneway' ? order.route.send.item === '' || order.route.reception.item === '' : order.route.routetype === 'roundtrip' ? order.route.send.item === '' || order.route.reception.item === '' || order.route.school.item === '': true"
+      ion-button round block color="yellows" (click)="confirm()">Confirm</button>
   </div>
 
   <!-- <p>{{order.image}}</p>
