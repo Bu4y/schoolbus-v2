@@ -16,13 +16,14 @@ import * as firebase from 'firebase';
 
 
 import { AuthorizeModel } from '../pages/login/login.model';
+import { AgreementPage } from '../pages/agreement/agreement';
 @Component({
   templateUrl: "app.html"
 })
 export class MyApp {
   // rootPage:any = TabNavPage;
   //rootPage: any = MapPage;
-  rootPage: any = LoginPage;
+  rootPage: any = AgreementPage;
   user: AuthorizeModel = new AuthorizeModel;
 
   constructor(
@@ -43,6 +44,10 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    let isAgree = window.localStorage.getItem('isAgree') ? JSON.parse(window.localStorage.getItem('isAgree')) : false;
+    if (isAgree) {
+      this.rootPage = LoginPage;
+    }
     this.configFirebase();
     this.user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     if (this.user) {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the AgreementPage page.
@@ -20,6 +21,11 @@ export class AgreementPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AgreementPage');
+  }
+
+  agree() {
+    window.localStorage.setItem('isAgree', JSON.stringify(true));
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }
