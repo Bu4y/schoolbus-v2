@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfilePage } from './../profile/profile';
 import { AddchildPage } from '../addchild/addchild';
+import { OrderserviceProvider } from '../../providers/orderservice/orderservice';
+import { OrderListModel } from '../location/location.model';
 
 /**
  * Generated class for the AddAddressPage page.
@@ -17,17 +19,29 @@ import { AddchildPage } from '../addchild/addchild';
   templateUrl: 'add-address.html',
 })
 export class AddAddressPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  orders: Array<OrderListModel> = [];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public orderService: OrderserviceProvider
+  ) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad AddAddressPage');
+    this.loadOrder();
   }
-  toProfile(){
+  loadOrder() {
+    this.orderService.getOrderList().then((data) => {
+      this.orders = data;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+  toProfile() {
     this.navCtrl.push(ProfilePage);
   }
-  selectLocation(){
-  this.navCtrl.setRoot(AddchildPage);
+  selectLocation() {
+    this.navCtrl.setRoot(AddchildPage);
   }
 }
