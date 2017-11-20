@@ -12,13 +12,6 @@
         },
         "com.synconset.imagepicker": {
             "PACKAGE_NAME": "com.cnet.schoolbus"
-        },
-        "cordova-plugin-googlemaps": {
-            "API_KEY_FOR_ANDROID": "AIzaSyAibnEtDyUUbAfzXuAaK_MQMr5-_G9m1BU",
-            "PACKAGE_NAME": "com.cnet.schoolbus"
-        },
-        "cordova-plugin-nativegeocoder": {
-            "PACKAGE_NAME": "com.cnet.schoolbus"
         }
     },
     "dependent_plugins": {}
