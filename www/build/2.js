@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 425:
+/***/ 588:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectlocationPageModule", function() { return SelectlocationPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__selectlocation__ = __webpack_require__(419);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RegisterPageModule = (function () {
-    function RegisterPageModule() {
+var SelectlocationPageModule = (function () {
+    function SelectlocationPageModule() {
     }
-    return RegisterPageModule;
+    return SelectlocationPageModule;
 }());
-RegisterPageModule = __decorate([
+SelectlocationPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
+            __WEBPACK_IMPORTED_MODULE_2__selectlocation__["a" /* SelectlocationPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__selectlocation__["a" /* SelectlocationPage */]),
         ],
     })
-], RegisterPageModule);
+], SelectlocationPageModule);
 
-//# sourceMappingURL=register.module.js.map
+//# sourceMappingURL=selectlocation.module.js.map
 
 /***/ })
 
