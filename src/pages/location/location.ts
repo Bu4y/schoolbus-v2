@@ -4,6 +4,7 @@ import { TabNavPage } from './../tab-nav/tab-nav';
 import { MapPage } from './../map/map';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { AddAddressPage } from '../add-address/add-address';
 
 /**
  * Generated class for the LocationPage page.
@@ -86,7 +87,7 @@ export class LocationPage {
 
     this.orderService.createOrder(this.order).then((resp) => {
       window.localStorage.removeItem('order');
-      this.navCtrl.setRoot(TabNavPage);
+      this.navCtrl.setRoot(AddAddressPage);
     }, (err) => {
       console.log(err);
     })
