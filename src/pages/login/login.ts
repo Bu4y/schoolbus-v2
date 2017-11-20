@@ -140,7 +140,7 @@ export class LoginPage {
       //   console.log(user);
       // })
       this.loading.dismiss();
-      this.navCtrl.setRoot(AddAddressPage);
+      this.navCtrl.setRoot(TabNavPage);
       console.log('success');
     }, (error) => {
       this.loading.dismiss();
