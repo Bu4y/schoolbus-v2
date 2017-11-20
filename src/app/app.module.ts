@@ -32,6 +32,7 @@ import { CommentPage } from '../pages/comment/comment';
 import { OrderserviceProvider } from '../providers/orderservice/orderservice';
 import { MomentPipe } from '../pipes/moment/moment';
 import { ProfilePage } from '../pages/profile/profile';
+import { IonUploadImagesComponent } from "../components/ion-upload-image/ion-upload-image";
 
 @NgModule({
   declarations: [
@@ -50,8 +51,8 @@ import { ProfilePage } from '../pages/profile/profile';
     CommentPage,
     AddchildPage,
     MomentPipe,
-    ProfilePage
-    
+    ProfilePage,
+    IonUploadImagesComponent
   ],
   imports: [
     BrowserModule,
