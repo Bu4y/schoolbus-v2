@@ -31,6 +31,7 @@ import { CoreserviceProvider } from '../providers/coreservice/coreservice';
 import { CommentPage } from '../pages/comment/comment';
 import { OrderserviceProvider } from '../providers/orderservice/orderservice';
 import { MomentPipe } from '../pipes/moment/moment';
+import { AgreementPage } from '../pages/agreement/agreement';
 import { ProfilePage } from '../pages/profile/profile';
 import { IonUploadImagesComponent } from "../components/ion-upload-image/ion-upload-image";
 import { ImagePicker } from '@ionic-native/image-picker';
@@ -51,6 +52,7 @@ import { Base64 } from '@ionic-native/base64';
     LocationPage,
     CommentPage,
     AddchildPage,
+    AgreementPage,
     MomentPipe,
     ProfilePage,
     IonUploadImagesComponent
@@ -76,6 +78,7 @@ import { Base64 } from '@ionic-native/base64';
     LocationPage,
     CommentPage,
     AddchildPage,
+    AgreementPage,
     ProfilePage
   ],
   providers: [
