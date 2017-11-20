@@ -12,6 +12,8 @@ import { SplashScreen } from "@ionic-native/splash-screen";
 import { Constants } from "./app.contants";
 
 import { HomePage } from "../pages/home/home";
+import * as firebase from 'firebase';
+
 
 import { AuthorizeModel } from '../pages/login/login.model';
 @Component({
@@ -41,9 +43,22 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    this.configFirebase();
     this.user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     if (this.user) {
       this.rootPage = TabNavPage;
     }
+  }
+
+  configFirebase() {
+    let config = {
+      apiKey: "AIzaSyAIjuU99uz_H4Er6J6Xsja48SMpLmuoZ5o",
+      authDomain: "schoolbus-cnet.firebaseapp.com",
+      databaseURL: "https://schoolbus-cnet.firebaseio.com/",
+      projectId: "schoolbus-cnet",
+      storageBucket: "schoolbus-cnet.appspot.com",
+      messagingSenderId: "356749167374"
+    };
+    firebase.initializeApp(config);
   }
 }
