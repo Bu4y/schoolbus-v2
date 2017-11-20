@@ -30372,6 +30372,36 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-top));
 }
 
+.loading-upload .loading-wrapper {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color: #dfdfdf !important;
+  border-radius: 0px !important;
+  width: 350px !important;
+}
+
+#maxWidth {
+  max-width: 100% !important;
+}
+
+#fixPosition {
+  background: transparent !important;
+  width: 50px !important;
+  text-align: center !important;
+  position: absolute !important;
+  bottom: 5px !important;
+  right: -1px !important;
+}
+
+#iconTrash {
+  font-size: 3.5rem !important;
+  color: rgba(221, 216, 216, 0.87) !important;
+}
+
+#maxImage {
+  max-height: 350px !important;
+}
+
 page-comment .fontWeight {
   font-weight: 100;
 }
@@ -30648,8 +30678,9 @@ page-tab-nav .tabs-md .tab-button {
 
 page-tab-nav img {
   border: 0;
-  height: 80px;
-  max-width: 150px;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 walkthrough-page .swiper-pagination-bullet {

@@ -33,7 +33,8 @@ import { OrderserviceProvider } from '../providers/orderservice/orderservice';
 import { MomentPipe } from '../pipes/moment/moment';
 import { ProfilePage } from '../pages/profile/profile';
 import { IonUploadImagesComponent } from "../components/ion-upload-image/ion-upload-image";
-
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
 @NgModule({
   declarations: [
     MyApp,
@@ -83,6 +84,8 @@ import { IonUploadImagesComponent } from "../components/ion-upload-image/ion-upl
     LoginServiceProvider,
     RegisterServiceProvider,
     Geolocation,
+    ImagePicker,
+    Base64,
     Facebook,
     GoogleMaps,
     NativeGeocoder,

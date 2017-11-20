@@ -90,7 +90,7 @@
     "com.synconset.imagepicker": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-telerik-imagepicker"
+            "id": "cordova-plugin-telerik-imagepicker@^2.1.8"
         },
         "is_top_level": true,
         "variables": {
