@@ -36,6 +36,15 @@ export class OrderserviceProvider {
       .catch(this.handleError);
   }
 
+  deleteOrder(id): Promise<LocationModel> {
+    let headers = this.coreService.authorizationHeader();
+    return this.http
+      .delete('https://school-bus-server.herokuapp.com/api/orders' + id, { headers: headers })
+      .toPromise()
+      .then(response => response.json() as LocationModel)
+      .catch(this.handleError);
+  }
+
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

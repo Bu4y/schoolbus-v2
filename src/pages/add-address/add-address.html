@@ -19,13 +19,15 @@
 <ion-content padding class="masters">
   <ion-list>
     <ion-item *ngFor="let itm of orders">
-      <ion-thumbnail item-left>
+      <ion-avatar item-left>
         <img src="{{itm}}">
-      </ion-thumbnail>
+      </ion-avatar>
       <p *ngIf="itm.reception !== ''">จุดรับ : {{itm.reception}}</p>
       <p *ngIf="itm.school !== ''">โรงเรียน : {{itm.school}}</p>
       <p *ngIf="itm.send !== ''">จุดส่ง : {{itm.send}}</p>
-
+      <button ion-button clear item-end>
+        <ion-icon class="icon-size" name="md-trash" color="danger"></ion-icon>
+      </button>
     </ion-item>
   </ion-list>
   <ion-fab right bottom>
