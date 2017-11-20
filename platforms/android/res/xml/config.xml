@@ -1,5 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.cnet.schoolbus" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="FacebookConnectPlugin">
+        <param name="android-package" value="org.apache.cordova.facebook.ConnectPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <access origin="https://m.facebook.com" />
+    <access origin="https://graph.facebook.com" />
+    <access origin="https://api.facebook.com" />
+    <access origin="https://*.fbcdn.net" />
+    <access origin="https://*.akamaihd.net" />
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
     <feature name="CordovaGoogleMaps">
         <param name="android-package" value="plugin.google.maps.CordovaGoogleMaps" />
         <param name="onload" value="true" />
@@ -41,6 +56,18 @@
     <feature name="NativeGeocoder">
         <param name="android-package" value="cordova.plugin.nativegeocoder.NativeGeocoder" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
+        <param name="onload" value="true" />
+    </feature>
     <name>School Bus</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -72,8 +99,8 @@
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="16" />
+    <preference name="ScrollEnabled" value="false" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
