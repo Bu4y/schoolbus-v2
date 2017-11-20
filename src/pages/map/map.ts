@@ -171,6 +171,7 @@ export class MapPage {
 
 
   showPrompt() {
+    // let loading = this.loadingCtrl.create();
     let prompt = this.alertCtrl.create({
       title: 'Information',
       inputs: [
@@ -200,23 +201,28 @@ export class MapPage {
           cssClass: 'btnSv',
           handler: res => {
             console.log('Saved clicked');
+            
             let data = { item: res.place, lat: this.latitude, long: this.longitude, tel: res.tel, contact: res.name };
             let resultsData = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {};
             if (this.type === 'sender') {
+              // loading.present();
               resultsData.route.send = data;
               window.localStorage.setItem('order', JSON.stringify(resultsData));
             }
             if (this.type === 'receiver') {
+              // loading.present();
               resultsData.route.reception = data;
               window.localStorage.setItem('order', JSON.stringify(resultsData));
             }
             if (this.type === 'school') {
+              // loading.present();
               resultsData.route.school = data;
               window.localStorage.setItem('order', JSON.stringify(resultsData));
             }
-            setTimeout(() => {
+            // setTimeout(() => {
               this.navCtrl.pop();
-            }, 3000);
+              // loading.dismiss();
+            // }, 3000);
           }
         }
       ]

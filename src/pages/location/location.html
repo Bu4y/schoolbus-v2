@@ -12,7 +12,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="heightFix">
   <ion-list radio-group [(ngModel)]="order.route.routetype">
     <ion-row>
       <ion-col col-6>
@@ -29,7 +29,7 @@
       </ion-col>
     </ion-row>
   </ion-list>
-  <ion-list *ngIf="order.route.reception.item || order.route.send.item || order.route.school.item" radio-group [(ngModel)]="order.route.routetype">
+  <!-- <ion-list *ngIf="order.route.reception.item || order.route.send.item || order.route.school.item" radio-group [(ngModel)]="order.route.routetype">
       <ion-row>
         <ion-col col-6>
           <ion-item>
@@ -44,7 +44,7 @@
           </ion-item>
         </ion-col>
       </ion-row>
-    </ion-list>
+    </ion-list> -->
   <!-- One Way -->
   <div *ngIf="order.route.routetype == 'oneway'">
     <ion-list>
