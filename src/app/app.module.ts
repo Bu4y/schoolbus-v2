@@ -31,6 +31,7 @@ import { CoreserviceProvider } from '../providers/coreservice/coreservice';
 import { CommentPage } from '../pages/comment/comment';
 import { OrderserviceProvider } from '../providers/orderservice/orderservice';
 import { MomentPipe } from '../pipes/moment/moment';
+import { AgreementPage } from '../pages/agreement/agreement';
 
 @NgModule({
   declarations: [
@@ -48,8 +49,9 @@ import { MomentPipe } from '../pipes/moment/moment';
     LocationPage,
     CommentPage,
     AddchildPage,
+    AgreementPage,
     MomentPipe
-    
+
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import { MomentPipe } from '../pipes/moment/moment';
     WalkthroughPage,
     LocationPage,
     CommentPage,
-    AddchildPage
+    AddchildPage,
+    AgreementPage
   ],
   providers: [
     StatusBar,
