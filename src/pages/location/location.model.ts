@@ -16,3 +16,11 @@ export class mapModel {
     contact: string;
     tel: number;
 }
+
+export class OrderListModel {
+    name: string;
+    image: string;
+    reception: string;
+    school: string;
+    send: string;
+}
