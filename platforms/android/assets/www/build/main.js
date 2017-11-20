@@ -2306,7 +2306,7 @@ var AddAddressPage = (function () {
 }());
 AddAddressPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-add-address',template:/*ion-inline-start:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\add-address\add-address.html"*/'<!--\n\n  Generated template for the AddAddressPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only (click)="toProfile()">\n\n        <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>Address</ion-title>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="masters">\n\n  <ion-list>\n\n    <ion-item *ngFor="let itm of orders">\n\n      <ion-thumbnail item-left>\n\n        <img src="{{itm}}">\n\n      </ion-thumbnail>\n\n      <p *ngIf="itm.reception !== \'\'">จุดรับ : {{itm.reception}}</p>\n\n      <p *ngIf="itm.school !== \'\'">โรงเรียน : {{itm.school}}</p>\n\n      <p *ngIf="itm.send !== \'\'">จุดส่ง : {{itm.send}}</p>\n\n\n\n    </ion-item>\n\n  </ion-list>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="yellows" (click)="selectLocation()">\n\n      <ion-icon name="md-add"></ion-icon>\n\n    </button>\n\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\add-address\add-address.html"*/,
+        selector: 'page-add-address',template:/*ion-inline-start:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\add-address\add-address.html"*/'<!--\n\n  Generated template for the AddAddressPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-buttons start>\n\n      <button ion-button icon-only (click)="toProfile()">\n\n        <ion-icon name="contact"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title>Address</ion-title>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="masters">\n\n  <ion-list>\n\n    <ion-item *ngFor="let itm of orders">\n\n      <ion-avatar item-left>\n\n        <img src="{{itm}}">\n\n      </ion-avatar>\n\n      <p *ngIf="itm.reception !== \'\'">จุดรับ : {{itm.reception}}</p>\n\n      <p *ngIf="itm.school !== \'\'">โรงเรียน : {{itm.school}}</p>\n\n      <p *ngIf="itm.send !== \'\'">จุดส่ง : {{itm.send}}</p>\n\n      <button ion-button clear item-end>\n\n        <ion-icon class="icon-size" name="md-trash" color="danger"></ion-icon>\n\n      </button>\n\n    </ion-item>\n\n  </ion-list>\n\n  <ion-fab right bottom>\n\n    <button ion-fab color="yellows" (click)="selectLocation()">\n\n      <ion-icon name="md-add"></ion-icon>\n\n    </button>\n\n  </ion-fab>\n\n</ion-content>'/*ion-inline-end:"C:\Users\nid.nid\Desktop\schoolbus.v2\schoolbus-v2\src\pages\add-address\add-address.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
@@ -2719,6 +2719,14 @@ var OrderserviceProvider = (function () {
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    OrderserviceProvider.prototype.deleteOrder = function (id) {
+        var headers = this.coreService.authorizationHeader();
+        return this.http
+            .delete('https://school-bus-server.herokuapp.com/api/orders' + id, { headers: headers })
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     OrderserviceProvider.prototype.handleError = function (error) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
@@ -2727,9 +2735,10 @@ var OrderserviceProvider = (function () {
 }());
 OrderserviceProvider = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__coreservice_coreservice__["a" /* CoreserviceProvider */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__coreservice_coreservice__["a" /* CoreserviceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__coreservice_coreservice__["a" /* CoreserviceProvider */]) === "function" && _b || Object])
 ], OrderserviceProvider);
 
+var _a, _b;
 //# sourceMappingURL=orderservice.js.map
 
 /***/ }),

@@ -16,19 +16,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'addchild.html',
 })
 export class AddchildPage {
-  order : LocationModel = new LocationModel();
-
+  order: LocationModel = new LocationModel();
+  pImages: Array<string> = [];
+  resImg: string = '';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.order = JSON.parse(window.localStorage.getItem('childimage'));
+    this.pImages = this.order.image ? [this.order.image] : [];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddchildPage');
   }
-  gotoLocation(){
+  resImageEvent(e) {
+    this.resImg = e[0] ? e[0] : "";
+    // this.resImg = './assets/image/noimage.png';
+  }
+  gotoLocation() {
+    this.order.image = this.resImg;
     window.localStorage.setItem('childname', this.order.name);
     window.localStorage.setItem('childimage', this.order.image);
-    this.navCtrl.push(LocationPage,{
-      daya : this.order
+    this.navCtrl.push(LocationPage, {
+      daya: this.order
     });
   }
 

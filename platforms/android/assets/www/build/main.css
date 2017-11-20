@@ -30402,6 +30402,10 @@ ion-navbar.toolbar {
   max-height: 350px !important;
 }
 
+page-add-address .icon-size {
+  font-size: 20px;
+}
+
 page-comment .fontWeight {
   font-weight: 100;
 }
