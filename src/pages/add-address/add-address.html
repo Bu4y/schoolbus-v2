@@ -22,9 +22,9 @@
       <ion-thumbnail item-left>
         <img src="{{itm}}">
       </ion-thumbnail>
-      <p>จุดรับ : {{itm.reception}}</p>
-      <p>โรงเรียน : {{itm.school}}</p>
-      <p>จุดส่ง : {{itm.send}}</p>
+      <p *ngIf="itm.reception !== ''">จุดรับ : {{itm.reception}}</p>
+      <p *ngIf="itm.school !== ''">โรงเรียน : {{itm.school}}</p>
+      <p *ngIf="itm.send !== ''">จุดส่ง : {{itm.send}}</p>
 
     </ion-item>
   </ion-list>
