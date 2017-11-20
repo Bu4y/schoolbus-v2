@@ -208,7 +208,9 @@ export class MapPage {
               resultsData.route.school = data;
               window.localStorage.setItem('order', JSON.stringify(resultsData));
             }
-            this.navCtrl.pop();
+            setTimeout(() => {
+              this.navCtrl.pop();
+            }, 3000);
           }
         }
       ]

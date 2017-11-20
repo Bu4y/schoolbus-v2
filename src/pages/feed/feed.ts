@@ -55,13 +55,13 @@ export class FeedPage {
       });
   }
 
-  logout() {
-    this.auth.logout();
-    window.localStorage.removeItem('schollbus_user');
-    let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
-    this.app.getRootNav().setRoot(LoginPage);
+  // logout() {
+  //   this.auth.logout();
+  //   window.localStorage.removeItem('schollbus_user');
+  //   let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+  //   this.app.getRootNav().setRoot(LoginPage);
 
-  }
+  // }
 
   updatelike(data) {
     let user = JSON.parse(window.localStorage.getItem('schollbus_user'));

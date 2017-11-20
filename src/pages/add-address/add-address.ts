@@ -1,6 +1,6 @@
 import { LocationPage } from './../location/location';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { ProfilePage } from './../profile/profile';
 import { AddchildPage } from '../addchild/addchild';
 import { OrderserviceProvider } from '../../providers/orderservice/orderservice';
@@ -20,11 +20,15 @@ import { OrderListModel } from '../location/location.model';
 })
 export class AddAddressPage {
   orders: Array<OrderListModel> = [];
+  user: any = {};
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public alertCtrl: AlertController,
     public orderService: OrderserviceProvider
   ) {
+    this.user = window.localStorage.getItem('schollbus_user') ? JSON.parse(window.localStorage.getItem('schollbus_user')) : {};
+  console.log(this.user);
   }
 
   ionViewWillEnter() {
@@ -44,10 +48,34 @@ export class AddAddressPage {
   selectLocation() {
     this.navCtrl.setRoot(AddchildPage);
   }
-  delete(id){
-    this.orderService.deleteOrder(id).then((data)=>{
+  
+  presentConfirm(id) {
+    const alert = this.alertCtrl.create({
+      title: 'Confirm Delete',
+      message: 'Do you want to delete this Address?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            console.log('delete');
+            this.delete(id);
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+  delete(id) {
+    this.orderService.deleteOrder(id).then((data) => {
       this.loadOrder();
-    },(err)=>{
+    }, (err) => {
       console.log(err);
     });
   }
