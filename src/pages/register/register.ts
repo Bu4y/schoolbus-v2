@@ -36,6 +36,8 @@ export class RegisterPage {
   }
   user: AuthorizeModel = new AuthorizeModel;
   loading = this.loadingCtrl.create();
+  pImages: Array<string> = [];
+  resImg: string = '';
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -47,6 +49,8 @@ export class RegisterPage {
   ) {
     this.signup = this.navParams.data;
     // alert(JSON.stringify(this.signup));
+    this.pImages = this.signup.profileImageURL ? [this.signup.profileImageURL] : [];
+    
     console.log(this.signup);
   }
   ionViewDidLoad() {
@@ -54,7 +58,11 @@ export class RegisterPage {
     this.slider.lockSwipeToPrev(true);
     console.log('ionViewDidLoad RegisterPage');
   }
-
+  resImageEvent(e) {
+    alert(e[0]);
+    this.resImg = e[0] ? e[0] : "";
+    // this.resImg = './assets/image/noimage.png';
+  }
   nextRegister(signup) {
     this.slider.lockSwipeToNext(false);
     this.slider.slideTo(1, 500, signup);
@@ -65,6 +73,7 @@ export class RegisterPage {
 
   register() {
     this.loading.present();
+    this.signup.profileImageURL = this.resImg;
     this.user = this.signup;
     // this.user.profileImageURL = 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png';
     console.log(this.user);

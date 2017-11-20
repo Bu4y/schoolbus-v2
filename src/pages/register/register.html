@@ -17,6 +17,8 @@
 
     <ion-slide>
       <div padding>
+          <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
+          
         <!-- <div (click)="uploadImage()" *ngIf="signup.profileImageURL">
           <img src="./assets/camera.png" style="width:150px">
           <img src="{{signup.profileImageURL}}" style="width:150px; border-radius: 50%;">
