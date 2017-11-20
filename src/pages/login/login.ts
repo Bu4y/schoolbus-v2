@@ -8,6 +8,7 @@ import { LoginServiceProvider } from './login.service';
 import { Component } from '@angular/core';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { AlertController, LoadingController, IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { AddAddressPage } from '../add-address/add-address';
 
 
 /**
@@ -139,7 +140,7 @@ export class LoginPage {
       //   console.log(user);
       // })
       this.loading.dismiss();
-      this.navCtrl.setRoot(LocationPage);
+      this.navCtrl.setRoot(AddAddressPage);
       console.log('success');
     }, (error) => {
       this.loading.dismiss();
