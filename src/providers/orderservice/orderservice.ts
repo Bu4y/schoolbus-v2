@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import { LocationModel } from '../../pages/location/location.model';
+import { LocationModel, OrderListModel } from '../../pages/location/location.model';
 import { CoreserviceProvider } from '../coreservice/coreservice';
 /*
   Generated class for the OrderserviceProvider provider.
@@ -17,11 +17,12 @@ export class OrderserviceProvider {
     console.log('Hello OrderserviceProvider Provider');
   }
 
-  getOrderList(): Promise<LocationModel> {
+  getOrderList(): Promise<Array<OrderListModel>> {
+    let headers = this.coreService.authorizationHeader();
     return this.http
-      .get('https://school-bus-server.herokuapp.com/api/orders')
+      .get('https://school-bus-server.herokuapp.com/api/orders', { headers: headers })
       .toPromise()
-      .then(response => response.json() as LocationModel)
+      .then(response => response.json() as Array<OrderListModel>)
       .catch(this.handleError);
   }
 

@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { AuthorizeModel } from "./register.model";
-
+import { AuthProvider } from '../../providers/auth/auth';
 // import { Constants } from "../../app/app.contants";
 /*
   Generated class for the RegisterServiceProvider provider.
@@ -15,7 +15,7 @@ import { AuthorizeModel } from "./register.model";
 @Injectable()
 export class RegisterServiceProvider {
 
-    constructor(public http: Http) {
+    constructor(public http: Http, public Auth: AuthProvider) {
         console.log('Hello RegisterServiceProvider Provider');
     }
 
@@ -28,6 +28,14 @@ export class RegisterServiceProvider {
                 window.localStorage.setItem('schollbus_user', JSON.stringify(data));
                 return data;
             })
+            .catch(this.handleError);
+    }
+
+    updateUser(user): Promise<AuthorizeModel> {
+        let headers = this.Auth.createAuthorizationHeader();
+        return this.http.put('https://school-bus-server.herokuapp.com/api/users', user, { headers: headers })
+            .toPromise()
+            .then(response => response.json() as AuthorizeModel)
             .catch(this.handleError);
     }
 

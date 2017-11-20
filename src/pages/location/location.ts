@@ -74,11 +74,18 @@ export class LocationPage {
   confirm() {
     let alert = this.alertCtrl.create({
       title: 'School Bus',
-      subTitle: 'ขอบคุณสำหรับข้อมูลทางบริษัทฯได้รับข้อมูลของท่านเรียบร้อยแล้ว เจ้าหน้าที่จะติดต่อกลับเพื่อแจ้งรายละเอียดการใช้บริการรถโรงเรียน',
-      buttons: ['OK']
+      message: 'ขอบคุณสำหรับข้อมูล ทางบริษัทฯได้รับข้อมูลของท่านเรียบร้อยแล้ว เจ้าหน้าที่จะติดต่อกลับเพื่อแจ้งรายละเอียดการใช้บริการรถโรงเรียน',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'OK',
+          handler: () => {
+            this.createOrder();
+          }
+        }
+      ]
     });
     alert.present();
-    this.navCtrl.setRoot(TabNavPage);
   }
 
   createOrder() {

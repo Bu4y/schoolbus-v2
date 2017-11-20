@@ -40,4 +40,7 @@ export class TabNavPage {
 
   }
 
+  getSelectedTab() {
+    return 1;
+  }
 }

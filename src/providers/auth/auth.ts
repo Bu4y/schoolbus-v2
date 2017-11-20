@@ -57,9 +57,16 @@ export class AuthProvider {
   private extractData(res: Response) {
     let user = res.json() as AuthorizeModel;
     window.localStorage.setItem('schollbus_user', JSON.stringify(user));
+    window.localStorage.setItem('token', JSON.parse(window.localStorage.getItem('schollbus_user')).loginToken);
     return user || {};
   }
 
+  createAuthorizationHeader() {
+    let headers = new Headers();
+    let token = window.localStorage.getItem('token');
+    headers.append("Authorization", "Bearer " + token);
+    return headers;
+  }
 
   // signUp(user): Promise<AuthorizeModel> {
   //   return this.http.post(Constants.URL + 'auth/signup', user)

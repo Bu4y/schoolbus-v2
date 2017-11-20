@@ -32,6 +32,8 @@ import { CommentPage } from '../pages/comment/comment';
 import { OrderserviceProvider } from '../providers/orderservice/orderservice';
 import { MomentPipe } from '../pipes/moment/moment';
 import { AgreementPage } from '../pages/agreement/agreement';
+import { ProfilePage } from '../pages/profile/profile';
+import { IonUploadImagesComponent } from "../components/ion-upload-image/ion-upload-image";
 
 @NgModule({
   declarations: [
@@ -50,8 +52,9 @@ import { AgreementPage } from '../pages/agreement/agreement';
     CommentPage,
     AddchildPage,
     AgreementPage,
-    MomentPipe
-
+    MomentPipe,
+    ProfilePage,
+    IonUploadImagesComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { AgreementPage } from '../pages/agreement/agreement';
     LocationPage,
     CommentPage,
     AddchildPage,
-    AgreementPage
+    AgreementPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
