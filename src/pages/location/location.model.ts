@@ -18,6 +18,7 @@ export class mapModel {
 }
 
 export class OrderListModel {
+    _id: string;
     name: string;
     image: string;
     reception: string;
