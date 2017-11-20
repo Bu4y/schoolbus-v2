@@ -1,0 +1,42 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+
+      </ion-col>
+      <ion-col col-6>
+        <img class="autoHeight" src="http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png">
+      </ion-col>
+      <ion-col col-3>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-item>
+    <ion-label stacked>Name</ion-label>
+    <ion-input type="text" value="{{dataProfile.firstName}}" [(ngModel)]="dataProfile.firstName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Last Name</ion-label>
+    <ion-input type="text" value="{{dataProfile.lastName}}" [(ngModel)]="dataProfile.lastName"></ion-input>
+  </ion-item>
+  <div>
+    <button ion-button block (click)="editProfile()">Save</button>
+  </div>
+
+</ion-content>

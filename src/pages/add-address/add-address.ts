@@ -1,6 +1,7 @@
 import { LocationPage } from './../location/location';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProfilePage } from './../profile/profile';
 import { AddchildPage } from '../addchild/addchild';
 
 /**
@@ -22,6 +23,9 @@ export class AddAddressPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddAddressPage');
+  }
+  toProfile(){
+    this.navCtrl.push(ProfilePage);
   }
   selectLocation(){
   this.navCtrl.setRoot(AddchildPage);
