@@ -17,12 +17,12 @@ export class OrderserviceProvider {
     console.log('Hello OrderserviceProvider Provider');
   }
 
-  getOrderList(): Promise<OrderListModel> {
+  getOrderList(): Promise<Array<OrderListModel>> {
     let headers = this.coreService.authorizationHeader();
     return this.http
       .get('https://school-bus-server.herokuapp.com/api/orders', { headers: headers })
       .toPromise()
-      .then(response => response.json() as OrderListModel)
+      .then(response => response.json() as Array<OrderListModel>)
       .catch(this.handleError);
   }
 
