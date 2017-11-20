@@ -25,7 +25,7 @@
       <p *ngIf="itm.reception !== ''">จุดรับ : {{itm.reception}}</p>
       <p *ngIf="itm.school !== ''">โรงเรียน : {{itm.school}}</p>
       <p *ngIf="itm.send !== ''">จุดส่ง : {{itm.send}}</p>
-      <button ion-button clear item-end>
+      <button ion-button clear item-end (click)="delete(itm._id)"></button>>
         <ion-icon class="icon-size" name="md-trash" color="danger"></ion-icon>
       </button>
     </ion-item>
