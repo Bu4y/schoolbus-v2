@@ -30406,6 +30406,20 @@ page-add-address .icon-size {
   font-size: 20px;
 }
 
+page-add-address .item-md {
+  background-color: transparent !important;
+}
+
+page-add-address .item-ios {
+  background-color: transparent !important;
+}
+
+page-addchild .login-button {
+  width: 100%;
+  font-size: 0.9em;
+  color: #000;
+}
+
 page-comment .fontWeight {
   font-weight: 100;
 }

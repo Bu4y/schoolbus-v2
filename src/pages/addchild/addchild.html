@@ -13,17 +13,16 @@
 </ion-header>
 
 
-<ion-content >
+<ion-content>
   <!-- <ion-item>
     <ion-label fixed>IMG : </ion-label>
     <ion-input type="text" [(ngModel)]="order.image"></ion-input>
   </ion-item> -->
   <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
   <ion-item>
-    <ion-label fixed > NAME : </ion-label>
-    <ion-input type="text"  [(ngModel)]="order.name"></ion-input>
+    <ion-label fixed> NAME : </ion-label>
+    <ion-input type="text" [(ngModel)]="order.name"></ion-input>
   </ion-item>
-
-  <button *ngIf="order.name && pImages" ion-button block (click)="gotoLocation()">NEXT</button>
+  <button [disabled]="order.name === undefined || order.image === undefined || order.name === '' || order.image  === ''" ion-button round color="yellows" class="login-button" (click)="gotoLocation()">NEXT</button>
 
 </ion-content>

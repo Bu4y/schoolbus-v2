@@ -59,7 +59,7 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
   resImageEvent(e) {
-    alert(e[0]);
+    // alert(e[0]);
     this.resImg = e[0] ? e[0] : "";
     // this.resImg = './assets/image/noimage.png';
   }
