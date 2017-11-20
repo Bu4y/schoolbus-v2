@@ -3,7 +3,7 @@ import { SelectlocationPage } from './../selectlocation/selectlocation';
 import { FeedPage } from './../feed/feed';
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController, AlertController ,LoadingController} from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -42,6 +42,7 @@ export class MapPage {
   isMap: boolean = true;
   type: string;
   item: string;
+  
   service = new google.maps.places.AutocompleteService();
   constructor(
     public viewCtrl: ViewController,
@@ -50,6 +51,7 @@ export class MapPage {
     private modalCtrl: ModalController,
     private googleMaps: GoogleMaps,
     public geolocation: Geolocation,
+    public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public navParams: NavParams,
     private nativeGeocoder: NativeGeocoder
@@ -65,6 +67,8 @@ export class MapPage {
     this.map = GoogleMap;
   }
   ionViewWillEnter() {
+   let loading = this.loadingCtrl.create();
+   loading.present();
     this.geolocation.getCurrentPosition().then((resp) => {
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
@@ -74,11 +78,13 @@ export class MapPage {
         .then((result: NativeGeocoderReverseResult) => {
           // alert(JSON.stringify(result))
           this.item = result.subThoroughfare + ' ' + result.thoroughfare + ' ' + result.locality + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
+         loading.dismiss();
           this.getmap();
         })
         .catch((error: any) => console.log(error));
     }).catch((error) => {
       console.log('Error getting location', error);
+      loading.dismiss();
     });
   }
   dismiss() {

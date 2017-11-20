@@ -1,6 +1,6 @@
 import { LocationPage } from './../location/location';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { ProfilePage } from './../profile/profile';
 import { AddchildPage } from '../addchild/addchild';
 import { OrderserviceProvider } from '../../providers/orderservice/orderservice';
@@ -21,14 +21,18 @@ import { OrderListModel } from '../location/location.model';
 export class AddAddressPage {
   orders: Array<OrderListModel> = [];
   user: any = {};
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public orderService: OrderserviceProvider
   ) {
+   
     this.user = window.localStorage.getItem('schollbus_user') ? JSON.parse(window.localStorage.getItem('schollbus_user')) : {};
-  console.log(this.user);
+    console.log(this.user);
+    
   }
 
   ionViewWillEnter() {
@@ -48,7 +52,7 @@ export class AddAddressPage {
   selectLocation() {
     this.navCtrl.setRoot(AddchildPage);
   }
-  
+
   presentConfirm(id) {
     const alert = this.alertCtrl.create({
       title: 'Confirm Delete',
@@ -73,10 +77,14 @@ export class AddAddressPage {
     alert.present();
   }
   delete(id) {
+    let loading = this.loadingCtrl.create();
+    loading.present();
     this.orderService.deleteOrder(id).then((data) => {
       this.loadOrder();
+      loading.dismiss();
     }, (err) => {
       console.log(err);
+      loading.dismiss();
     });
   }
 }

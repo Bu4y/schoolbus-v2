@@ -1,7 +1,7 @@
 import { LoginPage } from './../login/login';
 import { AuthProvider } from './../../providers/auth/auth';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ModalController, LoadingController } from 'ionic-angular';
 import { FeedServiceProvider } from './feed.service';
 import { FeedModel } from './feed.model';
 import { CommentPage } from '../comment/comment';
@@ -26,6 +26,7 @@ export class FeedPage {
     public navParams: NavParams,
     private auth: AuthProvider,
     public app: App,
+    public loadingCtrl: LoadingController,
     public feedServiceProvider: FeedServiceProvider,
     public modalCtrl: ModalController
   ) {
@@ -36,10 +37,14 @@ export class FeedPage {
 
   }
   ionViewWillEnter() {
+  let loading = this.loadingCtrl.create();
+  
+    loading.present();
     let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     this.feedServiceProvider.getfeed()
       .then((data) => {
         this.datafeed = data;
+        loading.dismiss();
         data.forEach(itmIslike => {
           itmIslike.islike.forEach(itm => {
             if (itm.user === user._id) {
@@ -50,8 +55,11 @@ export class FeedPage {
           });
         });
         console.log(this.datafeed);
+
       }).catch((err) => {
         console.error(err);
+        loading.dismiss();
+
       });
   }
 
@@ -85,12 +93,15 @@ export class FeedPage {
     }
     this.feedServiceProvider.updateLike(data).then((resp) => {
       console.log(resp);
+
       this.ionViewWillEnter();
     }, (err) => {
       console.error(err);
+
     });
 
     console.log(data);
+
   }
   comment(feedId) {
     this.navCtrl.push(CommentPage, feedId);
