@@ -44,6 +44,7 @@ export class ProfilePage {
     }else{
       this.dataProfile.profileImageURL = '';
     }
+    
     // this.resImg = './assets/image/noimage.png';
   }
   editProfile() {

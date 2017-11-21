@@ -40,7 +40,7 @@ export class AddAddressPage {
     let loading = this.loadingCtrl.create();
     loading.present();
     this.user = window.localStorage.getItem('schollbus_user') ? JSON.parse(window.localStorage.getItem('schollbus_user')) : {};
-    console.log(this.user);
+    console.log(this.user.profileImageURL);
     loading.dismiss();
     console.log('ionViewDidLoad AddAddressPage');
     this.loadOrder();

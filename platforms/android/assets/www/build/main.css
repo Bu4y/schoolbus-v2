@@ -30569,6 +30569,11 @@ page-map .scroll {
   height: 100%;
 }
 
+page-map .header-ios .toolbar-background-ios {
+  border-style: none !important;
+  border-color: none !important;
+}
+
 page-register ion-content {
   background-size: cover;
   background-position: center;

@@ -49,7 +49,7 @@
     <ion-item>
       <ion-input item-start type="text" placeholder="Comment here" [(ngModel)]="commentData.comment"></ion-input>
 
-      <button item-end ion-button small round outline (click)="createComment(commentData)">Comment</button>
+      <button item-end ion-button small round outline [disabled]="commentData.comment === ''" (click)="createComment(commentData)">Comment</button>
     </ion-item>
   </ion-list>
 </ion-footer>
