@@ -5,7 +5,7 @@ import { IonicPage, NavController, NavParams, App, ModalController, LoadingContr
 import { FeedServiceProvider } from './feed.service';
 import { FeedModel } from './feed.model';
 import { CommentPage } from '../comment/comment';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 /**
  * Generated class for the FeedPage page.
  *
@@ -24,13 +24,15 @@ export class FeedPage {
   datafeed: Array<FeedModel> = new Array<FeedModel>();
   likeChk: string;
   user: any = {};
+  shareImg: string = '';
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private auth: AuthProvider,
     public app: App,
     public loadingCtrl: LoadingController,
     public feedServiceProvider: FeedServiceProvider,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public socialSharing: SocialSharing
   ) {
     // this.auth.private().subscribe((data) => {
     //   this.data = data.message
@@ -53,7 +55,7 @@ export class FeedPage {
               this.likeChk = itm.user;
               itmIslike.isLike = true;
             } else {
-              itmIslike.isLike = false;              
+              itmIslike.isLike = false;
               this.likeChk = '';
             }
             console.log(this.likeChk);
@@ -75,7 +77,18 @@ export class FeedPage {
   //   this.app.getRootNav().setRoot(LoginPage);
 
   // }
-
+  sharing(data) {
+    data.image.forEach(img => {
+      this.shareImg = img;
+    });
+    this.socialSharing.shareWithOptions({
+      message: `${this.shareImg} - ${data.name}`
+    }).then(() => {
+      console.log('Shared!');
+    }).catch((err) => {
+      console.log('Oops, something went wrong:', err);
+    });
+  }
   updatelike(data) {
     let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     let isLike = true;
