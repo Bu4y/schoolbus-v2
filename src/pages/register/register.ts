@@ -50,7 +50,7 @@ export class RegisterPage {
     this.signup = this.navParams.data;
     // alert(JSON.stringify(this.signup));
     this.pImages = this.signup.profileImageURL ? [this.signup.profileImageURL] : [];
-    
+
     console.log(this.signup);
   }
   ionViewDidLoad() {
@@ -61,10 +61,10 @@ export class RegisterPage {
   resImageEvent(e) {
     // alert(e[0]);
     this.resImg = e[0] ? e[0] : "";
-    if(this.resImg){
-      this.signup.profileImageURL = this.resImg ? this.resImg : this.signup.profileImageURL ? this.signup.profileImageURL : '';
-    }else{
-      this.signup.profileImageURL = this.signup.profileImageURL ? this.signup.profileImageURL : '';
+    if (this.resImg) {
+      this.signup.profileImageURL = this.resImg;
+    } else {
+      this.signup.profileImageURL = '';
     }
     // this.resImg = './assets/image/noimage.png';
   }
@@ -83,7 +83,7 @@ export class RegisterPage {
     // this.user.profileImageURL = 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png';
     console.log(this.user);
     if (this.signup.password === this.signup.confirmpassword) {
-      window.localStorage.setItem('sch-pass-v2',JSON.stringify(this.signup.password));
+      window.localStorage.setItem('sch-pass-v2', JSON.stringify(this.signup.password));
       this.auth.signUp(this.user).subscribe((data) => {
         // alert(JSON.stringify(data));
         this.loading.dismiss();
