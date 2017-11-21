@@ -62,9 +62,9 @@ export class RegisterPage {
     // alert(e[0]);
     this.resImg = e[0] ? e[0] : "";
     if(this.resImg){
-      this.signup.profileImageURL = this.resImg;
+      this.signup.profileImageURL = this.resImg ? this.resImg : this.signup.profileImageURL ? this.signup.profileImageURL : '';
     }else{
-      this.signup.profileImageURL = '';
+      this.signup.profileImageURL = this.signup.profileImageURL ? this.signup.profileImageURL : '';
     }
     // this.resImg = './assets/image/noimage.png';
   }
@@ -78,7 +78,7 @@ export class RegisterPage {
 
   register() {
     this.loading.present();
-    this.signup.profileImageURL = this.resImg;
+    this.signup.profileImageURL = this.signup.profileImageURL ? this.signup.profileImageURL : this.resImg;
     this.user = this.signup;
     // this.user.profileImageURL = 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png';
     console.log(this.user);
