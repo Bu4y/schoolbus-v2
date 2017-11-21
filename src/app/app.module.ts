@@ -60,7 +60,9 @@ import { Base64 } from '@ionic-native/base64';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      mode: 'md'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
