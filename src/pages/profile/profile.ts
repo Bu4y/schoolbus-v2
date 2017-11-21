@@ -39,11 +39,16 @@ export class ProfilePage {
   }
   resImageEvent(e) {
     this.resImg = e[0] ? e[0] : "";
+    if(this.resImg){
+      this.dataProfile.profileImageURL = this.resImg;
+    }else{
+      this.dataProfile.profileImageURL = '';
+    }
     // this.resImg = './assets/image/noimage.png';
   }
   editProfile() {
     // this.editProfile
-    this.dataProfile.profileImageURL = this.resImg;
+    this.dataProfile.profileImageURL = this.dataProfile.profileImageURL;
     this.authenService.updateUser(this.dataProfile).then((resp) => {
       window.localStorage.setItem('schollbus_user', JSON.stringify(resp));
       this.navCtrl.pop();

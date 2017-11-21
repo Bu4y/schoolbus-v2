@@ -6,14 +6,12 @@
 -->
 <ion-header>
   <ion-toolbar>
-    <ion-navbar>
-      <ion-title>Profile</ion-title>
-    </ion-navbar>
     <ion-buttons end>
       <button ion-button icon-only (click)="logout()">
       <ion-icon name="md-log-out"></ion-icon>
     </button>
     </ion-buttons>
+    <ion-title>Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -42,7 +40,7 @@
     <ion-input type="text" value="{{dataProfile.lastName}}" [(ngModel)]="dataProfile.lastName"></ion-input>
   </ion-item>
   <div>
-    <button ion-button block round color="yellows" (click)="editProfile()">Save</button>
+    <button ion-button block round color="yellows" (click)="editProfile()" [disabled]="!dataProfile.firstName || !dataProfile.lastName || !dataProfile.profileImageURL">Save</button>
   </div>
 
 </ion-content>
