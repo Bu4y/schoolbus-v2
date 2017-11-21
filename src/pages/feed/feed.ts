@@ -20,8 +20,10 @@ import { CommentPage } from '../comment/comment';
 })
 export class FeedPage {
   // data: string;
+
   datafeed: Array<FeedModel> = new Array<FeedModel>();
-  likeChk: boolean = false;
+  likeChk: string;
+  user: any = {};
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private auth: AuthProvider,
@@ -37,21 +39,24 @@ export class FeedPage {
 
   }
   ionViewWillEnter() {
-  let loading = this.loadingCtrl.create();
-  
+    let loading = this.loadingCtrl.create();
+
     loading.present();
-    let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+    this.user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     this.feedServiceProvider.getfeed()
       .then((data) => {
         this.datafeed = data;
         loading.dismiss();
         data.forEach(itmIslike => {
           itmIslike.islike.forEach(itm => {
-            if (itm.user === user._id) {
-              this.likeChk = true;
+            if (itm.user === this.user._id) {
+              this.likeChk = itm.user;
+              itmIslike.isLike = true;
             } else {
-              this.likeChk = false;
+              itmIslike.isLike = false;              
+              this.likeChk = '';
             }
+            console.log(this.likeChk);
           });
         });
         console.log(this.datafeed);
@@ -74,14 +79,15 @@ export class FeedPage {
   updatelike(data) {
     let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     let isLike = true;
-    this.likeChk = isLike;
+    // this.likeChk = isLike;
     // console.log(this.likeChk);
     for (let i = 0; i < data.islike.length; i++) {
       if (data.islike[i].user === user._id) {
         isLike = false;
-        this.likeChk = isLike;
+        // this.likeChk = isLike;
         // console.log(this.likeChk);
         data.islike.splice(i, 1);
+        // alert('dis like');
       }
     }
 
@@ -90,16 +96,18 @@ export class FeedPage {
         user: JSON.parse(window.localStorage.getItem('schollbus_user')),
         created: new Date().toISOString()
       });
+      // alert('add like');
+
     }
     this.feedServiceProvider.updateLike(data).then((resp) => {
       console.log(resp);
+      // alert('reload');
 
       this.ionViewWillEnter();
     }, (err) => {
       console.error(err);
 
     });
-
     console.log(data);
 
   }

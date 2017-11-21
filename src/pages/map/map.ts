@@ -67,25 +67,25 @@ export class MapPage {
     this.map = GoogleMap;
   }
   ionViewWillEnter() {
-   let loading = this.loadingCtrl.create();
-   loading.present();
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.lat = resp.coords.latitude;
-      this.lng = resp.coords.longitude;
-      this.latitude = this.lat;
-      this.longitude = this.lng;
-      this.nativeGeocoder.reverseGeocode(this.lat, this.lng)
-        .then((result: NativeGeocoderReverseResult) => {
-          // alert(JSON.stringify(result))
-          this.item = result.subThoroughfare + ' ' + result.thoroughfare + ' ' + result.locality + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
-         loading.dismiss();
-          this.getmap();
-        })
-        .catch((error: any) => console.log(error));
-    }).catch((error) => {
-      console.log('Error getting location', error);
-      loading.dismiss();
-    });
+  //  let loading = this.loadingCtrl.create();
+  //  loading.present();
+  //   this.geolocation.getCurrentPosition().then((resp) => {
+  //     this.lat = resp.coords.latitude;
+  //     this.lng = resp.coords.longitude;
+  //     this.latitude = this.lat;
+  //     this.longitude = this.lng;
+  //     this.nativeGeocoder.reverseGeocode(this.lat, this.lng)
+  //       .then((result: NativeGeocoderReverseResult) => {
+  //         // alert(JSON.stringify(result))
+  //         this.item = result.subThoroughfare + ' ' + result.thoroughfare + ' ' + result.locality + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
+  //        loading.dismiss();
+  //         this.getmap();
+  //       })
+  //       .catch((error: any) => console.log(error));
+  //   }).catch((error) => {
+  //     console.log('Error getting location', error);
+  //     loading.dismiss();
+  //   });
   }
   dismiss() {
     this.viewCtrl.dismiss();

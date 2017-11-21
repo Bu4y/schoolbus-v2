@@ -1,8 +1,12 @@
 page-map {
-  #map_canvas {
-    height: 100%
-  }
-  .scroll {
-    height: 100%
-  }
+    #map_canvas {
+        height: 100%
+    }
+    .scroll {
+        height: 100%
+    }
+    .header-ios .toolbar-background-ios {
+        border-style: none !important;
+        border-color: none !important;
+    }
 }
