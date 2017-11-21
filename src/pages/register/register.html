@@ -79,7 +79,7 @@
         </ion-item> -->
         <!-- <button ion-button round block color="yellows" (click)="register(signup)">CONFIRM</button> -->
         <div>
-          <button ion-button round block color="yellows" (click)="nextRegister(user)">CONFIRM</button>
+          <button ion-button round block color="yellows" (click)="nextRegister(user)" [disabled]="!signup.firstName || !signup.lastName || !signup.phone || !signup.email || !signup.profileImageURL">CONFIRM</button>
         </div>
       </div>
     </ion-slide>
@@ -120,7 +120,7 @@
           <ion-input type="password" [(ngModel)]="signup.confirmpassword"></ion-input>
         </ion-item> -->
         <div class="marginT200">
-          <button ion-button round block color="yellows" (click)="register(signup)">CONFIRM</button>
+          <button ion-button round block color="yellows" (click)="register(signup)" [disabled]="!signup.username || !signup.password || !signup.confirmpassword">CONFIRM</button>
         </div>
       </div>
     </ion-slide>

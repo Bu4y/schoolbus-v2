@@ -61,6 +61,11 @@ export class RegisterPage {
   resImageEvent(e) {
     // alert(e[0]);
     this.resImg = e[0] ? e[0] : "";
+    if(this.resImg){
+      this.signup.profileImageURL = this.resImg;
+    }else{
+      this.signup.profileImageURL = '';
+    }
     // this.resImg = './assets/image/noimage.png';
   }
   nextRegister(signup) {
