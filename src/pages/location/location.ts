@@ -101,7 +101,7 @@ export class LocationPage {
     this.orderService.createOrder(this.order).then((resp) => {
       window.localStorage.removeItem('order');
       loading.dismiss();
-      this.navCtrl.setRoot(AddAddressPage);
+      this.navCtrl.setRoot(TabNavPage);
     }, (err) => {
       console.log(err);
       loading.dismiss();

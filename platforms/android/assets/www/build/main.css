@@ -30552,6 +30552,8 @@ page-login .button-mds {
 page-login .list-ios[inset] .item {
   border-bottom: 2px solid #ffc800 !important;
   border-top: 2px solid #ffc800 !important;
+  border-left: 2px solid #ffc800 !important;
+  border-right: 2px solid #ffc800 !important;
 }
 
 page-login .list-md[inset] .item {
