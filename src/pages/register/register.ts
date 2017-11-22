@@ -38,6 +38,7 @@ export class RegisterPage {
   loading = this.loadingCtrl.create();
   pImages: Array<string> = [];
   resImg: string = '';
+  isStep: boolean = true;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -54,8 +55,8 @@ export class RegisterPage {
     console.log(this.signup);
   }
   ionViewDidLoad() {
-    this.slider.lockSwipeToNext(true);
-    this.slider.lockSwipeToPrev(true);
+    // this.slider.lockSwipeToNext(true);
+    // this.slider.lockSwipeToPrev(true);
     console.log('ionViewDidLoad RegisterPage');
   }
   resImageEvent(e) {
@@ -69,10 +70,11 @@ export class RegisterPage {
     // this.resImg = './assets/image/noimage.png';
   }
   nextRegister(signup) {
-    this.slider.lockSwipeToNext(false);
-    this.slider.slideTo(1, 500, signup);
-    this.slider.lockSwipeToPrev(true);
-    this.slider.lockSwipeToNext(true);
+    this.isStep = false;
+    // this.slider.lockSwipeToNext(false);
+    // this.slider.slideTo(1, 500, signup);
+    // this.slider.lockSwipeToPrev(true);
+    // this.slider.lockSwipeToNext(true);
 
   }
 

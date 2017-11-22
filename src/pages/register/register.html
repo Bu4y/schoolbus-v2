@@ -12,14 +12,10 @@
 
 </ion-header>
 <ion-content padding class="masters">
+  <div padding *ngIf="isStep">
+    <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
 
-  <ion-slides #slider>
-
-    <ion-slide>
-      <div padding>
-        <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
-
-        <!-- <div (click)="uploadImage()" *ngIf="signup.profileImageURL">
+    <!-- <div (click)="uploadImage()" *ngIf="signup.profileImageURL">
           <img src="./assets/camera.png" style="width:150px">
           <img src="{{signup.profileImageURL}}" style="width:150px; border-radius: 50%;">
         </div>
@@ -28,36 +24,36 @@
           <img src="{{signup.profileImageURL}}">
         </div> -->
 
-        <!-- <ion-icon name="camera"></ion-icon> -->
-        <ion-item>
-          <ion-label>
-            <img src="./assets/icon/Icon-user.png">
-          </ion-label>
-          <ion-input type="text" placeholder="Name" [(ngModel)]="signup.firstName"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>
-            <img src="./assets/icon/Icon-user.png">
-          </ion-label>
-          <ion-input type="text" placeholder="Last Name" [(ngModel)]="signup.lastName"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>
-            <img src="./assets/icon/Phone.png">
-          </ion-label>
-          <ion-input type="text" placeholder="Phone" [(ngModel)]="signup.phone"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>
-            <img src="./assets/icon/mail.png">
-          </ion-label>
-          <ion-input type="text" placeholder="Email" [(ngModel)]="signup.email"></ion-input>
-        </ion-item>
-        <!-- <ion-item>
+    <!-- <ion-icon name="camera"></ion-icon> -->
+    <ion-item>
+      <ion-label>
+        <img src="./assets/icon/Icon-user.png">
+      </ion-label>
+      <ion-input type="text" placeholder="Name" [(ngModel)]="signup.firstName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <img src="./assets/icon/Icon-user.png">
+      </ion-label>
+      <ion-input type="text" placeholder="Last Name" [(ngModel)]="signup.lastName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <img src="./assets/icon/Phone.png">
+      </ion-label>
+      <ion-input type="text" placeholder="Phone" [(ngModel)]="signup.phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <img src="./assets/icon/mail.png">
+      </ion-label>
+      <ion-input type="text" placeholder="Email" [(ngModel)]="signup.email"></ion-input>
+    </ion-item>
+    <!-- <ion-item>
           <ion-label stacked> Image</ion-label>
           <ion-input type="text" [(ngModel)]="signup.profileImageURL"></ion-input>
         </ion-item> -->
-        <!-- <ion-item>
+    <!-- <ion-item>
           <ion-label floating>
             <ion-icon name="md-person"></ion-icon> Name</ion-label>
           <ion-input type="text" [(ngModel)]="signup.firstName"></ion-input>
@@ -77,34 +73,32 @@
             <ion-icon name="md-mail"></ion-icon> Email</ion-label>
           <ion-input type="text" [(ngModel)]="signup.email"></ion-input>
         </ion-item> -->
-        <!-- <button ion-button round block color="yellows" (click)="register(signup)">CONFIRM</button> -->
-        <div>
-          <button ion-button round block color="yellows" (click)="nextRegister(user)" [disabled]="!signup.firstName || !signup.lastName || !signup.phone || !signup.email || !signup.profileImageURL">CONFIRM</button>
-        </div>
-      </div>
-    </ion-slide>
+    <!-- <button ion-button round block color="yellows" (click)="register(signup)">CONFIRM</button> -->
+    <div>
+      <button ion-button round block color="yellows" (click)="nextRegister(user)" [disabled]="!signup.firstName || !signup.lastName || !signup.phone || !signup.email || !signup.profileImageURL">CONFIRM</button>
+    </div>
+  </div>
 
-    <ion-slide>
-      <div padding>
-        <ion-item>
-          <ion-label>
-            <img src="./assets/icon/Icon-user.png">
-          </ion-label>
-          <ion-input type="text" placeholder="Username" [(ngModel)]="signup.username"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>
-            <img src="./assets/icon/password.png">
-          </ion-label>
-          <ion-input type="password" placeholder="Password" [(ngModel)]="signup.password"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>
-            <img src="./assets/icon/cf-pass.png">
-          </ion-label>
-          <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="signup.confirmpassword"></ion-input>
-        </ion-item>
-        <!-- <ion-item>
+  <div padding *ngIf="!isStep">
+    <ion-item>
+      <ion-label>
+        <img src="./assets/icon/Icon-user.png">
+      </ion-label>
+      <ion-input type="text" placeholder="Username" [(ngModel)]="signup.username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <img src="./assets/icon/password.png">
+      </ion-label>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="signup.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <img src="./assets/icon/cf-pass.png">
+      </ion-label>
+      <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="signup.confirmpassword"></ion-input>
+    </ion-item>
+    <!-- <ion-item>
           <ion-label floating>
             <ion-icon name="md-person"></ion-icon> Username</ion-label>
           <ion-input type="text" [(ngModel)]="signup.username"></ion-input>
@@ -119,10 +113,8 @@
             <ion-icon name="md-checkmark"></ion-icon> Confirm Password</ion-label>
           <ion-input type="password" [(ngModel)]="signup.confirmpassword"></ion-input>
         </ion-item> -->
-        <div class="marginT200">
-          <button ion-button round block color="yellows" (click)="register(signup)" [disabled]="!signup.username || !signup.password || !signup.confirmpassword">CONFIRM</button>
-        </div>
-      </div>
-    </ion-slide>
-  </ion-slides>
+    <div class="marginT200">
+      <button ion-button round block color="yellows" (click)="register(signup)" [disabled]="!signup.username || !signup.password || !signup.confirmpassword">CONFIRM</button>
+    </div>
+  </div>
 </ion-content>

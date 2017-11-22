@@ -62,9 +62,7 @@ import { Base64 } from '@ionic-native/base64';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {
-      mode: 'md',
-      scrollAssist: true,
-      autoFocusAssist: true
+      mode: 'md'
     })
   ],
   bootstrap: [IonicApp],
