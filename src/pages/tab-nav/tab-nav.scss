@@ -32,4 +32,10 @@ page-tab-nav {
     height: auto;
     object-fit: cover;
   }
+  ion-fab[center] {
+    margin-left: 0px !important;
+    left: 50% !important;
+    margin-right: -50% !important;
+    transform: translate(-50%, -0%) !important;
+  }
 }
