@@ -54,7 +54,7 @@ export class ProfilePage {
       window.localStorage.setItem('schollbus_user', JSON.stringify(resp));
       this.navCtrl.pop();
     }, (error) => {
-      console.error(error);
+      alert(JSON.parse(error._body).message);
     });
 
   }

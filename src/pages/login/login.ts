@@ -144,7 +144,7 @@ export class LoginPage {
       console.log('success');
     }, (error) => {
       this.loading.dismiss();
-      console.error(error);
+      alert(JSON.parse(error._body).message);
     });
 
   }

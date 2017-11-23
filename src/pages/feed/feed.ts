@@ -118,7 +118,7 @@ export class FeedPage {
 
       this.ionViewWillEnter();
     }, (err) => {
-      console.error(err);
+      alert(JSON.parse(err._body).message);
 
     });
     console.log(data);

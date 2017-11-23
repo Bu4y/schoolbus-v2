@@ -103,7 +103,7 @@ export class LocationPage {
       loading.dismiss();
       this.navCtrl.setRoot(TabNavPage);
     }, (err) => {
-      console.log(err);
+      alert(JSON.parse(err._body).message);
       loading.dismiss();
     })
   }

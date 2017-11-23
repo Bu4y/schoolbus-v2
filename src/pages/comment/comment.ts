@@ -66,7 +66,7 @@ export class CommentPage {
         
         this.ionViewWillEnter();
       }, (err) => {
-        console.error(err);
+        alert(JSON.parse(err._body).message);
         loading.dismiss();
         
       });

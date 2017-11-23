@@ -93,7 +93,7 @@ export class RegisterPage {
 
       }, (error) => {
         console.error(error);
-        alert(JSON.stringify(error));
+        alert(JSON.parse(error._body).message);
         this.loading.dismiss();
       });
     } else {
