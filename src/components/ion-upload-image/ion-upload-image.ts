@@ -21,7 +21,8 @@ export class IonUploadImagesComponent {
   @Output() resImage: EventEmitter<any> = new EventEmitter();
   constructor(
     public imagePicker: ImagePicker,
-    public loading: LoadingController
+    public loading: LoadingController,
+    public loadingCtrl: LoadingController
   ) {
     console.log('Hello IonUploadImageComponent Component');
   }
@@ -35,6 +36,8 @@ export class IonUploadImagesComponent {
   }
 
   onUpload() {
+    let loadingPlugin = this.loadingCtrl.create();
+    loadingPlugin.present();
 
     let options = {
       maximumImagesCount: this.maximumImagesCount,
@@ -42,8 +45,10 @@ export class IonUploadImagesComponent {
       quality: 30,
       outputType: 1
     };
-
+    
     this.imagePicker.getPictures(options).then((results) => {
+
+      loadingPlugin.dismiss();
 
       let loading = [];
       let loadingCount = 0;
@@ -68,7 +73,10 @@ export class IonUploadImagesComponent {
         })
       }
 
-    }, (err) => { });
+    }, (err) => {
+      loadingPlugin.dismiss();
+      
+     });
   }
 
   uploadImage(imageString): Promise<any> {

@@ -1,7 +1,7 @@
 import { LocationModel } from './../location/location.model';
 import { LocationPage } from './../location/location';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the AddchildPage page.
@@ -19,7 +19,7 @@ export class AddchildPage {
   order: LocationModel = new LocationModel();
   pImages: Array<string> = [];
   resImg: string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController,) {
     // this.order = JSON.parse(window.localStorage.getItem('childimage'));
     this.pImages = this.order.image ? [this.order.image] : [];
   }
@@ -28,6 +28,7 @@ export class AddchildPage {
     console.log('ionViewDidLoad AddchildPage');
   }
   resImageEvent(e) {
+  
     this.resImg = e[0] ? e[0] : "";
     this.order.image = this.resImg;    
     // this.resImg = './assets/image/noimage.png';

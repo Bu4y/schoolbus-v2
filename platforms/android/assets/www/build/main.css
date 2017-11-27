@@ -30372,6 +30372,10 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-top));
 }
 
+[text-center] {
+  text-align: unset !important;
+}
+
 .loading-upload .loading-wrapper {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -30420,6 +30424,10 @@ page-addchild .login-button {
   color: #000;
 }
 
+page-addchild .Img-center {
+  text-align: center;
+}
+
 page-comment .fontWeight {
   font-weight: 100;
 }
@@ -30458,6 +30466,10 @@ page-login ion-content {
   border-color: transparent;
 }
 
+page-login .scrollHeight {
+  height: 100% !important;
+}
+
 page-login .scroll-content {
   background-image: radial-gradient(center center, ellipse cover, #ffeda3, #ffc800);
   display: -webkit-box;
@@ -30469,7 +30481,6 @@ page-login .scroll-content {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  overflow: hidden;
 }
 
 page-login .logo {
@@ -30707,6 +30718,14 @@ page-tab-nav img {
   height: auto;
   -o-object-fit: cover;
   object-fit: cover;
+}
+
+page-tab-nav ion-fab[center] {
+  margin-left: 0px !important;
+  left: 50% !important;
+  margin-right: -50% !important;
+  -webkit-transform: translate(-50%, 0%) !important;
+  transform: translate(-50%, 0%) !important;
 }
 
 walkthrough-page .swiper-pagination-bullet {
