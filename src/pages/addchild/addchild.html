@@ -18,7 +18,7 @@
     <ion-label fixed>IMG : </ion-label>
     <ion-input type="text" [(ngModel)]="order.image"></ion-input>
   </ion-item> -->
-  <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
+  <ion-upload-images [addChildImg]="true" [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
   <ion-item>
     <ion-label fixed> NAME : </ion-label>
     <ion-input type="text" [(ngModel)]="order.name"></ion-input>

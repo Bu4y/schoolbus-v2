@@ -16,6 +16,7 @@ export class IonUploadImagesComponent {
   @ViewChild('formSlideImages') formSlideImages: Slides;
   @Input() images: Array<any> = [];
   @Input() isShowUpload: boolean;
+  @Input() addChildImg: boolean;
   @Input() maximumImagesCount: any;
   @Output() resImage: EventEmitter<any> = new EventEmitter();
   constructor(
