@@ -3,7 +3,7 @@ import { SelectlocationPage } from './../selectlocation/selectlocation';
 import { FeedPage } from './../feed/feed';
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, AlertController ,LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController, AlertController, LoadingController } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -42,7 +42,7 @@ export class MapPage {
   isMap: boolean = true;
   type: string;
   item: string;
-  
+
   service = new google.maps.places.AutocompleteService();
   constructor(
     public viewCtrl: ViewController,
@@ -67,8 +67,8 @@ export class MapPage {
     this.map = GoogleMap;
   }
   ionViewWillEnter() {
-   let loading = this.loadingCtrl.create();
-   loading.present();
+    let loading = this.loadingCtrl.create();
+    loading.present();
     this.geolocation.getCurrentPosition().then((resp) => {
       this.lat = resp.coords.latitude;
       this.lng = resp.coords.longitude;
@@ -78,7 +78,7 @@ export class MapPage {
         .then((result: NativeGeocoderReverseResult) => {
           // alert(JSON.stringify(result))
           this.item = result.subThoroughfare + ' ' + result.thoroughfare + ' ' + result.locality + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
-         loading.dismiss();
+          loading.dismiss();
           this.getmap();
         })
         .catch((error: any) => console.log(error));
@@ -152,6 +152,7 @@ export class MapPage {
           title: this.item,
           icon: 'blue',
           animation: 'DROP',
+          draggable: true,
           position: {
             lat: this.lat,
             lng: this.lng
@@ -164,6 +165,9 @@ export class MapPage {
               .subscribe(() => {
                 this.showPrompt();
               });
+            marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe((e) => {
+              alert(JSON.stringify(e));
+            })
           });
 
       });
@@ -201,7 +205,7 @@ export class MapPage {
           cssClass: 'btnSv',
           handler: res => {
             console.log('Saved clicked');
-            
+
             let data = { item: res.place, lat: this.latitude, long: this.longitude, tel: res.tel, contact: res.name };
             let resultsData = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {};
             if (this.type === 'sender') {
@@ -220,8 +224,8 @@ export class MapPage {
               window.localStorage.setItem('order', JSON.stringify(resultsData));
             }
             // setTimeout(() => {
-              this.navCtrl.pop();
-              // loading.dismiss();
+            this.navCtrl.pop();
+            // loading.dismiss();
             // }, 3000);
           }
         }
