@@ -6,6 +6,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Slides, IonicPage, NavController, NavParams, LoadingController, AlertController, App } from 'ionic-angular';
 import { AuthorizeModel } from './register.model';
 import { AuthProvider } from '../../providers/auth/auth';
+import { LocationPage } from "../location/location";
 
 /**
  * Generated class for the RegisterPage page.
@@ -80,7 +81,7 @@ export class RegisterPage {
 
   register() {
     this.loading.present();
-    this.signup.profileImageURL = this.signup.profileImageURL ? this.signup.profileImageURL : this.resImg;
+    // this.signup.profileImageURL = this.signup.profileImageURL ? this.signup.profileImageURL : this.resImg;
     this.user = this.signup;
     // this.user.profileImageURL = 'http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png';
     console.log(this.user);
@@ -89,7 +90,7 @@ export class RegisterPage {
       this.auth.signUp(this.user).subscribe((data) => {
         // alert(JSON.stringify(data));
         this.loading.dismiss();
-        this.navCtrl.setRoot(AddchildPage);
+        this.navCtrl.setRoot(LocationPage);
 
       }, (error) => {
         console.error(error);

@@ -11,7 +11,7 @@
       <ion-icon name="md-log-out"></ion-icon>
     </button>
     </ion-buttons>
-    <ion-title>Profile</ion-title>
+    <ion-title>ข้อมูลส่วนตัว</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -32,15 +32,15 @@
   </ion-grid> -->
   <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
   <ion-item>
-    <ion-label stacked>Name</ion-label>
+    <ion-label stacked>ชื่อ</ion-label>
     <ion-input type="text" value="{{dataProfile.firstName}}" [(ngModel)]="dataProfile.firstName"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label stacked>Last Name</ion-label>
+    <ion-label stacked>นามสกุล</ion-label>
     <ion-input type="text" value="{{dataProfile.lastName}}" [(ngModel)]="dataProfile.lastName"></ion-input>
   </ion-item>
   <div>
-    <button ion-button block round color="yellows" (click)="editProfile()" [disabled]="!dataProfile.firstName || !dataProfile.lastName || !dataProfile.profileImageURL">Save</button>
+    <button ion-button block round color="yellows" (click)="editProfile()" [disabled]="!dataProfile.firstName || !dataProfile.lastName || !dataProfile.profileImageURL">บันทึก</button>
   </div>
 
 </ion-content>

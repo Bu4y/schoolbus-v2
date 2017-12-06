@@ -172,66 +172,86 @@ export class MapPage {
 
       });
   }
-
-
   showPrompt() {
-    // let loading = this.loadingCtrl.create();
-    let prompt = this.alertCtrl.create({
-      title: 'Information',
-      inputs: [
-        {
-          name: 'place',
-          value: this.item
-        },
-        {
-          name: 'name',
-          placeholder: 'Name'
-        },
-        {
-          name: 'tel',
-          placeholder: 'Tel'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          cssClass: 'btnCn',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Save',
-          cssClass: 'btnSv',
-          handler: res => {
-            console.log('Saved clicked');
-
-            let data = { item: res.place, lat: this.latitude, long: this.longitude, tel: res.tel, contact: res.name };
-            let resultsData = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {};
-            if (this.type === 'sender') {
-              // loading.present();
-              resultsData.route.send = data;
-              window.localStorage.setItem('order', JSON.stringify(resultsData));
-            }
-            if (this.type === 'receiver') {
-              // loading.present();
-              resultsData.route.reception = data;
-              window.localStorage.setItem('order', JSON.stringify(resultsData));
-            }
-            if (this.type === 'school') {
-              // loading.present();
-              resultsData.route.school = data;
-              window.localStorage.setItem('order', JSON.stringify(resultsData));
-            }
-            // setTimeout(() => {
-            this.navCtrl.pop();
-            // loading.dismiss();
-            // }, 3000);
-          }
-        }
-      ]
-    });
-    prompt.present();
+    let data = { item: this.item , lat: this.latitude, long: this.longitude, tel: '', contact: '' };
+    let resultsData = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {};
+    if (this.type === 'sender') {
+      // loading.present();
+      resultsData.route.send = data;
+      window.localStorage.setItem('order', JSON.stringify(resultsData));
+    }
+    if (this.type === 'receiver') {
+      // loading.present();
+      resultsData.route.reception = data;
+      window.localStorage.setItem('order', JSON.stringify(resultsData));
+    }
+    if (this.type === 'school') {
+      // loading.present();
+      resultsData.route.school = data;
+      window.localStorage.setItem('order', JSON.stringify(resultsData));
+    }
+    // setTimeout(() => {
+    this.navCtrl.pop();
   }
+
+  // showPrompt() {
+  //   // let loading = this.loadingCtrl.create();
+  //   let prompt = this.alertCtrl.create({
+  //     title: 'Information',
+  //     inputs: [
+  //       {
+  //         name: 'place',
+  //         value: this.item
+  //       },
+  //       {
+  //         name: 'name',
+  //         placeholder: 'Name'
+  //       },
+  //       {
+  //         name: 'tel',
+  //         placeholder: 'Tel'
+  //       }
+  //     ],
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         cssClass: 'btnCn',
+  //         handler: data => {
+  //           console.log('Cancel clicked');
+  //         }
+  //       },
+  //       {
+  //         text: 'Save',
+  //         cssClass: 'btnSv',
+  //         handler: res => {
+  //           console.log('Saved clicked');
+
+  //           let data = { item: res.place, lat: this.latitude, long: this.longitude, tel: res.tel, contact: res.name };
+  //           let resultsData = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {};
+  //           if (this.type === 'sender') {
+  //             // loading.present();
+  //             resultsData.route.send = data;
+  //             window.localStorage.setItem('order', JSON.stringify(resultsData));
+  //           }
+  //           if (this.type === 'receiver') {
+  //             // loading.present();
+  //             resultsData.route.reception = data;
+  //             window.localStorage.setItem('order', JSON.stringify(resultsData));
+  //           }
+  //           if (this.type === 'school') {
+  //             // loading.present();
+  //             resultsData.route.school = data;
+  //             window.localStorage.setItem('order', JSON.stringify(resultsData));
+  //           }
+  //           // setTimeout(() => {
+  //           this.navCtrl.pop();
+  //           // loading.dismiss();
+  //           // }, 3000);
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   prompt.present();
+  // }
 
 }

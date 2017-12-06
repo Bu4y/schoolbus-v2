@@ -16,7 +16,7 @@
         <!-- <ion-icon name="contact"></ion-icon> -->
       </button>
     </ion-buttons>
-    <ion-title>Address</ion-title>
+    <ion-title>ข้อมูลรับ-ส่ง</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,8 +25,9 @@
   <ion-list>
     <ion-item *ngFor="let itm of orders">
       <ion-avatar item-left>
-        <img src="{{itm.image}}">
+        <img src="./assets/image/child.png">
       </ion-avatar>
+      <p *ngIf="itm.name !== ''">ชื่อลูก : {{itm.name}}</p>
       <p *ngIf="itm.reception !== ''">จุดรับ : {{itm.reception}}</p>
       <p *ngIf="itm.school !== ''">โรงเรียน : {{itm.school}}</p>
       <p *ngIf="itm.send !== ''">จุดส่ง : {{itm.send}}</p>

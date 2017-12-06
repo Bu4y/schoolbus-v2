@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Select Location</ion-title>
+    <ion-title>เลือกจุดรับ-ส่ง</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -126,9 +126,14 @@
       </ion-row>
     </ion-list>
   </div>
+
+  <ion-item>
+    <ion-label fixed> ชื่อลูก : </ion-label>
+    <ion-input type="text" [(ngModel)]="order.name"></ion-input>
+  </ion-item>
   <div padding>
-    <button [disabled]="order.route.routetype === 'oneway' ? order.route.send.item === '' || order.route.reception.item === '' : order.route.routetype === 'roundtrip' ? order.route.send.item === '' || order.route.reception.item === '' || order.route.school.item === '': true"
-      ion-button round block color="yellows" (click)="confirm()">Confirm</button>
+    <button [disabled]="order.route.routetype === 'oneway' ? order.route.send.item === '' || order.route.reception.item === '' : order.route.routetype === 'roundtrip' ? order.route.send.item === '' || order.route.reception.item === '' || order.route.school.item === '': true || order.name === ''"
+      ion-button round block color="yellows" (click)="confirm()">บันทึก</button>
   </div>
 
   <!-- <p>{{order.image}}</p>

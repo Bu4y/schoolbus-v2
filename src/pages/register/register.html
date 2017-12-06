@@ -7,13 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Register</ion-title>
+    <ion-title>ข้อมูลส่วนตัว</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding class="masters">
   <div padding *ngIf="isStep">
-    <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images>
+    <!-- <ion-upload-images [maximumImagesCount]="1" [images]="pImages" [isShowUpload]="false" (resImage)="resImageEvent($event)"></ion-upload-images> -->
 
     <!-- <div (click)="uploadImage()" *ngIf="signup.profileImageURL">
           <img src="./assets/camera.png" style="width:150px">
@@ -27,27 +27,27 @@
     <!-- <ion-icon name="camera"></ion-icon> -->
     <ion-item>
       <ion-label>
-        <img src="./assets/icon/Icon-user.png">
+        <img src="./assets/icon/Icon-user.png" width="35px">
       </ion-label>
-      <ion-input type="text" placeholder="Name" [(ngModel)]="signup.firstName"></ion-input>
+      <ion-input type="text" placeholder="ชื่อ" [(ngModel)]="signup.firstName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>
-        <img src="./assets/icon/Icon-user.png">
+        <img  width="35px">
       </ion-label>
-      <ion-input type="text" placeholder="Last Name" [(ngModel)]="signup.lastName"></ion-input>
+      <ion-input type="text" placeholder="นามสกุล" [(ngModel)]="signup.lastName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>
-        <img src="./assets/icon/Phone.png">
+        <img src="./assets/icon/Phone.png" width="35px">
       </ion-label>
-      <ion-input type="text" placeholder="Phone" [(ngModel)]="signup.phone"></ion-input>
+      <ion-input type="text" placeholder="เบอร์โทร" [(ngModel)]="signup.phone"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>
-        <img src="./assets/icon/mail.png">
+        <img src="./assets/icon/mail.png" width="35px">
       </ion-label>
-      <ion-input type="text" placeholder="Email" [(ngModel)]="signup.email"></ion-input>
+      <ion-input type="text" placeholder="อีเมล" [(ngModel)]="signup.email"></ion-input>
     </ion-item>
     <!-- <ion-item>
           <ion-label stacked> Image</ion-label>
@@ -75,28 +75,28 @@
         </ion-item> -->
     <!-- <button ion-button round block color="yellows" (click)="register(signup)">CONFIRM</button> -->
     <div>
-      <button ion-button round block color="yellows" (click)="nextRegister(user)" [disabled]="!signup.firstName || !signup.lastName || !signup.phone || !signup.email || !signup.profileImageURL">CONFIRM</button>
+      <button ion-button round block color="yellows" (click)="nextRegister(user)" [disabled]="!signup.firstName || !signup.lastName || !signup.phone || !signup.email">ถัดไป>></button>
     </div>
   </div>
 
   <div padding *ngIf="!isStep">
     <ion-item>
       <ion-label>
-        <img src="./assets/icon/Icon-user.png">
+          <img src="./assets/icon/Icon-user.png" width="35px">
       </ion-label>
-      <ion-input type="text" placeholder="Username" [(ngModel)]="signup.username"></ion-input>
+      <ion-input type="text" placeholder="ชื่อบัญชี" [(ngModel)]="signup.username"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>
-        <img src="./assets/icon/password.png">
+        <img src="./assets/icon/password.png" width="35px">
       </ion-label>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="signup.password"></ion-input>
+      <ion-input type="password" placeholder="รหัสผ่าน" [(ngModel)]="signup.password"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>
-        <img src="./assets/icon/cf-pass.png">
+        <img src="./assets/icon/cf-pass.png" width="35px">
       </ion-label>
-      <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="signup.confirmpassword"></ion-input>
+      <ion-input type="password" placeholder="ยืนยันรหัสผ่าน" [(ngModel)]="signup.confirmpassword"></ion-input>
     </ion-item>
     <!-- <ion-item>
           <ion-label floating>
@@ -114,7 +114,7 @@
           <ion-input type="password" [(ngModel)]="signup.confirmpassword"></ion-input>
         </ion-item> -->
     <div class="marginT200">
-      <button ion-button round block color="yellows" (click)="register(signup)" [disabled]="!signup.username || !signup.password || !signup.confirmpassword">CONFIRM</button>
+      <button ion-button round block color="yellows" (click)="register(signup)" [disabled]="!signup.username || !signup.password || !signup.confirmpassword">บันทึก</button>
     </div>
   </div>
 </ion-content>

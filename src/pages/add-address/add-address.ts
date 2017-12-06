@@ -56,7 +56,7 @@ export class AddAddressPage {
     this.navCtrl.push(ProfilePage);
   }
   selectLocation() {
-    this.navCtrl.setRoot(AddchildPage);
+    this.navCtrl.setRoot(LocationPage);
   }
 
   presentConfirm(id) {

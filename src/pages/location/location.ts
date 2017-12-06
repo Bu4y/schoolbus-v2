@@ -64,8 +64,8 @@ export class LocationPage {
     this.order.route.reception.item = this.order.route.reception.item ? this.order.route.reception.item : '';
     this.order.route.school.item = this.order.route.school.item ? this.order.route.school.item : '';
     this.order.route.send.item = this.order.route.send.item ? this.order.route.send.item : '';
-    this.order.name = window.localStorage.getItem('childname');
-    this.order.image = window.localStorage.getItem('childimage');
+    // this.order.name = window.localStorage.getItem('childname');
+    // this.order.image = window.localStorage.getItem('childimage');
     // alert(JSON.stringify(this.order.route));
     console.log('ionViewDidLoad LocationPage');
     loading.dismiss();
