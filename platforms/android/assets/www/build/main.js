@@ -2661,6 +2661,24 @@ var MapPage = (function () {
             loading.dismiss();
         });
     };
+    MapPage.prototype.getMapTextPlace = function (position) {
+        var _this = this;
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        this.lat = position.lat;
+        this.lng = position.lng;
+        this.nativeGeocoder.reverseGeocode(position.lat, position.lng)
+            .then(function (result) {
+            // alert(JSON.stringify(result))
+            _this.item = (result.subThoroughfare ? result.subThoroughfare : '') + ' ' + (result.thoroughfare ? result.thoroughfare : '') + ' ' + (result.locality ? result.locality : '') + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
+            _this.getmap();
+            loading.dismiss();
+        })
+            .catch(function (error) {
+            loading.dismiss();
+            console.log(error);
+        });
+    };
     MapPage.prototype.dismiss = function () {
         this.viewCtrl.dismiss();
     };
@@ -2738,7 +2756,8 @@ var MapPage = (function () {
                     _this.showPrompt();
                 });
                 marker.on(__WEBPACK_IMPORTED_MODULE_3__ionic_native_google_maps__["c" /* GoogleMapsEvent */].MARKER_DRAG_END).subscribe(function (e) {
-                    alert(JSON.stringify(e));
+                    // alert(JSON.stringify(e));
+                    _this.getMapTextPlace(e[0]);
                 });
             });
         });

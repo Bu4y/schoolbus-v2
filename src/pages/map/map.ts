@@ -87,6 +87,24 @@ export class MapPage {
       loading.dismiss();
     });
   }
+
+  getMapTextPlace(position) {
+    let loading = this.loadingCtrl.create();
+    loading.present();
+    this.lat = position.lat;
+    this.lng = position.lng;
+    this.nativeGeocoder.reverseGeocode(position.lat, position.lng)
+      .then((result: NativeGeocoderReverseResult) => {
+        // alert(JSON.stringify(result))
+        this.item = (result.subThoroughfare ? result.subThoroughfare : '') + ' ' + (result.thoroughfare ? result.thoroughfare : '') + ' ' + (result.locality ? result.locality : '') + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
+        this.getmap();
+        loading.dismiss();
+      })
+      .catch((error: any) => {
+        loading.dismiss();
+        console.log(error)
+      });
+  }
   dismiss() {
     this.viewCtrl.dismiss();
   }
@@ -166,7 +184,8 @@ export class MapPage {
                 this.showPrompt();
               });
             marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe((e) => {
-              alert(JSON.stringify(e));
+              // alert(JSON.stringify(e));
+              this.getMapTextPlace(e[0]);
             })
           });
 
