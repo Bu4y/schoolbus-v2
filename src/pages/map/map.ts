@@ -79,7 +79,7 @@ export class MapPage {
           // alert(JSON.stringify(result))
           this.item = result.subThoroughfare + ' ' + result.thoroughfare + ' ' + result.locality + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
           loading.dismiss();
-          this.getmap();
+          this.getmap(true);
         })
         .catch((error: any) => console.log(error));
     }).catch((error) => {
@@ -88,7 +88,7 @@ export class MapPage {
     });
   }
 
-  getMapTextPlace(position) {
+  getMapTextPlace(position, marker) {
     let loading = this.loadingCtrl.create();
     loading.present();
     this.lat = position.lat;
@@ -97,7 +97,10 @@ export class MapPage {
       .then((result: NativeGeocoderReverseResult) => {
         // alert(JSON.stringify(result))
         this.item = (result.subThoroughfare ? result.subThoroughfare : '') + ' ' + (result.thoroughfare ? result.thoroughfare : '') + ' ' + (result.locality ? result.locality : '') + ' ' + result.subAdministrativeArea + ' ' + result.administrativeArea + ' ' + result.postalCode;
-        this.getmap();
+
+        this.map.clear();
+        this.addMarker();
+        
         loading.dismiss();
       })
       .catch((error: any) => {
@@ -143,12 +146,13 @@ export class MapPage {
       this.lng = this.longitude;
       // alert("lat: " + this.latitude + ", long: " + this.longitude);
       this.item = item;
-      this.getmap();
+      this.map.clear();
+      this.addMarker();
 
     });
   }
-  getmap() {
-    if (!this.isMap) {
+  getmap(isEmpty) {
+    if (!this.isMap && isEmpty) {
       this.map.empty('map_canvas');
       this.map = GoogleMap;
     }
@@ -166,33 +170,45 @@ export class MapPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        this.map.addMarker({
-          title: this.item,
-          icon: 'blue',
-          animation: 'DROP',
-          draggable: true,
-          position: {
-            lat: this.lat,
-            lng: this.lng
-          }
-        })
-          .then(marker => {
-            marker.showInfoWindow();
-            this.isMap = false;
-            marker.on(GoogleMapsEvent.MARKER_CLICK)
-              .subscribe(() => {
-                this.showPrompt();
-              });
-            marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe((e) => {
-              // alert(JSON.stringify(e));
-              this.getMapTextPlace(e[0]);
-            })
-          });
-
+        this.addMarker();
       });
   }
+
+  addMarker() {
+    this.map.animateCamera({
+      target: {
+        lat: this.lat,
+        lng: this.lng
+      },
+      zoom: 18,
+      duration: 1000
+    });
+    this.map.addMarker({
+      title: this.item,
+      icon: 'blue',
+      animation: '',
+      draggable: true,
+      position: {
+        lat: this.lat,
+        lng: this.lng
+      }
+    })
+      .then(marker => {
+        marker.showInfoWindow();
+        this.isMap = false;
+        marker.on(GoogleMapsEvent.MARKER_CLICK)
+          .subscribe(() => {
+            this.showPrompt();
+          });
+        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe((e) => {
+          // alert(JSON.stringify(e));
+          this.getMapTextPlace(e[0], marker);
+        })
+      });
+  }
+
   showPrompt() {
-    let data = { item: this.item , lat: this.latitude, long: this.longitude, tel: '', contact: '' };
+    let data = { item: this.item, lat: this.latitude, long: this.longitude, tel: '', contact: '' };
     let resultsData = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {};
     if (this.type === 'sender') {
       // loading.present();
