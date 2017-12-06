@@ -3,7 +3,7 @@ import { OrderserviceProvider } from './../../providers/orderservice/orderservic
 import { TabNavPage } from './../tab-nav/tab-nav';
 import { MapPage } from './../map/map';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController ,LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { AddAddressPage } from '../add-address/add-address';
 
 /**
@@ -21,7 +21,7 @@ import { AddAddressPage } from '../add-address/add-address';
 export class LocationPage {
   map;
   order: LocationModel = new LocationModel();
-  
+
   // dataOrder: any = {};
   constructor(
     public navCtrl: NavController,
@@ -44,7 +44,7 @@ export class LocationPage {
   }
 
   ionViewWillEnter() {
-   let loading = this.loadingCtrl.create();
+    let loading = this.loadingCtrl.create();
     loading.present();
     this.order = window.localStorage.getItem('order') ? JSON.parse(window.localStorage.getItem('order')) : {
       route: {
@@ -65,7 +65,7 @@ export class LocationPage {
     this.order.route.school.item = this.order.route.school.item ? this.order.route.school.item : '';
     this.order.route.send.item = this.order.route.send.item ? this.order.route.send.item : '';
     // this.order.name = window.localStorage.getItem('childname');
-    // this.order.image = window.localStorage.getItem('childimage');
+    this.order.image = './assets/image/child.png';
     // alert(JSON.stringify(this.order.route));
     console.log('ionViewDidLoad LocationPage');
     loading.dismiss();
