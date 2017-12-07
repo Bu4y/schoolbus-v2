@@ -74,7 +74,10 @@ export class IonUploadImagesComponent {
       }
 
     }, (err) => {
-      loadingPlugin.dismiss();
+      setTimeout(()=>{
+        loadingPlugin.dismiss();
+        
+      },1000);
       
      });
   }

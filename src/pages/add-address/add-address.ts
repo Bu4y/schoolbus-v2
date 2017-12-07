@@ -61,18 +61,18 @@ export class AddAddressPage {
 
   presentConfirm(id) {
     const alert = this.alertCtrl.create({
-      title: 'Confirm Delete',
-      message: 'Do you want to delete this Address?',
+      title: 'ยืนยันการลบ',
+      message: 'คุณต้องการลบที่อยู่นี้หรือไม่?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'ยกเลิก',
           role: 'cancel',
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Delete',
+          text: 'ลบ',
           handler: () => {
             console.log('delete');
             this.delete(id);
