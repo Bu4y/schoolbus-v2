@@ -1,93 +1,93 @@
 {
-  "name": "schoolbus",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
-  "private": true,
-  "scripts": {
-    "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
-  },
-  "dependencies": {
-    "@angular/common": "4.4.3",
-    "@angular/compiler": "4.4.3",
-    "@angular/compiler-cli": "4.4.3",
-    "@angular/core": "4.4.3",
-    "@angular/forms": "4.4.3",
-    "@angular/http": "4.4.3",
-    "@angular/platform-browser": "4.4.3",
-    "@angular/platform-browser-dynamic": "4.4.3",
-    "@ionic-native/base64": "^4.4.2",
-    "@ionic-native/core": "4.3.0",
-    "@ionic-native/facebook": "^4.3.2",
-    "@ionic-native/geolocation": "^4.3.2",
-    "@ionic-native/google-maps": "^4.3.2",
-    "@ionic-native/image-picker": "^4.4.2",
-    "@ionic-native/keyboard": "^4.3.2",
-    "@ionic-native/native-geocoder": "^4.4.2",
-    "@ionic-native/social-sharing": "^4.4.2",
-    "@ionic-native/splash-screen": "4.3.0",
-    "@ionic-native/status-bar": "4.3.0",
-    "@ionic/storage": "2.0.1",
-    "com-badrit-base64": "^0.2.0",
-    "com.synconset.imagepicker": "^2.1.10",
-    "cordova-android": "^6.2.3",
-    "cordova-plugin-compat": "^1.0.0",
-    "cordova-plugin-device": "^1.1.7",
-    "cordova-plugin-facebook4": "^1.9.1",
-    "cordova-plugin-geolocation": "^2.4.3",
-    "cordova-plugin-googlemaps": "^2.1.1",
-    "cordova-plugin-ionic-webview": "^1.1.16",
-    "cordova-plugin-nativegeocoder": "^2.0.4",
-    "cordova-plugin-splashscreen": "^4.1.0",
-    "cordova-plugin-telerik-imagepicker": "^2.1.8",
-    "cordova-plugin-whitelist": "^1.3.3",
-    "cordova-plugin-x-socialsharing": "^5.2.1",
-    "es6-promise-plugin": "^4.1.0",
-    "firebase": "^4.6.2",
-    "ionic-angular": "3.7.1",
-    "ionic-plugin-keyboard": "^2.2.1",
-    "ionicons": "3.0.0",
-    "moment": "^2.19.2",
-    "rxjs": "5.4.3",
-    "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
-  },
-  "devDependencies": {
-    "@ionic/app-scripts": "3.0.0",
-    "typescript": "2.3.4"
-  },
-  "description": "An Ionic project",
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-geolocation": {
-        "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
-      },
-      "ionic-plugin-keyboard": {},
-      "cordova-plugin-facebook4": {
-        "APP_ID": "1676493345694846",
-        "APP_NAME": "schoolbus"
-      },
-      "cordova-plugin-device": {},
-      "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-splashscreen": {},
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-nativegeocoder": {},
-      "com-badrit-base64": {},
-      "com.synconset.imagepicker": {
-        "PHOTO_LIBRARY_USAGE_DESCRIPTION": "your usage message"
-      },
-      "cordova-plugin-x-socialsharing": {},
-      "cordova-plugin-googlemaps": {
-        "API_KEY_FOR_ANDROID": "AIzaSyAibnEtDyUUbAfzXuAaK_MQMr5-_G9m1BU",
-        "API_KEY_FOR_IOS": "AIzaSyAibnEtDyUUbAfzXuAaK_MQMr5-_G9m1BU"
-      }
+    "name": "schoolbus",
+    "version": "0.0.1",
+    "author": "Ionic Framework",
+    "homepage": "http://ionicframework.com/",
+    "private": true,
+    "scripts": {
+        "clean": "ionic-app-scripts clean",
+        "build": "ionic-app-scripts build",
+        "lint": "ionic-app-scripts lint",
+        "ionic:build": "ionic-app-scripts build",
+        "ionic:serve": "ionic-app-scripts serve"
     },
-    "platforms": [
-      "android"
-    ]
-  }
+    "dependencies": {
+        "@angular/common": "4.4.3",
+        "@angular/compiler": "4.4.3",
+        "@angular/compiler-cli": "4.4.3",
+        "@angular/core": "4.4.3",
+        "@angular/forms": "4.4.3",
+        "@angular/http": "4.4.3",
+        "@angular/platform-browser": "4.4.3",
+        "@angular/platform-browser-dynamic": "4.4.3",
+        "@ionic-native/base64": "^4.4.2",
+        "@ionic-native/core": "4.3.0",
+        "@ionic-native/facebook": "^4.3.2",
+        "@ionic-native/geolocation": "^4.3.2",
+        "@ionic-native/google-maps": "^4.3.2",
+        "@ionic-native/image-picker": "^4.4.2",
+        "@ionic-native/keyboard": "^4.3.2",
+        "@ionic-native/native-geocoder": "^4.4.2",
+        "@ionic-native/social-sharing": "^4.4.2",
+        "@ionic-native/splash-screen": "4.3.0",
+        "@ionic-native/status-bar": "4.3.0",
+        "@ionic/storage": "2.0.1",
+        "com-badrit-base64": "^0.2.0",
+        "com.synconset.imagepicker": "^2.1.10",
+        "cordova-android": "^6.2.3",
+        "cordova-plugin-compat": "^1.0.0",
+        "cordova-plugin-device": "^1.1.7",
+        "cordova-plugin-facebook4": "^1.9.1",
+        "cordova-plugin-geolocation": "^2.4.3",
+        "cordova-plugin-googlemaps": "^2.1.1",
+        "cordova-plugin-ionic-webview": "^1.1.16",
+        "cordova-plugin-nativegeocoder": "^2.0.4",
+        "cordova-plugin-splashscreen": "^4.1.0",
+        "cordova-plugin-telerik-imagepicker": "^2.1.8",
+        "cordova-plugin-whitelist": "^1.3.3",
+        "cordova-plugin-x-socialsharing": "^5.2.1",
+        "es6-promise-plugin": "^4.1.0",
+        "firebase": "^4.6.2",
+        "ionic-angular": "3.7.1",
+        "ionic-plugin-keyboard": "^2.2.1",
+        "ionicons": "3.0.0",
+        "moment": "^2.19.2",
+        "rxjs": "5.4.3",
+        "sw-toolbox": "3.6.0",
+        "zone.js": "0.8.18"
+    },
+    "devDependencies": {
+        "@ionic/app-scripts": "3.0.0",
+        "typescript": "2.3.4"
+    },
+    "description": "An Ionic project",
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-geolocation": {
+                "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
+            },
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-facebook4": {
+                "APP_ID": "1676493345694846",
+                "APP_NAME": "schoolbus"
+            },
+            "cordova-plugin-device": {},
+            "cordova-plugin-ionic-webview": {},
+            "cordova-plugin-splashscreen": {},
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-nativegeocoder": {},
+            "com-badrit-base64": {},
+            "com.synconset.imagepicker": {
+                "PHOTO_LIBRARY_USAGE_DESCRIPTION": "your usage message"
+            },
+            "cordova-plugin-x-socialsharing": {},
+            "cordova-plugin-googlemaps": {
+                "API_KEY_FOR_ANDROID": "AIzaSyAibnEtDyUUbAfzXuAaK_MQMr5-_G9m1BU",
+                "API_KEY_FOR_IOS": "AIzaSyAibnEtDyUUbAfzXuAaK_MQMr5-_G9m1BU"
+            }
+        },
+        "platforms": [
+            "android"
+        ]
+    }
 }

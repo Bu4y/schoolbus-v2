@@ -123,8 +123,8 @@ export class RegisterPage {
 
   doAlert() {
     let alert = this.alertCtrl.create({
-      title: 'Invalid Password!',
-      message: 'Your password and confirm password not match!',
+      title: 'รหัสผ่านไม่ถูกต้อง!',
+      message: 'รหัสผ่านไม่ตรงกัน!',
       buttons: ['Ok']
     });
     alert.present()

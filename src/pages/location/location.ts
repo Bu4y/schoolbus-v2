@@ -103,8 +103,11 @@ export class LocationPage {
       loading.dismiss();
       this.navCtrl.setRoot(TabNavPage);
     }, (err) => {
+      if(JSON.parse(err._body).message === 'Token is incorrect or has expired.Please login again'){
+        alert('ขออภัยค่ะ บัญชีของท่านหมดอายุ กรุณาเข้าสู่ระบบใหม่อีกครั้ง');
+      }
       alert(JSON.parse(err._body).message);
-      loading.dismiss();
+    loading.dismiss();
     })
   }
 
