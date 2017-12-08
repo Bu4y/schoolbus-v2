@@ -37,7 +37,7 @@ export class IonUploadImagesComponent {
 
   onUpload() {
     let loadingPlugin = this.loadingCtrl.create();
-    loadingPlugin.present();
+    // loadingPlugin.present();
 
     let options = {
       maximumImagesCount: this.maximumImagesCount,
@@ -48,7 +48,7 @@ export class IonUploadImagesComponent {
     
     this.imagePicker.getPictures(options).then((results) => {
 
-      loadingPlugin.dismiss();
+      // loadingPlugin.dismiss();
 
       let loading = [];
       let loadingCount = 0;
@@ -74,10 +74,10 @@ export class IonUploadImagesComponent {
       }
 
     }, (err) => {
-      setTimeout(()=>{
-        loadingPlugin.dismiss();
+      // setTimeout(()=>{
+      //   loadingPlugin.dismiss();
         
-      },1000);
+      // },1000);
       
      });
   }
