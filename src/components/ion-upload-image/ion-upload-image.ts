@@ -38,8 +38,8 @@ export class IonUploadImagesComponent {
   }
 
   onUpload() {
-    let loadingCtrl = this.loading.create();
-    loadingCtrl.present();
+    // let loadingCtrl = this.loading.create();
+    // loadingCtrl.present();
     // let loadingPlugin = this.loadingCtrl.create();
     // loadingPlugin.present();
 
@@ -52,7 +52,7 @@ export class IonUploadImagesComponent {
 
     this.imagePicker.getPictures(options).then((results) => {
 
-      loadingCtrl.dismiss();
+      // loadingCtrl.dismiss();
       // loadingPlugin.dismiss();
 
       let loading = [];
@@ -80,7 +80,7 @@ export class IonUploadImagesComponent {
 
     }, (err) => {
 
-      loadingCtrl.dismissAll();
+      // loadingCtrl.dismissAll();
       // setTimeout(()=>{
       //   loadingPlugin.dismiss();
 
