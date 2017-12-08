@@ -13,7 +13,9 @@ import { LoadingController, Slides } from 'ionic-angular';
   templateUrl: 'ion-upload-image.html'
 })
 export class IonUploadImagesComponent {
+
   @ViewChild('formSlideImages') formSlideImages: Slides;
+  
   @Input() images: Array<any> = [];
   @Input() isShowUpload: boolean;
   @Input() addChildImg: boolean;
@@ -22,7 +24,7 @@ export class IonUploadImagesComponent {
   constructor(
     public imagePicker: ImagePicker,
     public loading: LoadingController,
-    public loadingCtrl: LoadingController
+    // public loadingCtrl: LoadingController
   ) {
     console.log('Hello IonUploadImageComponent Component');
   }
@@ -36,7 +38,9 @@ export class IonUploadImagesComponent {
   }
 
   onUpload() {
-    let loadingPlugin = this.loadingCtrl.create();
+    let loadingCtrl = this.loading.create();
+    loadingCtrl.present();
+    // let loadingPlugin = this.loadingCtrl.create();
     // loadingPlugin.present();
 
     let options = {
@@ -45,9 +49,10 @@ export class IonUploadImagesComponent {
       quality: 30,
       outputType: 1
     };
-    
+
     this.imagePicker.getPictures(options).then((results) => {
 
+      loadingCtrl.dismiss();
       // loadingPlugin.dismiss();
 
       let loading = [];
@@ -74,12 +79,14 @@ export class IonUploadImagesComponent {
       }
 
     }, (err) => {
+
+      loadingCtrl.dismissAll();
       // setTimeout(()=>{
       //   loadingPlugin.dismiss();
-        
+
       // },1000);
-      
-     });
+
+    });
   }
 
   uploadImage(imageString): Promise<any> {
