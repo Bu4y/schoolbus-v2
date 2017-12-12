@@ -69,7 +69,7 @@ export class LoginPage {
               // alert(" DATA : " + JSON.stringify(resData));
             }).catch((err) => {
               loginError(err as Promise<any>);
-              this.dialogs.alert('ไม่สามารถล็อคอินเข้าสู่ระบบด้วย Facebook ได้','การเข้าสู่ระบบ')
+              this.dialogs.alert('ไม่สามารถล็อคอินเข้าสู่ระบบด้วย Facebook ได้','การเข้าสู่ระบบ','ตกลง')
 
             });
           // this.fb.api('me?fields=email,id,first_name,name,last_name,picture.width(600).height(600)', null).then((res: FacebookLoginResponse) =>
@@ -80,7 +80,7 @@ export class LoginPage {
         })
         .catch(e => {
           loginError(e as Promise<any>);
-          this.dialogs.alert('Error logging into Facebook : ' + JSON.stringify(e),'การเข้าสู่ระบบ')
+          this.dialogs.alert('Error logging into Facebook : ' + JSON.stringify(e),'การเข้าสู่ระบบ','ตกลง')
         });
     })
   }
@@ -145,7 +145,7 @@ export class LoginPage {
       console.log('success');
     }, (error) => {
       this.loading.dismiss();
-      this.dialogs.alert(JSON.parse(error._body).message,'การเข้าสู่ระบบ')
+      this.dialogs.alert(JSON.parse(error._body).message,'การเข้าสู่ระบบ','ตกลง')
     });
 
   }

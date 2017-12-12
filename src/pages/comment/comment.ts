@@ -69,7 +69,7 @@ export class CommentPage {
 
         this.ionViewWillEnter();
       }, (err) => {
-        this.dialogs.alert(JSON.parse(err._body).message, 'แสดงความคิดเห็น');
+        this.dialogs.alert(JSON.parse(err._body).message, 'แสดงความคิดเห็น','ตกลง');
         loading.dismiss();
 
       });

@@ -63,7 +63,7 @@ export class ProfilePage {
       window.localStorage.setItem('schollbus_user', JSON.stringify(resp));
       this.navCtrl.pop();
     }, (error) => {
-      this.dialogs.alert(JSON.parse(error._body).message,'ข้อมูลส่วนตัว');
+      this.dialogs.alert(JSON.parse(error._body).message,'ข้อมูลส่วนตัว','ตกลง');
     });
 
   }

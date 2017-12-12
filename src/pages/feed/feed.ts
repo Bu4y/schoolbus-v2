@@ -122,7 +122,7 @@ export class FeedPage {
 
       this.ionViewWillEnter();
     }, (err) => {
-      this.dialogs.alert(JSON.parse(err._body).message, 'กระดานข่าว');
+      this.dialogs.alert(JSON.parse(err._body).message, 'กระดานข่าว','ตกลง');
     });
     console.log(data);
 

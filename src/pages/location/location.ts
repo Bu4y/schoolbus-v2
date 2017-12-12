@@ -106,9 +106,9 @@ export class LocationPage {
       this.navCtrl.setRoot(TabNavPage);
     }, (err) => {
       if (JSON.parse(err._body).message === 'Token is incorrect or has expired.Please login again') {
-        this.dialogs.alert('ขออภัยค่ะ บัญชีของท่านหมดอายุ กรุณาเข้าสู่ระบบใหม่อีกครั้ง', 'เลือกจุดรับ-ส่ง');
+        this.dialogs.alert('ขออภัยค่ะ บัญชีของท่านหมดอายุ กรุณาเข้าสู่ระบบใหม่อีกครั้ง', 'เลือกจุดรับ-ส่ง','ตกลง');
       }
-      this.dialogs.alert(JSON.parse(err._body).message, 'เลือกจุดรับ-ส่ง');
+      this.dialogs.alert(JSON.parse(err._body).message, 'เลือกจุดรับ-ส่ง','ตกลง');
       loading.dismiss();
     })
   }

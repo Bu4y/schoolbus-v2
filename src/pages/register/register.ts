@@ -96,7 +96,7 @@ export class RegisterPage {
 
       }, (error) => {
         console.error(error);
-        this.dialogs.alert(JSON.parse(error._body).message,'สมัครสมาชิก');
+        this.dialogs.alert(JSON.parse(error._body).message,'สมัครสมาชิก','ตกลง');
         this.loading.dismiss();
       });
     } else {
@@ -132,7 +132,7 @@ export class RegisterPage {
     alert.present()
   }
   uploadImage() {
-    this.dialogs.alert('img','สมัครสมาชิก');
+    this.dialogs.alert('img','สมัครสมาชิก','ตกลง');
     
   }
 
