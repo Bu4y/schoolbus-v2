@@ -6,6 +6,8 @@ import { FeedServiceProvider } from './feed.service';
 import { FeedModel } from './feed.model';
 import { CommentPage } from '../comment/comment';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Dialogs } from '@ionic-native/dialogs';
+
 /**
  * Generated class for the FeedPage page.
  *
@@ -32,7 +34,9 @@ export class FeedPage {
     public loadingCtrl: LoadingController,
     public feedServiceProvider: FeedServiceProvider,
     public modalCtrl: ModalController,
-    public socialSharing: SocialSharing
+    public socialSharing: SocialSharing,
+    private dialogs: Dialogs
+    
   ) {
     // this.auth.private().subscribe((data) => {
     //   this.data = data.message
@@ -118,8 +122,7 @@ export class FeedPage {
 
       this.ionViewWillEnter();
     }, (err) => {
-      alert(JSON.parse(err._body).message);
-
+      this.dialogs.alert(JSON.parse(err._body).message, 'กระดานข่าว');
     });
     console.log(data);
 

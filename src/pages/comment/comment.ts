@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FeedServiceProvider } from '../../pages/feed/feed.service';
 import { FeedModel } from '../../pages/feed/feed.model';
+import { Dialogs } from '@ionic-native/dialogs';
+
 /**
  * Generated class for the CommentPage page.
  *
@@ -21,12 +23,13 @@ export class CommentPage {
   }
   dataComment: FeedModel = new FeedModel;
   feedId: any;
-  
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
-    public feedServiceProvider: FeedServiceProvider
+    public feedServiceProvider: FeedServiceProvider,
+    private dialogs: Dialogs
   ) {
     this.feedId = this.navParams.data;
   }
@@ -37,13 +40,13 @@ export class CommentPage {
   ionViewWillEnter() {
     // let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     // console.log(user);
-   let loading = this.loadingCtrl.create();
+    let loading = this.loadingCtrl.create();
     loading.present();
     this.feedServiceProvider.getfeedId(this.feedId)
       .then((data) => {
         console.log(data);
         this.dataComment = data;
-       loading.dismiss();
+        loading.dismiss();
       }).catch((err) => {
         console.error(err);
         loading.dismiss();
@@ -56,19 +59,19 @@ export class CommentPage {
     let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
     data.user = user;
     console.log(data);
-    
+
     if (data.comment != '') {
       this.feedServiceProvider.commentFeed(this.feedId, data).then((res) => {
         // this.dataComment = res;
         // console.log(this.dataComment);
         data.comment = '';
         loading.dismiss();
-        
+
         this.ionViewWillEnter();
       }, (err) => {
-        alert(JSON.parse(err._body).message);
+        this.dialogs.alert(JSON.parse(err._body).message, 'แสดงความคิดเห็น');
         loading.dismiss();
-        
+
       });
     }
   }

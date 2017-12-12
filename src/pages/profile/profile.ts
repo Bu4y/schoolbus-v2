@@ -4,6 +4,8 @@ import { AuthorizeModel } from '../../pages/register/register.model';
 import { RegisterServiceProvider } from '../../pages/register/register.service';
 import { AuthProvider } from './../../providers/auth/auth';
 import { LoginPage } from './../login/login';
+import { Dialogs } from '@ionic-native/dialogs';
+
 /**
  * Generated class for the ProfilePage page.
  *
@@ -20,7 +22,14 @@ export class ProfilePage {
   dataProfile: AuthorizeModel = new AuthorizeModel;
   pImages: Array<string> = [];
   resImg: string = '';
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public authenService: RegisterServiceProvider, private auth: AuthProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public app: App,
+    public authenService: RegisterServiceProvider,
+    private auth: AuthProvider,
+    private dialogs: Dialogs
+  ) {
     this.dataProfile = JSON.parse(window.localStorage.getItem('schollbus_user'));
     this.pImages = this.dataProfile.profileImageURL ? [this.dataProfile.profileImageURL] : [];
     console.log(this.dataProfile);
@@ -39,12 +48,12 @@ export class ProfilePage {
   }
   resImageEvent(e) {
     this.resImg = e[0] ? e[0] : "";
-    if(this.resImg){
+    if (this.resImg) {
       this.dataProfile.profileImageURL = this.resImg;
-    }else{
+    } else {
       this.dataProfile.profileImageURL = '';
     }
-    
+
     // this.resImg = './assets/image/noimage.png';
   }
   editProfile() {
@@ -54,7 +63,7 @@ export class ProfilePage {
       window.localStorage.setItem('schollbus_user', JSON.stringify(resp));
       this.navCtrl.pop();
     }, (error) => {
-      alert(JSON.parse(error._body).message);
+      this.dialogs.alert(JSON.parse(error._body).message,'ข้อมูลส่วนตัว');
     });
 
   }

@@ -5,6 +5,7 @@ import { MapPage } from './../map/map';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { AddAddressPage } from '../add-address/add-address';
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the LocationPage page.
@@ -28,7 +29,8 @@ export class LocationPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public orderService: OrderserviceProvider
+    public orderService: OrderserviceProvider,
+    private dialogs: Dialogs
   ) {
 
     if (this.navParams.get('daya')) {
@@ -103,11 +105,11 @@ export class LocationPage {
       loading.dismiss();
       this.navCtrl.setRoot(TabNavPage);
     }, (err) => {
-      if(JSON.parse(err._body).message === 'Token is incorrect or has expired.Please login again'){
-        alert('ขออภัยค่ะ บัญชีของท่านหมดอายุ กรุณาเข้าสู่ระบบใหม่อีกครั้ง');
+      if (JSON.parse(err._body).message === 'Token is incorrect or has expired.Please login again') {
+        this.dialogs.alert('ขออภัยค่ะ บัญชีของท่านหมดอายุ กรุณาเข้าสู่ระบบใหม่อีกครั้ง', 'เลือกจุดรับ-ส่ง');
       }
-      alert(JSON.parse(err._body).message);
-    loading.dismiss();
+      this.dialogs.alert(JSON.parse(err._body).message, 'เลือกจุดรับ-ส่ง');
+      loading.dismiss();
     })
   }
 

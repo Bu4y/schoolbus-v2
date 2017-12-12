@@ -7,6 +7,7 @@ import { Slides, IonicPage, NavController, NavParams, LoadingController, AlertCo
 import { AuthorizeModel } from './register.model';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LocationPage } from "../location/location";
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the RegisterPage page.
@@ -47,7 +48,8 @@ export class RegisterPage {
     public alertCtrl: AlertController,
     public app: App,
     public regisService: RegisterServiceProvider,
-    private auth: AuthProvider
+    private auth: AuthProvider,
+    private dialogs:Dialogs
   ) {
     this.signup = this.navParams.data;
     // alert(JSON.stringify(this.signup));
@@ -94,7 +96,7 @@ export class RegisterPage {
 
       }, (error) => {
         console.error(error);
-        alert(JSON.parse(error._body).message);
+        this.dialogs.alert(JSON.parse(error._body).message,'สมัครสมาชิก');
         this.loading.dismiss();
       });
     } else {
@@ -130,7 +132,8 @@ export class RegisterPage {
     alert.present()
   }
   uploadImage() {
-    alert('img');
+    this.dialogs.alert('img','สมัครสมาชิก');
+    
   }
 
 }

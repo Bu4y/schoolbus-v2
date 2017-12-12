@@ -37,6 +37,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { IonUploadImagesComponent } from "../components/ion-upload-image/ion-upload-image";
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
+import { Dialogs } from '@ionic-native/dialogs';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -101,7 +103,8 @@ import { Base64 } from '@ionic-native/base64';
     AuthProvider,
     CoreserviceProvider,
     CoreserviceProvider,
-    OrderserviceProvider
+    OrderserviceProvider,
+    Dialogs
 
   ]
 })

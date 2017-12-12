@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { AlertController, LoadingController, IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { AddAddressPage } from '../add-address/add-address';
-
+import { Dialogs } from '@ionic-native/dialogs';
 
 /**
  * Generated class for the LoginPage page.
@@ -46,7 +46,8 @@ export class LoginPage {
     public app: App,
     public loginService: LoginServiceProvider,
     private fb: Facebook,
-    private auth: AuthProvider
+    private auth: AuthProvider,
+    private dialogs:Dialogs
   ) {
   }
 
@@ -68,7 +69,7 @@ export class LoginPage {
               // alert(" DATA : " + JSON.stringify(resData));
             }).catch((err) => {
               loginError(err as Promise<any>);
-              alert("ไม่สามารถล็อคอินเข้าสู่ระบบด้วย Facebook ได้");
+              this.dialogs.alert('ไม่สามารถล็อคอินเข้าสู่ระบบด้วย Facebook ได้','การเข้าสู่ระบบ')
 
             });
           // this.fb.api('me?fields=email,id,first_name,name,last_name,picture.width(600).height(600)', null).then((res: FacebookLoginResponse) =>
@@ -79,7 +80,7 @@ export class LoginPage {
         })
         .catch(e => {
           loginError(e as Promise<any>);
-          alert('Error logging into Facebook : ' + JSON.stringify(e))
+          this.dialogs.alert('Error logging into Facebook : ' + JSON.stringify(e),'การเข้าสู่ระบบ')
         });
     })
   }
@@ -144,7 +145,7 @@ export class LoginPage {
       console.log('success');
     }, (error) => {
       this.loading.dismiss();
-      alert(JSON.parse(error._body).message);
+      this.dialogs.alert(JSON.parse(error._body).message,'การเข้าสู่ระบบ')
     });
 
   }

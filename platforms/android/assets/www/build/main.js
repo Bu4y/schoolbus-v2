@@ -493,7 +493,7 @@ var AgreementPage = (function () {
 }());
 AgreementPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-agreement',template:/*ion-inline-start:"C:\Users\Hallo\Desktop\schoolBus\schoolbus-v2\src\pages\agreement\agreement.html"*/'<!--\n\n  Generated template for the AgreementPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>เงือนไขและข้อตกลง</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n  <ion-card-content>\n\n    <h4>ข้อตกลงและเงื่อนไขในการให้บริการ</h4>\n\n    <p>ข้อตกลงและเงื่อนไขในการให้บริการแอพพลิเคชั่น SchoolBus เพื่อปกป้องสิทธิของผู้ใช้บริการ โปรดอ่านเงื่อนไขการให้บริการทั้งหมดและตกลงที่จะปฏิบัติตามข้อตกลงและเงื่อนไขทั้งหมดต่อไปนี้</p>\n\n    <p>\n\n      ข้อ 1 ขอบเขตของข้อตกลงและเงื่อนไขการใช้บริการ ข้อตกลงและเงื่อนไขการให้บริการนี้ทำขึ้นระหว่าง บริษัทไซเบอร์ แอดวานซ์ ซิสเต็ม\n\n      แอน เน็ตเวิร์ค จำกัด ซึ่งต่อไปนี้จะเรียกว่า “บริษัท” ซึ่งเป็นผู้ผลิตแอพพลิเคชั่นหรือเป็นผู้ที่ได้รับลิขสิทธิ์ในการให้บริการแอพพลิเคชั่น\n\n      เพื่อกำหนดข้อตกลงและเงื่อนไขการให้บริการระหว่างผู้เข้ามาใช้บริการ ซึ่งต่อไปนี้จะเรียกว่า “ผู้ใช้บริการ” โดยจะใช้บริการแอพพลิเคชั่นของบริษัท\n\n      ซึ่งต่อไปนี้จะเรียกว่า “บริการ”\n\n    </p>\n\n    <p>\n\n      ข้อ 2 การยอมรับข้อตกลงและเงื่อนไขการใช้บริการ ผู้ใช้บริการจะต้องตกลงและปฏิบัติตามเงื่อนไขซึ่งปรากฏอยู่บนเงื่อนไขการเป็นสมาชิกบริการและเงื่อนไขการใช้บริการฉบับนี้\n\n      หรือในฉบับแก้ไขเพิ่มเติมอันอาจจะมีขึ้นในภายหน้า และการที่ท่านได้ตกลงในการใช้บริการของ บริษัท ถือว่าท่านได้ยินยอมและเห็นด้วยกับข้อตกลงและเงื่อนไขการให้บริการฉบับนี้แล้ว\n\n    </p>\n\n    <p>\n\n      2.1 เงื่อนไขการเป็นสมาชิกและเงื่อนไขการให้บริการแอพพลิเคชั่นฉบับนี้เป็นไปตามตามเงื่อนไขการเป็นสมาชิกและเงื่อนไขการให้บริการแอพพิเคชั่นของสัญญาการให้บริการแอพพลิเคชั่นมือถือ\n\n      หากผู้ใช้บริการยอมรับต่อคำถาม ถือว่าผู้ใช้บริการได้ยอมรับเงื่อนไขการให้บริการ และถือว่าเงื่อนไขการเป็นสมาชิก และเงื่อนไขการให้บริการแอพพลิเคชั่นนี้มีผลบังคับใช้\n\n    </p>\n\n    <p>\n\n      2.2 บริษัทสามารถเปลี่ยนแปลงตามเงื่อนไขการเป็นสมาชิกและเงื่อนไขการให้บริการได้ตามความเหมาะสมและเงื่อนไขการให้บริการที่มีการเปลี่ยนแปลงจะถูกประกาศให้ทราบบนแอพพลิเคชั่น\n\n      SchoolBus\n\n    </p>\n\n    <p>\n\n      2.3 ผู้ใช้บริการมีหน้าที่ต้องเข้าไปเยี่ยมชมแอพพลิเคชั่นป็นระยะและตรวจสอบเนื้อหาข้อตกลงที่มีการเปลี่ยนแปลงและได้ประกาศไว้แล้ว\n\n      หากผู้ใช้บริการได้มีการเข้าใช้บริการหลังจากมีการประกาศเปลี่ยนแปลงไปแล้ว ถือว่าท่านได้ยอมรับและเห็นด้วยในการเปลี่ยนแปลงในเนื้อหาดังกล่าวนั้น\n\n      และทางบริษัทจะไม่รับผิดชอบต่อความเสียหายใดๆของผู้ใช้บริการ อันเกิดจากการไม่ทราบเนื้อหาประกาศของข้อตกลงนั้นๆ\n\n    </p>\n\n    <p>\n\n      2.4 ผู้ใช้บริการที่อายุยังไม่ถึง 15 ปีบริบูรณ์ในวันที่ใช้บริการจะต้องมีผู้ปกครอง (ผู้แทนโดยชอบธรรม หรือผู้ปกครอง) ของผู้ใช้บริการ\n\n      ในการดูแล ยินยอม หรือให้คำแนะนำ เพื่อทำความเข้าใจในข้อตกลงและเงื่อนไขการให้บริการ ทั้งนี้เพื่อความสะดวกในการใช้บริการให้ถือว่าวันที่ผู้ช้บริการได้ทำการยอมรับข้อตกลงและเงื่อนไขการให้บริการของบริษัทแล้วนั้น\n\n      ให้ถือเป็นการยอมรับและอนุญาตในข้อตกลงเงื่อนไขการให้บริการของผู้ปกครองแล้วโดยปริยาย\n\n    </p>\n\n    <p>\n\n      2.5 ผู้ใช้บริการ จะต้องขอลงทะเบียนเป็นผู้ใช้บริการ โดยกรอกข้อมูลชื่อนามสกุลและข้อมูลส่วนตัวตามความเป็นจริง ของผู้ใช้บริการ\n\n      และดำเนินตามขั้นตอนการขอเป็นผู้ใช้บริการด้วยข้อมูลที่เป็นความจริง\n\n    </p>\n\n  </ion-card-content>\n\n  <button ion-button block round color="yellows" (click)="agree()">ดำเนินการต่อ</button>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\Hallo\Desktop\schoolBus\schoolbus-v2\src\pages\agreement\agreement.html"*/,
+        selector: 'page-agreement',template:/*ion-inline-start:"C:\Users\Hallo\Desktop\schoolBus\schoolbus-v2\src\pages\agreement\agreement.html"*/'<!--\n\n  Generated template for the AgreementPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>เงื่อนไขและข้อตกลง</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n\n\n  <ion-card-content>\n\n    <h4>ข้อตกลงและเงื่อนไขในการให้บริการ</h4>\n\n    <p>ข้อตกลงและเงื่อนไขในการให้บริการแอพพลิเคชั่น SchoolBus เพื่อปกป้องสิทธิของผู้ใช้บริการ โปรดอ่านเงื่อนไขการให้บริการทั้งหมดและตกลงที่จะปฏิบัติตามข้อตกลงและเงื่อนไขทั้งหมดต่อไปนี้</p>\n\n    <p>\n\n      ข้อ 1 ขอบเขตของข้อตกลงและเงื่อนไขการใช้บริการ ข้อตกลงและเงื่อนไขการให้บริการนี้ทำขึ้นระหว่าง บริษัทไซเบอร์ แอดวานซ์ ซิสเต็ม\n\n      แอน เน็ตเวิร์ค จำกัด ซึ่งต่อไปนี้จะเรียกว่า “บริษัท” ซึ่งเป็นผู้ผลิตแอพพลิเคชั่นหรือเป็นผู้ที่ได้รับลิขสิทธิ์ในการให้บริการแอพพลิเคชั่น\n\n      เพื่อกำหนดข้อตกลงและเงื่อนไขการให้บริการระหว่างผู้เข้ามาใช้บริการ ซึ่งต่อไปนี้จะเรียกว่า “ผู้ใช้บริการ” โดยจะใช้บริการแอพพลิเคชั่นของบริษัท\n\n      ซึ่งต่อไปนี้จะเรียกว่า “บริการ”\n\n    </p>\n\n    <p>\n\n      ข้อ 2 การยอมรับข้อตกลงและเงื่อนไขการใช้บริการ ผู้ใช้บริการจะต้องตกลงและปฏิบัติตามเงื่อนไขซึ่งปรากฏอยู่บนเงื่อนไขการเป็นสมาชิกบริการและเงื่อนไขการใช้บริการฉบับนี้\n\n      หรือในฉบับแก้ไขเพิ่มเติมอันอาจจะมีขึ้นในภายหน้า และการที่ท่านได้ตกลงในการใช้บริการของ บริษัท ถือว่าท่านได้ยินยอมและเห็นด้วยกับข้อตกลงและเงื่อนไขการให้บริการฉบับนี้แล้ว\n\n    </p>\n\n    <p>\n\n      2.1 เงื่อนไขการเป็นสมาชิกและเงื่อนไขการให้บริการแอพพลิเคชั่นฉบับนี้เป็นไปตามตามเงื่อนไขการเป็นสมาชิกและเงื่อนไขการให้บริการแอพพิเคชั่นของสัญญาการให้บริการแอพพลิเคชั่นมือถือ\n\n      หากผู้ใช้บริการยอมรับต่อคำถาม ถือว่าผู้ใช้บริการได้ยอมรับเงื่อนไขการให้บริการ และถือว่าเงื่อนไขการเป็นสมาชิก และเงื่อนไขการให้บริการแอพพลิเคชั่นนี้มีผลบังคับใช้\n\n    </p>\n\n    <p>\n\n      2.2 บริษัทสามารถเปลี่ยนแปลงตามเงื่อนไขการเป็นสมาชิกและเงื่อนไขการให้บริการได้ตามความเหมาะสมและเงื่อนไขการให้บริการที่มีการเปลี่ยนแปลงจะถูกประกาศให้ทราบบนแอพพลิเคชั่น\n\n      SchoolBus\n\n    </p>\n\n    <p>\n\n      2.3 ผู้ใช้บริการมีหน้าที่ต้องเข้าไปเยี่ยมชมแอพพลิเคชั่นป็นระยะและตรวจสอบเนื้อหาข้อตกลงที่มีการเปลี่ยนแปลงและได้ประกาศไว้แล้ว\n\n      หากผู้ใช้บริการได้มีการเข้าใช้บริการหลังจากมีการประกาศเปลี่ยนแปลงไปแล้ว ถือว่าท่านได้ยอมรับและเห็นด้วยในการเปลี่ยนแปลงในเนื้อหาดังกล่าวนั้น\n\n      และทางบริษัทจะไม่รับผิดชอบต่อความเสียหายใดๆของผู้ใช้บริการ อันเกิดจากการไม่ทราบเนื้อหาประกาศของข้อตกลงนั้นๆ\n\n    </p>\n\n    <p>\n\n      2.4 ผู้ใช้บริการที่อายุยังไม่ถึง 15 ปีบริบูรณ์ในวันที่ใช้บริการจะต้องมีผู้ปกครอง (ผู้แทนโดยชอบธรรม หรือผู้ปกครอง) ของผู้ใช้บริการ\n\n      ในการดูแล ยินยอม หรือให้คำแนะนำ เพื่อทำความเข้าใจในข้อตกลงและเงื่อนไขการให้บริการ ทั้งนี้เพื่อความสะดวกในการใช้บริการให้ถือว่าวันที่ผู้ช้บริการได้ทำการยอมรับข้อตกลงและเงื่อนไขการให้บริการของบริษัทแล้วนั้น\n\n      ให้ถือเป็นการยอมรับและอนุญาตในข้อตกลงเงื่อนไขการให้บริการของผู้ปกครองแล้วโดยปริยาย\n\n    </p>\n\n    <p>\n\n      2.5 ผู้ใช้บริการ จะต้องขอลงทะเบียนเป็นผู้ใช้บริการ โดยกรอกข้อมูลชื่อนามสกุลและข้อมูลส่วนตัวตามความเป็นจริง ของผู้ใช้บริการ\n\n      และดำเนินตามขั้นตอนการขอเป็นผู้ใช้บริการด้วยข้อมูลที่เป็นความจริง\n\n    </p>\n\n  </ion-card-content>\n\n  <button ion-button block round color="yellows" (click)="agree()">ดำเนินการต่อ</button>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\Hallo\Desktop\schoolBus\schoolbus-v2\src\pages\agreement\agreement.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
 ], AgreementPage);
@@ -811,11 +811,11 @@ var OrderListModel = (function () {
 
 var map = {
 	"../pages/add-address/add-address.module": [
-		582,
+		581,
 		12
 	],
 	"../pages/addchild/addchild.module": [
-		581,
+		582,
 		11
 	],
 	"../pages/agreement/agreement.module": [
@@ -835,19 +835,19 @@ var map = {
 		7
 	],
 	"../pages/login/login.module": [
-		588,
+		587,
 		6
 	],
 	"../pages/map/map.module": [
-		587,
+		588,
 		5
 	],
 	"../pages/notification/notification.module": [
-		590,
+		589,
 		4
 	],
 	"../pages/profile/profile.module": [
-		589,
+		590,
 		3
 	],
 	"../pages/register/register.module": [
@@ -1340,16 +1340,16 @@ AppModule = __decorate([
                 mode: 'md'
             }, {
                 links: [
-                    { loadChildren: '../pages/addchild/addchild.module#AddchildPageModule', name: 'AddchildPage', segment: 'addchild', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/add-address/add-address.module#AddAddressPageModule', name: 'AddAddressPage', segment: 'add-address', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/addchild/addchild.module#AddchildPageModule', name: 'AddchildPage', segment: 'addchild', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/agreement/agreement.module#AgreementPageModule', name: 'AgreementPage', segment: 'agreement', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/comment/comment.module#CommentPageModule', name: 'CommentPage', segment: 'comment', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/feed/feed.module#FeedPageModule', name: 'FeedPage', segment: 'feed', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/location/location.module#LocationPageModule', name: 'LocationPage', segment: 'location', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notification/notification.module#NotificationPageModule', name: 'NotificationPage', segment: 'notification', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/selectlocation/selectlocation.module#SelectlocationPageModule', name: 'SelectlocationPage', segment: 'selectlocation', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tab-nav/tab-nav.module#TabNavPageModule', name: 'TabNavPage', segment: 'tab-nav', priority: 'low', defaultHistory: [] }
