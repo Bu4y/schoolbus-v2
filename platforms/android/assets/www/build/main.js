@@ -279,7 +279,7 @@ var ProfilePage = (function () {
             window.localStorage.setItem('schollbus_user', JSON.stringify(resp));
             _this.navCtrl.pop();
         }, function (error) {
-            _this.dialogs.alert(JSON.parse(error._body).message, 'ข้อมูลส่วนตัว');
+            _this.dialogs.alert(JSON.parse(error._body).message, 'ข้อมูลส่วนตัว', 'ตกลง');
         });
     };
     return ProfilePage;
@@ -402,7 +402,7 @@ var RegisterPage = (function () {
                 _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__location_location__["a" /* LocationPage */]);
             }, function (error) {
                 console.error(error);
-                _this.dialogs.alert(JSON.parse(error._body).message, 'สมัครสมาชิก');
+                _this.dialogs.alert(JSON.parse(error._body).message, 'สมัครสมาชิก', 'ตกลง');
                 _this.loading.dismiss();
             });
         }
@@ -437,7 +437,7 @@ var RegisterPage = (function () {
         alert.present();
     };
     RegisterPage.prototype.uploadImage = function () {
-        this.dialogs.alert('img', 'สมัครสมาชิก');
+        this.dialogs.alert('img', 'สมัครสมาชิก', 'ตกลง');
     };
     return RegisterPage;
 }());
@@ -518,12 +518,112 @@ AgreementPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommentPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_feed_feed_model__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_dialogs__ = __webpack_require__(43);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the CommentPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var CommentPage = (function () {
+    function CommentPage(navCtrl, navParams, loadingCtrl, feedServiceProvider, dialogs) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.loadingCtrl = loadingCtrl;
+        this.feedServiceProvider = feedServiceProvider;
+        this.dialogs = dialogs;
+        this.commentData = {
+            user: {},
+            comment: ''
+        };
+        this.dataComment = new __WEBPACK_IMPORTED_MODULE_3__pages_feed_feed_model__["a" /* FeedModel */];
+        this.feedId = this.navParams.data;
+    }
+    // ionViewDidLoad() {
+    //   console.log('ionViewDidLoad CommentPage');
+    // }
+    CommentPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        // let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+        // console.log(user);
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        this.feedServiceProvider.getfeedId(this.feedId)
+            .then(function (data) {
+            console.log(data);
+            _this.dataComment = data;
+            loading.dismiss();
+        }).catch(function (err) {
+            console.error(err);
+            loading.dismiss();
+        });
+    };
+    CommentPage.prototype.createComment = function (data) {
+        var _this = this;
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        var user = JSON.parse(window.localStorage.getItem('schollbus_user'));
+        data.user = user;
+        console.log(data);
+        if (data.comment != '') {
+            this.feedServiceProvider.commentFeed(this.feedId, data).then(function (res) {
+                // this.dataComment = res;
+                // console.log(this.dataComment);
+                data.comment = '';
+                loading.dismiss();
+                _this.ionViewWillEnter();
+            }, function (err) {
+                _this.dialogs.alert(JSON.parse(err._body).message, 'แสดงความคิดเห็น', 'ตกลง');
+                loading.dismiss();
+            });
+        }
+    };
+    return CommentPage;
+}());
+CommentPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-comment',template:/*ion-inline-start:"C:\Users\Hallo\Desktop\schoolBus\schoolbus-v2\src\pages\comment\comment.html"*/'<!--\n\n  Generated template for the CommentPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>แสดงความคิดเห็น</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <!-- <ion-list>\n\n    <ion-item *ngFor="let comment of dataComment.comments">\n\n      <ion-row>\n\n        <ion-col col-8 text-left>\n\n          <p>{{comment.user}}</p>\n\n        </ion-col>\n\n        <ion-col col-4 text-right>\n\n          <p>{{comment.created | moment}}\n\n        </ion-col>\n\n        <ion-col col-12>\n\n          <p>{{comment.comment}}</p>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-item>\n\n  </ion-list> -->\n\n  <div class="borderLine" *ngFor="let comment of dataComment.comments">\n\n    <ion-row>\n\n      <ion-col col-8 text-left>\n\n        <p>{{comment.user.displayName}}</p>\n\n      </ion-col>\n\n      <ion-col col-4 text-right>\n\n        <p>{{comment.created | moment}}</p>\n\n      </ion-col>\n\n      <ion-col col-12>\n\n        <span class="fontWeight">{{comment.comment}}</span>\n\n      </ion-col>\n\n    </ion-row>\n\n  </div>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-input item-start type="text" placeholder="Comment here" [(ngModel)]="commentData.comment"></ion-input>\n\n\n\n      <button item-end ion-button small round outline [disabled]="commentData.comment === \'\'" (click)="createComment(commentData)">Comment</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\Hallo\Desktop\schoolBus\schoolbus-v2\src\pages\comment\comment.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__["a" /* FeedServiceProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__ionic_native_dialogs__["a" /* Dialogs */]])
+], CommentPage);
+
+//# sourceMappingURL=comment.js.map
+
+/***/ }),
+
+/***/ 160:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeedPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__feed_service__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__comment_comment__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__comment_comment__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_social_sharing__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_dialogs__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -641,7 +741,7 @@ var FeedPage = (function () {
             // alert('reload');
             _this.ionViewWillEnter();
         }, function (err) {
-            _this.dialogs.alert(JSON.parse(err._body).message, 'กระดานข่าว');
+            _this.dialogs.alert(JSON.parse(err._body).message, 'กระดานข่าว', 'ตกลง');
         });
         console.log(data);
     };
@@ -666,106 +766,6 @@ FeedPage = __decorate([
 ], FeedPage);
 
 //# sourceMappingURL=feed.js.map
-
-/***/ }),
-
-/***/ 160:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommentPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_feed_feed_model__ = __webpack_require__(475);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_dialogs__ = __webpack_require__(43);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the CommentPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CommentPage = (function () {
-    function CommentPage(navCtrl, navParams, loadingCtrl, feedServiceProvider, dialogs) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.loadingCtrl = loadingCtrl;
-        this.feedServiceProvider = feedServiceProvider;
-        this.dialogs = dialogs;
-        this.commentData = {
-            user: {},
-            comment: ''
-        };
-        this.dataComment = new __WEBPACK_IMPORTED_MODULE_3__pages_feed_feed_model__["a" /* FeedModel */];
-        this.feedId = this.navParams.data;
-    }
-    // ionViewDidLoad() {
-    //   console.log('ionViewDidLoad CommentPage');
-    // }
-    CommentPage.prototype.ionViewWillEnter = function () {
-        var _this = this;
-        // let user = JSON.parse(window.localStorage.getItem('schollbus_user'));
-        // console.log(user);
-        var loading = this.loadingCtrl.create();
-        loading.present();
-        this.feedServiceProvider.getfeedId(this.feedId)
-            .then(function (data) {
-            console.log(data);
-            _this.dataComment = data;
-            loading.dismiss();
-        }).catch(function (err) {
-            console.error(err);
-            loading.dismiss();
-        });
-    };
-    CommentPage.prototype.createComment = function (data) {
-        var _this = this;
-        var loading = this.loadingCtrl.create();
-        loading.present();
-        var user = JSON.parse(window.localStorage.getItem('schollbus_user'));
-        data.user = user;
-        console.log(data);
-        if (data.comment != '') {
-            this.feedServiceProvider.commentFeed(this.feedId, data).then(function (res) {
-                // this.dataComment = res;
-                // console.log(this.dataComment);
-                data.comment = '';
-                loading.dismiss();
-                _this.ionViewWillEnter();
-            }, function (err) {
-                _this.dialogs.alert(JSON.parse(err._body).message, 'แสดงความคิดเห็น');
-                loading.dismiss();
-            });
-        }
-    };
-    return CommentPage;
-}());
-CommentPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-comment',template:/*ion-inline-start:"C:\Users\Hallo\Desktop\schoolBus\schoolbus-v2\src\pages\comment\comment.html"*/'<!--\n\n  Generated template for the CommentPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>แสดงความคิดเห็น</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <!-- <ion-list>\n\n    <ion-item *ngFor="let comment of dataComment.comments">\n\n      <ion-row>\n\n        <ion-col col-8 text-left>\n\n          <p>{{comment.user}}</p>\n\n        </ion-col>\n\n        <ion-col col-4 text-right>\n\n          <p>{{comment.created | moment}}\n\n        </ion-col>\n\n        <ion-col col-12>\n\n          <p>{{comment.comment}}</p>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-item>\n\n  </ion-list> -->\n\n  <div class="borderLine" *ngFor="let comment of dataComment.comments">\n\n    <ion-row>\n\n      <ion-col col-8 text-left>\n\n        <p>{{comment.user.displayName}}</p>\n\n      </ion-col>\n\n      <ion-col col-4 text-right>\n\n        <p>{{comment.created | moment}}</p>\n\n      </ion-col>\n\n      <ion-col col-12>\n\n        <span class="fontWeight">{{comment.comment}}</span>\n\n      </ion-col>\n\n    </ion-row>\n\n  </div>\n\n</ion-content>\n\n\n\n<ion-footer>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-input item-start type="text" placeholder="Comment here" [(ngModel)]="commentData.comment"></ion-input>\n\n\n\n      <button item-end ion-button small round outline [disabled]="commentData.comment === \'\'" (click)="createComment(commentData)">Comment</button>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-footer>'/*ion-inline-end:"C:\Users\Hallo\Desktop\schoolBus\schoolbus-v2\src\pages\comment\comment.html"*/,
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_2__pages_feed_feed_service__["a" /* FeedServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_4__ionic_native_dialogs__["a" /* Dialogs */]])
-], CommentPage);
-
-//# sourceMappingURL=comment.js.map
 
 /***/ }),
 
@@ -831,11 +831,11 @@ var OrderListModel = (function () {
 
 var map = {
 	"../pages/add-address/add-address.module": [
-		582,
+		583,
 		12
 	],
 	"../pages/addchild/addchild.module": [
-		583,
+		582,
 		11
 	],
 	"../pages/agreement/agreement.module": [
@@ -843,43 +843,43 @@ var map = {
 		10
 	],
 	"../pages/comment/comment.module": [
-		587,
+		585,
 		9
 	],
 	"../pages/feed/feed.module": [
-		585,
+		586,
 		8
 	],
 	"../pages/location/location.module": [
-		586,
+		587,
 		7
 	],
 	"../pages/login/login.module": [
-		588,
+		590,
 		6
 	],
 	"../pages/map/map.module": [
-		589,
+		588,
 		5
 	],
 	"../pages/notification/notification.module": [
-		590,
+		589,
 		4
 	],
 	"../pages/profile/profile.module": [
-		591,
+		593,
 		3
 	],
 	"../pages/register/register.module": [
-		592,
+		594,
 		2
 	],
 	"../pages/selectlocation/selectlocation.module": [
-		593,
+		591,
 		1
 	],
 	"../pages/tab-nav/tab-nav.module": [
-		594,
+		592,
 		0
 	]
 };
@@ -1257,7 +1257,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_notification_notification__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_add_address_add_address__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_feed_feed__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_feed_feed__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_tab_nav_tab_nav__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_platform_browser__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_core__ = __webpack_require__(0);
@@ -1275,7 +1275,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_native_geocoder__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_feed_feed_service__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_coreservice_coreservice__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_comment_comment__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_comment_comment__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_orderservice_orderservice__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pipes_moment_moment__ = __webpack_require__(577);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_agreement_agreement__ = __webpack_require__(158);
@@ -1362,19 +1362,19 @@ AppModule = __decorate([
                 mode: 'md'
             }, {
                 links: [
-                    { loadChildren: '../pages/add-address/add-address.module#AddAddressPageModule', name: 'AddAddressPage', segment: 'add-address', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/addchild/addchild.module#AddchildPageModule', name: 'AddchildPage', segment: 'addchild', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/add-address/add-address.module#AddAddressPageModule', name: 'AddAddressPage', segment: 'add-address', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/agreement/agreement.module#AgreementPageModule', name: 'AgreementPage', segment: 'agreement', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/comment/comment.module#CommentPageModule', name: 'CommentPage', segment: 'comment', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/feed/feed.module#FeedPageModule', name: 'FeedPage', segment: 'feed', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/location/location.module#LocationPageModule', name: 'LocationPage', segment: 'location', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/comment/comment.module#CommentPageModule', name: 'CommentPage', segment: 'comment', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/map/map.module#MapPageModule', name: 'MapPage', segment: 'map', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notification/notification.module#NotificationPageModule', name: 'NotificationPage', segment: 'notification', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/selectlocation/selectlocation.module#SelectlocationPageModule', name: 'SelectlocationPage', segment: 'selectlocation', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/tab-nav/tab-nav.module#TabNavPageModule', name: 'TabNavPage', segment: 'tab-nav', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/tab-nav/tab-nav.module#TabNavPageModule', name: 'TabNavPage', segment: 'tab-nav', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] }
                 ]
             })
         ],
@@ -1706,7 +1706,7 @@ var LoginPage = (function () {
                     // alert(" DATA : " + JSON.stringify(resData));
                 }).catch(function (err) {
                     loginError(err);
-                    _this.dialogs.alert('ไม่สามารถล็อคอินเข้าสู่ระบบด้วย Facebook ได้', 'การเข้าสู่ระบบ');
+                    _this.dialogs.alert('ไม่สามารถล็อคอินเข้าสู่ระบบด้วย Facebook ได้', 'การเข้าสู่ระบบ', 'ตกลง');
                 });
                 // this.fb.api('me?fields=email,id,first_name,name,last_name,picture.width(600).height(600)', null).then((res: FacebookLoginResponse) =>
                 //   this.registerFb(res))
@@ -1716,7 +1716,7 @@ var LoginPage = (function () {
             })
                 .catch(function (e) {
                 loginError(e);
-                _this.dialogs.alert('Error logging into Facebook : ' + JSON.stringify(e), 'การเข้าสู่ระบบ');
+                _this.dialogs.alert('Error logging into Facebook : ' + JSON.stringify(e), 'การเข้าสู่ระบบ', 'ตกลง');
             });
         });
     };
@@ -1778,7 +1778,7 @@ var LoginPage = (function () {
             console.log('success');
         }, function (error) {
             _this.loading.dismiss();
-            _this.dialogs.alert(JSON.parse(error._body).message, 'การเข้าสู่ระบบ');
+            _this.dialogs.alert(JSON.parse(error._body).message, 'การเข้าสู่ระบบ', 'ตกลง');
         });
     };
     LoginPage.prototype.register = function () {
@@ -2413,9 +2413,9 @@ var LocationPage = (function () {
             _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__tab_nav_tab_nav__["a" /* TabNavPage */]);
         }, function (err) {
             if (JSON.parse(err._body).message === 'Token is incorrect or has expired.Please login again') {
-                _this.dialogs.alert('ขออภัยค่ะ บัญชีของท่านหมดอายุ กรุณาเข้าสู่ระบบใหม่อีกครั้ง', 'เลือกจุดรับ-ส่ง');
+                _this.dialogs.alert('ขออภัยค่ะ บัญชีของท่านหมดอายุ กรุณาเข้าสู่ระบบใหม่อีกครั้ง', 'เลือกจุดรับ-ส่ง', 'ตกลง');
             }
-            _this.dialogs.alert(JSON.parse(err._body).message, 'เลือกจุดรับ-ส่ง');
+            _this.dialogs.alert(JSON.parse(err._body).message, 'เลือกจุดรับ-ส่ง', 'ตกลง');
             loading.dismiss();
         });
     };
@@ -2444,7 +2444,7 @@ LocationPage = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabNavPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__notification_notification__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__add_address_add_address__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__feed_feed__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__feed_feed__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(35);
